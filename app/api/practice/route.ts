@@ -51,8 +51,11 @@ export async function POST(req: Request) {
     };
     const key = persona && persona in PERSONAS ? persona : "coach";
 
+    // Haiku 4.5 is included in AI Gateway's free tier. To upgrade the
+    // Practice Room brain after topping up credits, set PRACTICE_MODEL
+    // (e.g. "anthropic/claude-sonnet-4-6") in Vercel env vars.
     const result = streamText({
-      model: "anthropic/claude-sonnet-4-6",
+      model: process.env.PRACTICE_MODEL ?? "anthropic/claude-haiku-4-5",
       system: PERSONAS[key],
       messages: await convertToModelMessages(messages),
       maxOutputTokens: 600,
