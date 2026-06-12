@@ -364,7 +364,7 @@ function PlayInner() {
             onClick={start}
             disabled={phase === "connecting"}
             className={cn(
-              "w-full rounded-xl bg-ink py-4 text-center font-semibold text-white transition-all duration-150 ease-out active:scale-[0.99]",
+              "w-full rounded-xl bg-teal py-4 text-center font-semibold text-ink transition-all duration-150 ease-out active:scale-[0.99]",
               phase === "connecting" && "opacity-60"
             )}
           >
@@ -575,7 +575,7 @@ function PlayInner() {
             {verdict.passed && mode === "game" && level < 5 ? (
               <Link
                 href={`/gauntlet/play?person=${person}&level=${level + 1}&mode=game`}
-                className="w-full rounded-xl bg-gold py-4 text-center font-semibold text-ink transition-transform duration-150 active:scale-[0.99]"
+                className="w-full rounded-xl bg-cribl py-4 text-center font-semibold text-ink transition-transform duration-150 active:scale-[0.99]"
               >
                 Next: Level {level + 1} — {LEVELS_BY_N.get((level + 1) as 2 | 3 | 4 | 5)?.name}
               </Link>

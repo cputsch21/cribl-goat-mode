@@ -128,7 +128,7 @@ export default async function CramPage({
       <div className="mt-6 grid gap-2 lg:mx-auto lg:max-w-md">
         <Link
           href={`/exam/${sheet.id}`}
-          className="w-full rounded-xl bg-ink py-4 text-center font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.99]"
+          className="w-full rounded-xl bg-teal py-4 text-center font-semibold text-ink transition-transform duration-150 ease-out active:scale-[0.99]"
         >
           Run the {sheet.id === "kat" ? "Kat" : "Cam"} Simulation
         </Link>

@@ -42,7 +42,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="bg-canvas font-body text-ink antialiased">
+      <body className="bg-cribl-soft font-body text-ink antialiased">
         <TopBar />
         <div className="min-h-dvh w-full px-4 pb-32 pt-4 sm:px-6 lg:px-8 lg:pb-16 lg:pt-8">
           {children}

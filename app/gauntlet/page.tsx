@@ -44,19 +44,19 @@ export default function GauntletPage() {
       </header>
 
       {/* Hall of Fame strip */}
-      <section className="rounded-2.5xl bg-ink p-5 text-white">
+      <section className="rounded-2.5xl bg-cribl p-5 text-ink">
         <div className="flex items-baseline justify-between text-xs font-semibold">
-          <span className="text-white/70">{passed} of {GAUNTLET_TOTAL} interviews passed</span>
-          <span className="text-gold">{Math.round((passed / GAUNTLET_TOTAL) * 100)}%</span>
+          <span className="text-ink/70">{passed} of {GAUNTLET_TOTAL} interviews passed</span>
+          <span className="text-violet-dark">{Math.round((passed / GAUNTLET_TOTAL) * 100)}%</span>
         </div>
-        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-ink-3">
+        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-ink/15">
           <div
-            className="h-full rounded-full bg-gold transition-all duration-150 ease-out"
+            className="h-full rounded-full bg-ink transition-all duration-150 ease-out"
             style={{ width: `${(passed / GAUNTLET_TOTAL) * 100}%` }}
           />
         </div>
         {complete ? (
-          <div className="mt-4 rounded-xl bg-gold p-3.5 text-center font-display text-sm font-bold text-ink">
+          <div className="mt-4 rounded-xl bg-ink p-3.5 text-center font-display text-sm font-bold text-teal">
             🏆 HALL OF FAME — all twenty. There's nothing left to ask you.
           </div>
         ) : null}

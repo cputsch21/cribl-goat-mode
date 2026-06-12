@@ -162,7 +162,7 @@ function ShootoutInner() {
             onClick={start}
             disabled={phase === "connecting"}
             className={cn(
-              "flex w-full items-center justify-center gap-2 rounded-xl bg-ink py-4 font-semibold text-white transition-all duration-150 ease-out active:scale-[0.99]",
+              "flex w-full items-center justify-center gap-2 rounded-xl bg-teal py-4 font-semibold text-ink transition-all duration-150 ease-out active:scale-[0.99]",
               phase === "connecting" && "opacity-60"
             )}
           >

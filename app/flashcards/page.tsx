@@ -101,7 +101,7 @@ export default function FlashcardsPage() {
                 <span className="mt-3 text-[15px] leading-relaxed text-ink/90 lg:text-lg">
                   {card.plain}
                 </span>
-                <span className="mt-4 w-full rounded-xl border-l-4 border-teal bg-mist p-3.5 text-left text-sm leading-relaxed text-ink/80 lg:text-base">
+                <span className="mt-4 w-full rounded-xl border-l-4 border-violet bg-mist p-3.5 text-left text-sm leading-relaxed text-ink/80 lg:text-base">
                   {card.sentence}
                 </span>
               </>
@@ -122,7 +122,7 @@ export default function FlashcardsPage() {
               onClick={() => advance(false)}
               disabled={!flipped}
               className={cn(
-                "rounded-xl bg-ink py-3.5 font-semibold text-white transition-all duration-150 ease-out active:scale-[0.99]",
+                "rounded-xl bg-teal py-3.5 font-semibold text-ink transition-all duration-150 ease-out active:scale-[0.99]",
                 !flipped && "opacity-40"
               )}
             >

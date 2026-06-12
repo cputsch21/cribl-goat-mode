@@ -71,8 +71,8 @@ export default function Dashboard() {
     <main className="mx-auto w-full max-w-xl space-y-8 lg:max-w-5xl">
       <div className="space-y-8 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
       {/* ── Hero ── */}
-      <section className="rounded-2.5xl bg-ink p-6 text-white lg:col-span-2 lg:p-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold">
+      <section className="rounded-2.5xl bg-cribl p-6 text-ink lg:col-span-2 lg:p-8">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-violet-dark">
           🐐 GOAT Mode
         </p>
         <h1 className="mt-2 font-display text-3xl font-bold leading-tight lg:text-4xl">
@@ -80,27 +80,29 @@ export default function Dashboard() {
           <br />
           than you need to be.
         </h1>
-        <p className="mt-2 text-sm leading-relaxed text-white/60">
+        <p className="mt-2 text-sm leading-relaxed text-ink/75">
           Built from your Patrick and Ami transcripts plus cribl.io. Pass every
           quiz at 90%+ — modules, then both simulations — and the Kat and Cam
           calls are yours.
         </p>
         <div className="mt-5">
           <div className="flex items-baseline justify-between text-xs font-semibold">
-            <span className="text-white/70">
+            <span className="text-ink/70">
               {passed} of {total} quizzes passed
             </span>
-            <span className="text-gold">{Math.round((passed / total) * 100)}%</span>
+            <span className="text-violet-dark">
+              {Math.round((passed / total) * 100)}%
+            </span>
           </div>
-          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-ink-3">
+          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-ink/15">
             <div
-              className="h-full rounded-full bg-gold transition-all duration-150 ease-out"
+              className="h-full rounded-full bg-ink transition-all duration-150 ease-out"
               style={{ width: `${(passed / total) * 100}%` }}
             />
           </div>
         </div>
         {goat ? (
-          <div className="mt-4 rounded-xl bg-gold p-3.5 text-center font-display text-sm font-bold text-ink">
+          <div className="mt-4 rounded-xl bg-ink p-3.5 text-center font-display text-sm font-bold text-teal">
             🐐 3x READY — every quiz, both simulations. Go eat.
           </div>
         ) : null}
@@ -271,22 +273,22 @@ export default function Dashboard() {
             const card = (
               <div
                 className={cn(
-                  "rounded-2xl bg-ink p-5 text-white",
+                  "rounded-2xl bg-violet p-5 text-white",
                   unlocked &&
                     "transition-shadow duration-150 ease-out hover:shadow-lift"
                 )}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <p className="font-display text-lg font-bold text-gold">
+                  <p className="font-display text-lg font-bold text-white">
                     {exam.title}
                   </p>
                   {unlocked ? (
                     <StatusChip s={s} id={id} />
                   ) : (
-                    <Lock size={16} className="mt-1 shrink-0 text-white/40" />
+                    <Lock size={16} className="mt-1 shrink-0 text-white/50" />
                   )}
                 </div>
-                <p className="mt-1.5 text-[13px] leading-snug text-white/65">
+                <p className="mt-1.5 text-[13px] leading-snug text-white/80">
                   {unlocked
                     ? `${exam.questions.length} scenarios · pass at 90%`
                     : "Unlocks once Modules 1–9 are passed."}

@@ -38,10 +38,22 @@ const config: Config = {
           soft: "#e9e5fc",
           deep: "#5443d8",
         },
+        violet: {
+          DEFAULT: "#6c5ce7",
+          deep: "#5443d8",
+          dark: "#4333c0",
+          soft: "#e9e5fc",
+        },
         danger: {
           DEFAULT: "#d6453a",
           tint: "#fdeeec",
         },
+      },
+      backgroundImage: {
+        // The cribl.io hero gradient: aqua → periwinkle → lavender.
+        cribl: "linear-gradient(115deg, #5beeed 0%, #92c0f7 48%, #ab8bf4 100%)",
+        "cribl-soft":
+          "linear-gradient(115deg, #e6fbfc 0%, #eaf1fe 50%, #f1eafd 100%)",
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],

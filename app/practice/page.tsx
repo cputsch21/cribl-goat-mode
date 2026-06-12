@@ -147,7 +147,7 @@ function Chat({ persona }: { persona: Persona }) {
           e.preventDefault();
           send(input);
         }}
-        className="sticky bottom-24 z-20 mt-3 flex gap-2 bg-canvas py-1 lg:bottom-4"
+        className="sticky bottom-24 z-20 mt-3 flex gap-2 rounded-xl bg-white/75 py-1 backdrop-blur-sm lg:bottom-4"
       >
         <input
           value={input}

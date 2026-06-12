@@ -42,6 +42,7 @@ export function TopBar() {
           })}
         </nav>
       </div>
+      <div className="h-[3px] w-full bg-cribl" />
     </header>
   );
 }

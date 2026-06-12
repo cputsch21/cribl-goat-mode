@@ -122,7 +122,7 @@ export function QuizRunner({
           {!passed ? (
             <button
               onClick={retake}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-ink py-3.5 font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.99]"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal py-3.5 font-semibold text-ink transition-transform duration-150 ease-out active:scale-[0.99]"
             >
               <RotateCcw size={16} /> Retake the quiz
             </button>
@@ -166,7 +166,7 @@ export function QuizRunner({
         </div>
         <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-line">
           <div
-            className="h-full rounded-full bg-teal transition-all duration-150 ease-out"
+            className="h-full rounded-full bg-violet transition-all duration-150 ease-out"
             style={{ width: `${((idx + (picked !== null ? 1 : 0)) / total) * 100}%` }}
           />
         </div>
@@ -219,7 +219,7 @@ export function QuizRunner({
           </div>
           <button
             onClick={next}
-            className="mt-3 w-full rounded-xl bg-ink py-3.5 font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.99]"
+            className="mt-3 w-full rounded-xl bg-teal py-3.5 font-semibold text-ink transition-transform duration-150 ease-out active:scale-[0.99]"
           >
             {idx + 1 < total ? "Next question" : "See my score"}
           </button>
