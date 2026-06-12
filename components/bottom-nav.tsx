@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, MessageCircle } from "lucide-react";
+import { Home, Layers, Mic } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { href: "/", label: "Course", icon: Home, exact: true },
   { href: "/flashcards", label: "Flashcards", icon: Layers, exact: false },
-  { href: "/practice", label: "Practice", icon: MessageCircle, exact: false },
+  { href: "/gauntlet", label: "Gauntlet", icon: Mic, exact: false },
 ];
 
 export function BottomNav() {

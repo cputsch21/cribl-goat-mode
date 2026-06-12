@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { ArrowUp } from "lucide-react";
@@ -182,10 +183,20 @@ export default function PracticePage() {
       <header>
         <h1 className="font-display text-3xl font-bold">Practice Room</h1>
         <p className="mt-1 text-sm text-muted">
-          Say your answers out loud before you type them — the rooms on Monday
-          and Tuesday are spoken, not written.
+          The text fallback for when you can&apos;t talk out loud.
         </p>
       </header>
+
+      <Link
+        href="/gauntlet"
+        className="mt-4 flex items-center justify-between gap-3 rounded-2xl bg-ink p-4 text-white transition-shadow duration-150 ease-out hover:shadow-lift"
+      >
+        <p className="text-sm font-semibold">
+          🎙 The real thing lives in <span className="text-gold">the Gauntlet</span> now —
+          live voice interviews, five levels each.
+        </p>
+        <span className="shrink-0 text-gold">→</span>
+      </Link>
 
       <div className="mt-4 grid grid-cols-3 gap-2">
         {PERSONAS.map((p) => (

@@ -35,6 +35,7 @@ export const GAME_PLAN: PlanItem[] = [
   { id: "sat-5", day: "Saturday", label: "Module 7 — Talk Tech Without Faking It", href: "/module/m7" },
   { id: "sat-6", day: "Saturday", label: "Call 2–3 partner friends (script in Module 8) — Ami's homework", href: "/module/m8" },
   { id: "sat-7", day: "Saturday", label: "Practice Room warm-up with the Coach", href: "/practice" },
+  { id: "sat-8", day: "Saturday", label: "Gauntlet: Shootout warm-up, then Kat Levels 1–2", href: "/gauntlet" },
 
   { id: "sun-1", day: "Sunday", label: "Module 8 — The Kat Module", href: "/module/m8" },
   { id: "sun-2", day: "Sunday", label: "Module 9 — The Cam Module", href: "/module/m9" },
@@ -43,8 +44,11 @@ export const GAME_PLAN: PlanItem[] = [
   { id: "sun-5", day: "Sunday", label: "Boss exam: the Kat Simulation", href: "/exam/kat" },
   { id: "sun-6", day: "Sunday", label: "Boss exam: the Cam Simulation", href: "/exam/cam" },
   { id: "sun-7", day: "Sunday", label: "Practice Room: one round as Kat, one as Cam", href: "/practice" },
+  { id: "sun-8", day: "Sunday", label: "Gauntlet: Kat Levels 3–5 — beat Game 7", href: "/gauntlet" },
+  { id: "sun-9", day: "Sunday", label: "Gauntlet: Cam Levels 1–5", href: "/gauntlet" },
 
   { id: "mon-1", day: "Monday", label: "Retake any quiz under 90%", href: "/" },
+  { id: "mon-1b", day: "Monday", label: "Gauntlet: retake anything failed; Patrick & Tim runs if time", href: "/gauntlet" },
   { id: "mon-2", day: "Monday", label: "30 min before Kat: her cram sheet, phone away, walk in", href: "/cram/kat" },
 
   { id: "tue-1", day: "Tuesday", label: "30 min before Cam: his cram sheet", href: "/cram/cam" },

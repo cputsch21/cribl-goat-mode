@@ -20,6 +20,8 @@ import {
   bestFor,
   countPassed,
   examsUnlocked,
+  GAUNTLET_TOTAL,
+  gauntletPassedCount,
   isPassed,
   setInterviewTime,
   togglePlan,
@@ -61,6 +63,7 @@ export default function Dashboard() {
   const total = UNIT_IDS.length;
   const goat = passed === total;
   const unlocked = examsUnlocked(s);
+  const gauntletPassed = gauntletPassedCount(s);
 
   const days = Array.from(new Set(GAME_PLAN.map((p) => p.day)));
 
@@ -299,6 +302,31 @@ export default function Dashboard() {
             );
           })}
         </div>
+      </section>
+
+      {/* ── The Gauntlet ── */}
+      <section>
+        <h2 className="font-display text-lg font-bold">The Gauntlet</h2>
+        <p className="mt-0.5 text-sm text-muted">
+          Live voice interviews — all four of them, five levels each.
+        </p>
+        <Link
+          href="/gauntlet"
+          className="mt-3 flex items-center justify-between gap-3 rounded-2xl bg-ink p-5 text-white transition-shadow duration-150 ease-out hover:shadow-lift"
+        >
+          <div className="min-w-0">
+            <p className="font-display text-lg font-bold text-gold">
+              🎙 Take the Gauntlet
+            </p>
+            <p className="mt-1 text-[13px] leading-snug text-white/65">
+              Patrick, Kat, Cam, and Tim — Preseason to Game 7. The judge
+              scores every tape.
+            </p>
+          </div>
+          <span className="shrink-0 rounded-full bg-ink-3 px-3 py-1.5 text-xs font-bold text-gold">
+            {gauntletPassed}/{GAUNTLET_TOTAL}
+          </span>
+        </Link>
       </section>
 
       {/* ── Footer ── */}
