@@ -19,7 +19,7 @@ export default async function ModulePage({
   const next = MODULES.find((x) => x.number === m.number + 1);
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-3xl">
       <header className="mb-6">
         <Link
           href="/"

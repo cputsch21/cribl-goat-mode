@@ -47,7 +47,7 @@ export default function FlashcardsPage() {
   }
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
       <header>
         <h1 className="font-display text-3xl font-bold">Flashcards</h1>
         <p className="mt-1 text-sm text-muted">
@@ -81,14 +81,14 @@ export default function FlashcardsPage() {
           </div>
           <button
             onClick={() => setFlipped((f) => !f)}
-            className="mt-2 flex min-h-[19rem] w-full flex-col items-center justify-center rounded-2.5xl bg-surface p-6 text-center shadow-card transition-shadow duration-150 ease-out active:shadow-lift"
+            className="mt-2 flex min-h-[19rem] w-full flex-col items-center justify-center rounded-2.5xl bg-surface p-6 text-center shadow-card transition-shadow duration-150 ease-out active:shadow-lift lg:min-h-[26rem] lg:p-10"
           >
             {!flipped ? (
               <>
                 <span className="rounded-full bg-teal-tint px-3 py-1 text-[11px] font-bold text-teal-dark">
                   {CATEGORY_LABEL[card.category]}
                 </span>
-                <span className="mt-4 font-display text-3xl font-bold leading-tight">
+                <span className="mt-4 font-display text-3xl font-bold leading-tight lg:text-5xl">
                   {card.term}
                 </span>
                 <span className="mt-4 text-xs font-medium text-faint">
@@ -98,10 +98,10 @@ export default function FlashcardsPage() {
             ) : (
               <>
                 <span className="font-display text-lg font-bold">{card.term}</span>
-                <span className="mt-3 text-[15px] leading-relaxed text-ink/90">
+                <span className="mt-3 text-[15px] leading-relaxed text-ink/90 lg:text-lg">
                   {card.plain}
                 </span>
-                <span className="mt-4 w-full rounded-xl border-l-4 border-teal bg-mist p-3.5 text-left text-sm leading-relaxed text-ink/80">
+                <span className="mt-4 w-full rounded-xl border-l-4 border-teal bg-mist p-3.5 text-left text-sm leading-relaxed text-ink/80 lg:text-base">
                   {card.sentence}
                 </span>
               </>

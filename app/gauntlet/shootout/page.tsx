@@ -94,7 +94,7 @@ function ShootoutInner() {
   }
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
       <header className="flex items-center justify-between">
         <Link
           href="/gauntlet"

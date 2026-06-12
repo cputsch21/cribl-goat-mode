@@ -16,7 +16,7 @@ export default async function ModuleQuizPage({
   if (!m) notFound();
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
       <QuizRunner
         kicker={`Module ${m.number} — ${m.title}`}
         questions={m.quiz}

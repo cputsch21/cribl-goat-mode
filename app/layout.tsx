@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Geist } from "next/font/google";
 import "./globals.css";
 import { SWRegister } from "@/components/sw-register";
 import { BottomNav } from "@/components/bottom-nav";
+import { TopBar } from "@/components/top-bar";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -42,7 +43,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-canvas font-body text-ink antialiased">
-        <div className="mx-auto min-h-dvh w-full max-w-xl px-4 pb-32 pt-4 sm:px-6">
+        <TopBar />
+        <div className="min-h-dvh w-full px-4 pb-32 pt-4 sm:px-6 lg:px-8 lg:pb-16 lg:pt-8">
           {children}
         </div>
         <BottomNav />

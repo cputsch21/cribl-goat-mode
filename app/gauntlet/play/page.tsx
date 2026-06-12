@@ -247,7 +247,7 @@ function PlayInner() {
 
   if (!p || !l) {
     return (
-      <main>
+      <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
         <Link href="/gauntlet" className="flex w-fit items-center gap-1.5 text-sm font-medium text-muted">
           <ArrowLeft size={16} /> Gauntlet
         </Link>
@@ -263,7 +263,7 @@ function PlayInner() {
   // ── Locked guard ──
   if (locked) {
     return (
-      <main>
+      <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
         <Link href="/gauntlet" className="flex w-fit items-center gap-1.5 text-sm font-medium text-muted">
           <ArrowLeft size={16} /> Gauntlet
         </Link>
@@ -287,7 +287,7 @@ function PlayInner() {
   }
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
       <header className="flex items-center justify-between">
         <Link
           href="/gauntlet"

@@ -31,7 +31,7 @@ export default function GauntletPage() {
   const complete = passed === GAUNTLET_TOTAL;
 
   return (
-    <main className="space-y-7">
+    <main className="mx-auto w-full max-w-xl space-y-7 lg:max-w-2xl">
       <header>
         <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-teal-dark">
           🎙 Live voice interviews

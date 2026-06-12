@@ -19,7 +19,7 @@ export default async function CramPage({
   const moduleHref = sheet.id === "kat" ? "/module/m8" : "/module/m9";
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-4xl">
       <header className="mb-6">
         <Link
           href="/"
@@ -36,7 +36,7 @@ export default async function CramPage({
         <p className="mt-1 text-sm font-medium text-muted">{sheet.role}</p>
       </header>
 
-      <div className="space-y-5">
+      <div className="space-y-5 lg:grid lg:grid-cols-2 lg:items-start lg:gap-5 lg:space-y-0">
         <section className="rounded-2.5xl bg-surface p-5 shadow-card">
           <h2 className="text-[11px] font-bold uppercase tracking-[0.14em] text-teal-dark">
             Who you&apos;re talking to
@@ -125,7 +125,7 @@ export default async function CramPage({
         </section>
       </div>
 
-      <div className="mt-6 grid gap-2">
+      <div className="mt-6 grid gap-2 lg:mx-auto lg:max-w-md">
         <Link
           href={`/exam/${sheet.id}`}
           className="w-full rounded-xl bg-ink py-4 text-center font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.99]"

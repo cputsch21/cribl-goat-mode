@@ -12,7 +12,7 @@ export function ExamView({ exam }: { exam: Exam }) {
   if (!examsUnlocked(s)) {
     const missing = missingForExams(s);
     return (
-      <main>
+      <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
         <Link
           href="/"
           className="flex w-fit items-center gap-1.5 text-sm font-medium text-muted transition-colors duration-150 hover:text-ink"

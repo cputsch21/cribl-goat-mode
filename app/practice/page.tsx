@@ -147,7 +147,7 @@ function Chat({ persona }: { persona: Persona }) {
           e.preventDefault();
           send(input);
         }}
-        className="sticky bottom-24 z-20 mt-3 flex gap-2 bg-canvas py-1"
+        className="sticky bottom-24 z-20 mt-3 flex gap-2 bg-canvas py-1 lg:bottom-4"
       >
         <input
           value={input}
@@ -179,7 +179,7 @@ export default function PracticePage() {
   const [persona, setPersona] = useState<Persona>("coach");
 
   return (
-    <main>
+    <main className="mx-auto w-full max-w-xl lg:max-w-3xl">
       <header>
         <h1 className="font-display text-3xl font-bold">Practice Room</h1>
         <p className="mt-1 text-sm text-muted">

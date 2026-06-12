@@ -68,13 +68,14 @@ export default function Dashboard() {
   const days = Array.from(new Set(GAME_PLAN.map((p) => p.day)));
 
   return (
-    <main className="space-y-8">
+    <main className="mx-auto w-full max-w-xl space-y-8 lg:max-w-5xl">
+      <div className="space-y-8 lg:grid lg:grid-cols-3 lg:items-start lg:gap-6 lg:space-y-0">
       {/* ── Hero ── */}
-      <section className="rounded-2.5xl bg-ink p-6 text-white">
+      <section className="rounded-2.5xl bg-ink p-6 text-white lg:col-span-2 lg:p-8">
         <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-gold">
           🐐 GOAT Mode
         </p>
-        <h1 className="mt-2 font-display text-3xl font-bold leading-tight">
+        <h1 className="mt-2 font-display text-3xl font-bold leading-tight lg:text-4xl">
           Walk in 3x more ready
           <br />
           than you need to be.
@@ -154,6 +155,7 @@ export default function Dashboard() {
           invites and adjust if needed.
         </p>
       </section>
+      </div>
 
       {/* ── Game plan ── */}
       <section>
@@ -161,7 +163,7 @@ export default function Dashboard() {
         <p className="mt-0.5 text-sm text-muted">
           Check things off — the weekend is enough if you follow the order.
         </p>
-        <div className="mt-3 space-y-4">
+        <div className="mt-3 space-y-4 lg:grid lg:grid-cols-5 lg:items-start lg:gap-3 lg:space-y-0">
           {days.map((day) => (
             <div key={day}>
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-faint">
@@ -223,7 +225,7 @@ export default function Dashboard() {
         <section key={period.number}>
           <h2 className="font-display text-lg font-bold">{period.title}</h2>
           <p className="mt-0.5 text-sm text-muted">{period.subtitle}</p>
-          <div className="mt-3 grid gap-2">
+          <div className="mt-3 grid gap-2 lg:grid-cols-2 lg:gap-3">
             {MODULES.filter((m) => m.period === period.number).map((m) => (
               <Link
                 key={m.id}
@@ -263,7 +265,7 @@ export default function Dashboard() {
         <p className="mt-0.5 text-sm text-muted">
           Fifteen scenarios each, asked the way they&apos;d actually ask them.
         </p>
-        <div className="mt-3 grid gap-2">
+        <div className="mt-3 grid gap-2 lg:grid-cols-2 lg:gap-3">
           {EXAMS.map((exam) => {
             const id = `exam-${exam.id}`;
             const card = (
