@@ -1,5 +1,5 @@
 // GOAT Mode service worker — lessons, quizzes, and cram sheets work offline.
-const CACHE = "goat-v2";
+const CACHE = "goat-v3";
 
 const ROUTES = [
   "/",

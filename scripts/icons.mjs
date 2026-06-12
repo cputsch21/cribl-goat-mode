@@ -10,9 +10,9 @@ const SIZE = 1024;
 async function base() {
   const ring = Buffer.from(
     `<svg width="${SIZE}" height="${SIZE}" xmlns="http://www.w3.org/2000/svg">
-       <rect width="${SIZE}" height="${SIZE}" fill="#020e1b"/>
-       <circle cx="512" cy="512" r="400" fill="none" stroke="#ffcf00" stroke-width="22"/>
-       <circle cx="512" cy="512" r="356" fill="none" stroke="#00cccc" stroke-width="6" opacity="0.55"/>
+       <rect width="${SIZE}" height="${SIZE}" fill="#0a2730"/>
+       <circle cx="512" cy="512" r="400" fill="none" stroke="#0ce5e5" stroke-width="22"/>
+       <circle cx="512" cy="512" r="356" fill="none" stroke="#6c5ce7" stroke-width="6" opacity="0.7"/>
      </svg>`
   );
   const goat = await sharp(GOAT).resize(560, 560).toBuffer();

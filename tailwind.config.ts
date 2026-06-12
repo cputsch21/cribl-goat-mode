@@ -1,7 +1,9 @@
 import type { Config } from "tailwindcss";
 
-// Palette extracted from cribl.io — ink navy, signature teal, goat gold.
-// No orange, per the boss.
+// Palette pulled from cribl.io's homepage: bright cyan CTAs, violet
+// "AI Platform" highlight, dark teal-navy ink, cool white canvas.
+// (Token names kept stable; `gold` now carries the cyan CTA / violet
+// chip duties it had before the re-skin.)
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -12,28 +14,29 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#020e1b",
-          2: "#0a1c2e",
-          3: "#15293d",
-          4: "#22384e",
+          DEFAULT: "#0a2730",
+          2: "#10333e",
+          3: "#1a4350",
+          4: "#265564",
         },
-        canvas: "#f5f8f9",
+        canvas: "#f7fafb",
         surface: "#ffffff",
-        line: "#e3eaee",
-        mist: "#eef3f5",
-        muted: "#5d6e79",
-        faint: "#8da0ab",
+        line: "#e3edf0",
+        mist: "#edf4f6",
+        muted: "#587179",
+        faint: "#8da4ac",
         teal: {
-          DEFAULT: "#00cccc",
-          deep: "#0b8f8f",
-          dark: "#076e6e",
-          tint: "#ccf5f5",
-          faint: "#ebfafa",
+          DEFAULT: "#0ce5e5",
+          deep: "#0a9ea4",
+          dark: "#077077",
+          tint: "#c9f8fa",
+          faint: "#e9fcfd",
         },
+        // Cyan for fills/on-dark accents; violet for soft chips + text.
         gold: {
-          DEFAULT: "#ffcf00",
-          soft: "#fff3bf",
-          deep: "#7a6200",
+          DEFAULT: "#0ce5e5",
+          soft: "#e9e5fc",
+          deep: "#5443d8",
         },
         danger: {
           DEFAULT: "#d6453a",
@@ -45,8 +48,8 @@ const config: Config = {
         body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        card: "0 1px 2px rgba(2,14,27,0.04), 0 6px 20px rgba(2,14,27,0.06)",
-        lift: "0 2px 4px rgba(2,14,27,0.06), 0 12px 32px rgba(2,14,27,0.10)",
+        card: "0 1px 2px rgba(10,39,48,0.04), 0 6px 20px rgba(10,39,48,0.06)",
+        lift: "0 2px 4px rgba(10,39,48,0.06), 0 12px 32px rgba(10,39,48,0.10)",
       },
       borderRadius: {
         "2.5xl": "1.25rem",
