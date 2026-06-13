@@ -22,6 +22,7 @@ import {
   examsUnlocked,
   GAUNTLET_TOTAL,
   gauntletPassedCount,
+  isComplete,
   isPassed,
   setInterviewTime,
   togglePlan,
@@ -228,12 +229,25 @@ export default function Dashboard() {
           <h2 className="font-display text-lg font-bold">{period.title}</h2>
           <p className="mt-0.5 text-sm text-muted">{period.subtitle}</p>
           <div className="mt-3 grid gap-2 lg:grid-cols-2 lg:gap-3">
-            {MODULES.filter((m) => m.period === period.number).map((m) => (
+            {MODULES.filter((m) => m.period === period.number).map((m) => {
+              const complete = isComplete(s, m.id);
+              return (
               <Link
                 key={m.id}
                 href={`/module/${m.id}`}
                 className="flex gap-3.5 rounded-2xl bg-surface p-4 shadow-card transition-shadow duration-150 ease-out hover:shadow-lift"
               >
+                <div
+                  aria-label={complete ? "Module complete" : "Module not complete"}
+                  className={cn(
+                    "flex h-6 w-6 shrink-0 items-center justify-center self-center rounded-md transition-colors duration-150 ease-out",
+                    complete
+                      ? "bg-teal-deep text-white"
+                      : "border-2 border-line bg-transparent"
+                  )}
+                >
+                  {complete ? <Check size={15} strokeWidth={3} /> : null}
+                </div>
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-ink font-display text-sm font-bold text-gold">
                   {m.number}
                 </div>
@@ -256,7 +270,8 @@ export default function Dashboard() {
                   ) : null}
                 </div>
               </Link>
-            ))}
+              );
+            })}
           </div>
         </section>
       ))}

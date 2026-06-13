@@ -4,10 +4,14 @@ import { useSyncExternalStore } from "react";
 import { MODULES } from "@/lib/content";
 
 export const PASS_MARK = 90;
+/** A module only counts as *complete* on a flawless run. */
+export const COMPLETE_MARK = 100;
 
 export interface QuizResult {
   best: number;
   passed: boolean;
+  /** True once the quiz has been aced (100%). */
+  completed: boolean;
   attempts: number;
 }
 
@@ -69,6 +73,7 @@ export function recordQuiz(id: string, scorePct: number) {
       [id]: {
         best,
         passed: best >= PASS_MARK,
+        completed: best >= COMPLETE_MARK,
         attempts: (prev?.attempts ?? 0) + 1,
       },
     },
@@ -90,6 +95,11 @@ export const UNIT_IDS = [...MODULES.map((m) => m.id), "exam-kat", "exam-cam"];
 
 export function isPassed(s: ProgressState, id: string) {
   return s.quizzes[id]?.passed ?? false;
+}
+
+/** A module is complete only after a 100% quiz run. */
+export function isComplete(s: ProgressState, id: string) {
+  return s.quizzes[id]?.completed ?? (s.quizzes[id]?.best ?? 0) >= COMPLETE_MARK;
 }
 
 export function bestFor(s: ProgressState, id: string): number | null {
@@ -128,13 +138,15 @@ export function recordInterview(
   const s = read();
   const key = interviewKey(person, level);
   const prev = s.interviews?.[key];
+  const best = Math.max(prev?.best ?? 0, score);
   write({
     ...s,
     interviews: {
       ...s.interviews,
       [key]: {
-        best: Math.max(prev?.best ?? 0, score),
+        best,
         passed: (prev?.passed ?? false) || passed,
+        completed: (prev?.completed ?? false) || best >= COMPLETE_MARK,
         attempts: (prev?.attempts ?? 0) + 1,
       },
     },
