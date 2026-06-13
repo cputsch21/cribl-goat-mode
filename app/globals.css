@@ -18,3 +18,69 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ── Goat Trail animations ─────────────────────────────────────────────── */
+
+/* Dots drifting along a connector. `left`/`top` are percentages of the
+   connector itself, so a dot travels the connector's full length regardless of
+   how wide/tall it is. Horizontal (desktop) and vertical (mobile) variants. */
+@keyframes trail-flow-x {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+@keyframes trail-flow-y {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.trail-flow-dot {
+  animation: var(--trail-speed, 2.4s) linear infinite;
+  animation-delay: var(--trail-delay, 0s);
+}
+.trail-flow-dot-x {
+  animation-name: trail-flow-x;
+}
+.trail-flow-dot-y {
+  animation-name: trail-flow-y;
+}
+
+/* The glowing data packet pausing on the active node. */
+@keyframes trail-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(12, 229, 229, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(12, 229, 229, 0);
+  }
+}
+.trail-pulse {
+  animation: trail-pulse 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trail-flow-dot,
+  .trail-pulse {
+    animation: none !important;
+  }
+}
