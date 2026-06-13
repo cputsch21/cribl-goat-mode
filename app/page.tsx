@@ -165,7 +165,7 @@ export default function Dashboard() {
         <p className="mt-0.5 text-sm text-muted">
           Check things off — the weekend is enough if you follow the order.
         </p>
-        <div className="mt-3 space-y-4 lg:grid lg:grid-cols-5 lg:items-start lg:gap-3 lg:space-y-0">
+        <div className="mt-3 space-y-4 lg:grid lg:grid-cols-4 lg:items-start lg:gap-4 lg:space-y-0">
           {days.map((day) => (
             <div key={day}>
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-faint">
