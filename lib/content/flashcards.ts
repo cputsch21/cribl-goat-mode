@@ -114,6 +114,14 @@ export const FLASHCARDS: Flashcard[] = [
       "Searching data where it already lives — across buckets, lakes, clouds, even the edge — instead of hauling it into a tool first.",
     sentence: "“Search-in-place is the 10x investigations claim: no rehydration, no waiting, no double-paying.”",
   },
+  {
+    id: "f-rehydration",
+    term: "Rehydration",
+    category: "data",
+    plain:
+      "Restoring archived data from cheap, cold storage back into an expensive analysis tool (like a SIEM) so it can be re-indexed and searched again. Slow and pricey — investigations stall for hours or days waiting on it. It's the old-world tax Search-in-place removes.",
+    sentence: "“Rehydration is the tax Search kills — query the archive in place instead of hauling it back into the SIEM first.”",
+  },
 
   // ─── Security & AI ──────────────────────────────────────────────
   {
