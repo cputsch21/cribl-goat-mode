@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, Mic } from "lucide-react";
+import { Home, Layers, Mic, Footprints } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "/", label: "Course", icon: Home, exact: true },
   { href: "/flashcards", label: "Flashcards", icon: Layers, exact: false },
   { href: "/gauntlet", label: "Gauntlet", icon: Mic, exact: false },
+  { href: "/goat-trail", label: "Goat Trail", icon: Footprints, exact: false },
 ];
 
 /** Slim desktop top bar — the dock's twin for lg: screens. */

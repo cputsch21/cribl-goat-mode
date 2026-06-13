@@ -2,20 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, Mic } from "lucide-react";
+import { Home, Layers, Mic, Footprints } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { href: "/", label: "Course", icon: Home, exact: true },
   { href: "/flashcards", label: "Flashcards", icon: Layers, exact: false },
   { href: "/gauntlet", label: "Gauntlet", icon: Mic, exact: false },
+  { href: "/goat-trail", label: "Trail", icon: Footprints, exact: false },
 ];
 
 export function BottomNav() {
   const pathname = usePathname();
   return (
     <nav className="fixed bottom-4 left-1/2 z-30 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-2xl bg-ink px-2 py-1.5 shadow-lift lg:hidden">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-4">
         {ITEMS.map(({ href, label, icon: Icon, exact }) => {
           const active = exact ? pathname === href : pathname.startsWith(href);
           return (
