@@ -213,7 +213,7 @@ export const M2: CourseModule = {
       id: "m2c3",
       title: "Search — ask without moving",
       paragraphs: [
-        "The old way: to search data you first haul it into an expensive analysis tool, then wait. Cribl Search flips it — search the data where it already lives: in S3 buckets, in the data lake, at the edge, across cloud providers. No moving, no re-ingesting, no waiting for 'rehydration.'",
+        "The old way: to search archived data you first 'rehydrate' it — restore it from cheap, cold storage back into an expensive analysis tool so it can be re-indexed and searched — then wait hours or days for that to finish. Cribl Search flips it: search the data where it already lives: in S3 buckets, in the data lake, at the edge, across cloud providers. No moving, no re-ingesting, no rehydration.",
         "Cribl claims 10x faster investigations. Patrick's detail: there are two engines under one experience — federated search (search-in-place, anywhere) and fast indexed search — so teams get one way to ask questions across everything.",
       ],
       sayThis:
