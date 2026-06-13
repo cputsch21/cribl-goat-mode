@@ -44,7 +44,7 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-cribl-soft font-body text-ink antialiased">
         <TopBar />
-        <div className="min-h-dvh w-full px-4 pb-32 pt-4 sm:px-6 lg:px-8 lg:pb-16 lg:pt-8">
+        <div className="min-h-dvh w-full px-4 pb-32 pt-[calc(env(safe-area-inset-top)+0.625rem)] sm:px-6 lg:px-8 lg:pb-16 lg:pt-8">
           {children}
         </div>
         <BottomNav />
