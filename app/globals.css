@@ -64,23 +64,8 @@ body {
   animation-name: trail-flow-y;
 }
 
-/* The glowing data packet pausing on the active node. */
-@keyframes trail-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(12, 229, 229, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(12, 229, 229, 0);
-  }
-}
-.trail-pulse {
-  animation: trail-pulse 1.6s ease-out infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .trail-flow-dot,
-  .trail-pulse {
+  .trail-flow-dot {
     animation: none !important;
   }
 }

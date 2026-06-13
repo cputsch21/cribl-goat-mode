@@ -8,19 +8,15 @@ const DOTS = [
   { speed: "2.4s", delay: "1.6s" },
 ];
 
-/** The segment between two stage nodes. Always shows gently flowing dots; when
- *  `active` (the play head just crossed it) the line brightens to the Cribl
- *  cyan to read as "data in transit". Renders horizontally on lg+, vertically
- *  on mobile via separate dot sets. */
-export function Connector({ active }: { active: boolean }) {
+/** The segment between two stage stops, with gently flowing dots that read as
+ *  "telemetry in motion". Horizontal on lg+, vertical on mobile. */
+export function Connector() {
   return (
     <div
       aria-hidden
       className={cn(
         // Vertical on mobile, horizontal on lg+ (aligned to the 64px icon row)
-        "relative my-1 h-8 w-px self-center overflow-visible lg:my-0 lg:h-px lg:w-auto lg:flex-1 lg:self-start lg:mt-8",
-        "rounded-full transition-colors duration-300",
-        active ? "bg-teal" : "bg-line"
+        "relative my-1 h-8 w-px self-center overflow-visible rounded-full bg-line lg:my-0 lg:mt-8 lg:h-px lg:w-auto lg:flex-1 lg:self-start"
       )}
     >
       {/* Vertical dots (mobile) */}
@@ -28,10 +24,7 @@ export function Connector({ active }: { active: boolean }) {
         {DOTS.map((d, i) => (
           <span
             key={`y-${i}`}
-            className={cn(
-              "trail-flow-dot trail-flow-dot-y absolute left-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full",
-              active ? "bg-white" : "bg-teal"
-            )}
+            className="trail-flow-dot trail-flow-dot-y absolute left-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal"
             style={
               {
                 "--trail-speed": d.speed,
@@ -46,10 +39,7 @@ export function Connector({ active }: { active: boolean }) {
         {DOTS.map((d, i) => (
           <span
             key={`x-${i}`}
-            className={cn(
-              "trail-flow-dot trail-flow-dot-x absolute top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full",
-              active ? "bg-white" : "bg-teal"
-            )}
+            className="trail-flow-dot trail-flow-dot-x absolute top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal"
             style={
               {
                 "--trail-speed": d.speed,
