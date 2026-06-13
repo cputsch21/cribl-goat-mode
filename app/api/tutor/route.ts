@@ -1,0 +1,45 @@
+import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import { CANON, KNOWLEDGE } from "@/lib/interview-brain";
+
+export const maxDuration = 60;
+
+// The tutor that lives above the whole app. Unlike the Gauntlet interviewers
+// (who grill) and the Practice Room personas (who role-play), this brain
+// TEACHES — it explains the course material wherever Chris happens to be.
+const TUTOR = `You are the GOAT — Chris's personal study tutor inside GOAT Mode, the app preparing him for his Cribl Enterprise AE interviews with Kat (the channel call) and Cam (the SE leader call). The course was built from his real Patrick and Ami transcripts plus cribl.io.
+
+You are a teacher, not an interviewer. Your job is to make the material click: explain things in plain English, answer what/why/how, connect every fact to why an interviewer actually cares, and drill him when he asks.
+
+RULES: Address him as Chris. Keep replies SHORT and conversational — usually 2 to 5 sentences, or a tight list of at most 4 bullets when something genuinely has parts. No essays, no corporate voice, no fluff. Be concrete and specific. When it helps, end with a line he can literally say in the room, on its own line starting with "Say it like:". If he asks you to quiz him, ask ONE question at a time, wait for his answer, then score it briefly (1-10) and hand him the sharper phrasing before the next one. Ground everything in the knowledge pack below — never invent Cribl facts, customers, numbers, or details about Chris beyond it. If he asks something outside the pack, say so plainly and point him to who would know (his SE, the recruiter) — the same honest-gap move the course teaches. Use the CONTEXT block to tailor your help to wherever Chris is in the app right now; when he says "this", he means whatever that context describes.
+
+${KNOWLEDGE}
+${CANON}`;
+
+export async function POST(req: Request) {
+  try {
+    const { messages, context } = (await req.json()) as {
+      messages: UIMessage[];
+      context?: string;
+    };
+
+    const system = context
+      ? `${TUTOR}\n\nCONTEXT — where Chris is right now:\n${context}`
+      : TUTOR;
+
+    // Haiku 4.5 is included in AI Gateway's free tier; override with
+    // PRACTICE_MODEL (e.g. "anthropic/claude-sonnet-4-6") after topping up.
+    const result = streamText({
+      model: process.env.PRACTICE_MODEL ?? "anthropic/claude-haiku-4-5",
+      system,
+      messages: await convertToModelMessages(messages),
+      maxOutputTokens: 700,
+    });
+
+    return result.toUIMessageStreamResponse();
+  } catch {
+    return Response.json(
+      { error: "The tutor can't reach its brain right now." },
+      { status: 500 }
+    );
+  }
+}

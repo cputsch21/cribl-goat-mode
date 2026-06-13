@@ -4,6 +4,7 @@ import "./globals.css";
 import { SWRegister } from "@/components/sw-register";
 import { BottomNav } from "@/components/bottom-nav";
 import { TopBar } from "@/components/top-bar";
+import { Tutor } from "@/components/tutor";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
           {children}
         </div>
         <BottomNav />
+        <Tutor />
         <SWRegister />
       </body>
     </html>
