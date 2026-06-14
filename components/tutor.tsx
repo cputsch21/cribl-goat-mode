@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { ArrowUp, GraduationCap, X } from "lucide-react";
+import { ArrowUp, Globe, GraduationCap, X } from "lucide-react";
 import { useProgress } from "@/lib/progress";
 import {
   describeLocation,
@@ -34,6 +34,7 @@ export function Tutor() {
   const busy = status === "submitted" || status === "streaming";
 
   const [input, setInput] = useState("");
+  const [webSearch, setWebSearch] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -50,7 +51,7 @@ export function Tutor() {
     const context = `${describeLocation(pathname)}\n${describeProgress(
       progress
     )}`;
-    sendMessage({ text: trimmed }, { body: { context } });
+    sendMessage({ text: trimmed }, { body: { context, webSearch } });
     setInput("");
   }
 
@@ -132,11 +133,21 @@ export function Tutor() {
                 })}
                 {status === "submitted" ? (
                   <div className="w-fit rounded-2xl rounded-bl-md bg-surface px-4 py-3 shadow-card">
-                    <span className="flex gap-1">
-                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-faint" />
-                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-faint [animation-delay:150ms]" />
-                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-faint [animation-delay:300ms]" />
-                    </span>
+                    {webSearch ? (
+                      <span className="flex items-center gap-2 text-xs font-medium text-muted">
+                        <Globe
+                          size={14}
+                          className="animate-pulse text-violet-dark"
+                        />
+                        Searching the web…
+                      </span>
+                    ) : (
+                      <span className="flex gap-1">
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-faint" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-faint [animation-delay:150ms]" />
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-faint [animation-delay:300ms]" />
+                      </span>
+                    )}
                   </div>
                 ) : null}
                 <div ref={endRef} />
@@ -161,6 +172,26 @@ export function Tutor() {
             }}
             className="flex gap-2 border-t border-line bg-surface px-5 pb-[calc(env(safe-area-inset-bottom)+1rem)] pt-3"
           >
+            <button
+              type="button"
+              onClick={() => setWebSearch((v) => !v)}
+              aria-pressed={webSearch}
+              aria-label={webSearch ? "Web search on" : "Turn on web search"}
+              title={
+                webSearch
+                  ? "Web search on — I can pull in live info"
+                  : "Web search off — answers come from your course pack"
+              }
+              className={cn(
+                "flex shrink-0 items-center justify-center gap-1.5 rounded-xl text-xs font-bold transition-all duration-150 ease-out active:scale-[0.97]",
+                webSearch
+                  ? "bg-violet px-3 text-white"
+                  : "w-12 bg-mist text-muted hover:text-ink"
+              )}
+            >
+              <Globe size={18} strokeWidth={2.2} />
+              {webSearch ? <span>Web</span> : null}
+            </button>
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}

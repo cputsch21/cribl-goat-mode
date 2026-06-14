@@ -1,4 +1,10 @@
-import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import {
+  convertToModelMessages,
+  gateway,
+  stepCountIs,
+  streamText,
+  type UIMessage,
+} from "ai";
 import { CANON, KNOWLEDGE } from "@/lib/interview-brain";
 import { REFERENCE } from "@/lib/content/reference";
 
@@ -19,22 +25,42 @@ ${REFERENCE}`;
 
 export async function POST(req: Request) {
   try {
-    const { messages, context } = (await req.json()) as {
+    const { messages, context, webSearch } = (await req.json()) as {
       messages: UIMessage[];
       context?: string;
+      webSearch?: boolean;
     };
 
-    const system = context
+    const base = context
       ? `${TUTOR}\n\nCONTEXT — where Chris is right now:\n${context}`
       : TUTOR;
+    // When Chris flips on web search, tell the tutor to lean on live results
+    // and trust them over any "VERIFY - may be dated" figure in the static pack.
+    const system = webSearch
+      ? `${base}\n\nWEB SEARCH IS ON for this question: search when a live or current fact would help, weave what you find into your answer in plain English, and if a fresh result contradicts a "VERIFY - may be dated" figure in the reference, trust the live one and say so.`
+      : base;
 
-    // Haiku 4.5 is included in AI Gateway's free tier; override with
-    // PRACTICE_MODEL (e.g. "anthropic/claude-sonnet-4-6") after topping up.
+    // The tutor's brain. TUTOR_MODEL lets it run on a premium model (e.g.
+    // "anthropic/claude-opus-4-8") while the high-frequency grading/judge
+    // routes stay on the cheaper PRACTICE_MODEL. Both need an AI Gateway key
+    // with credits; Haiku 4.5 is the free-tier fallback.
     const result = streamText({
-      model: process.env.PRACTICE_MODEL ?? "anthropic/claude-haiku-4-5",
+      model:
+        process.env.TUTOR_MODEL ??
+        process.env.PRACTICE_MODEL ??
+        "anthropic/claude-haiku-4-5",
       system,
       messages: await convertToModelMessages(messages),
-      maxOutputTokens: 700,
+      // Web answers need a little more room to fold in what was found.
+      maxOutputTokens: webSearch ? 1024 : 700,
+      // Opt-in web search — kept off the grounded default so everyday course
+      // Q&A stays anchored to the vetted knowledge pack.
+      ...(webSearch
+        ? {
+            tools: { web_search: gateway.tools.perplexitySearch() },
+            stopWhen: stepCountIs(5),
+          }
+        : {}),
     });
 
     return result.toUIMessageStreamResponse();
