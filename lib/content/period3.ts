@@ -238,6 +238,62 @@ export const M8: CourseModule = {
         "It invites her to describe the bar — and lets you spend the rest of the call demonstrating you'd clear it. The first option is trivia; the third is about you, not the partnership.",
     },
   ],
+  writeIn: [
+    {
+      id: "m8w1",
+      prompt:
+        "Kat asks: \"Have you worked with channel partners before?\" Give your honest, fluent answer.",
+      keyPoints: [
+        "Be honest: not in this two-tier tech model",
+        "But in benefits, the brokers WERE the channel — eight years selling with and through intermediaries",
+        "You know the golden rule: the partner has to make money",
+        "Show you've learned this industry's mechanics: deal registration, co-sell, sourced vs. influenced, MDF",
+        "Honesty plus fluency beats faking experience",
+      ],
+      model:
+        "Not in this exact two-tier tech model — I'll be straight about that. But in benefits, the broker was the channel, so I spent eight years selling with and through intermediaries, and I know the golden rule cold: the partner has to make money or there is no next deal. What's new for me is this industry's mechanics — deal reg, sourced versus influenced, MDF — and that's exactly what I've been studying.",
+    },
+    {
+      id: "m8w2",
+      prompt:
+        "A partner registered a deal at one of YOUR top-20 targets — an account you wanted to crack direct. What do you do, and why?",
+      keyPoints: [
+        "Lean in — co-sell it with them and make them money",
+        "Use their relationship to go deeper than you could alone",
+        "Do NOT contest the registration or quietly run your own contacts in parallel",
+        "Deal reg is sacred — it's the partner's incentive to bring you the next ten deals",
+        "At ~95% channel, 'keep it direct' isn't even on the menu",
+      ],
+      model:
+        "That's good news, not a turf problem. I co-sell it with them — make them money on it and use their relationship to get deeper than I could alone. What I don't do is contest the registration or run my own contacts in parallel; that torches a relationship Kat spent years building, over one deal. If a partner registered it, that's their deal, and protecting that is what keeps the next ten referrals coming.",
+    },
+    {
+      id: "m8w3",
+      prompt:
+        "Why is channel existential at Cribl — and why do partners genuinely love selling it?",
+      keyPoints: [
+        "~95% channel-driven (Ami); Patrick rounds it to 100% — essentially every deal has a partner",
+        "Cribl is a partner-first organization: 'the RIGHT partners, not EVERY partner'",
+        "Partners love it because it's vendor-neutral — it makes their whole portfolio work better, nothing to rip out",
+        "It lets them become 'data brokers' with services revenue attached",
+      ],
+      model:
+        "Ami says about 95% channel-driven; Patrick just says 100%. Either way, essentially every deal has a partner in it — that's why an AE who creates channel friction is a non-starter. And partners love Cribl because it's vendor-neutral: it makes everything else in their bag work better, so there's nothing to rip out, plus services revenue attached. Cribl's own pitch to them is 'become the data broker for your customers.' It's the easiest co-sell in their bag.",
+    },
+    {
+      id: "m8w4",
+      prompt:
+        "What was Ami's pre-interview homework, and how do you open the Kat call with it?",
+      keyPoints: [
+        "Call 2–3 partner friends (Ahead, SHI, Presidio) this weekend and ask how Cribl shows up from their side",
+        "Ask: the rep on the street, which vendors are easiest to co-sell, where Cribl comes up, what makes an AE their favorite, any local accounts with data-cost / SIEM pain",
+        "Open the call with it: 'I called a few friends at Ahead and SHI this weekend — here's what I heard'",
+        "It's the single highest-credibility move — nobody else interviewing did it",
+      ],
+      model:
+        "Ami's homework was to call my partner friends — Ahead, SHI, Presidio — and ask how Cribl actually shows up from their side: what's the rep on the street, which vendors are easiest to co-sell, where Cribl comes up, what makes an AE their favorite, and whether any local accounts are making noise about data costs or SIEM migrations. Then I open the Kat call with it: 'I called a couple of friends at Ahead and SHI this weekend to hear how Cribl shows up for them — want to hear what they said?' Nobody else interviewing will have done that.",
+    },
+  ],
 };
 
 export const M9: CourseModule = {
@@ -477,6 +533,64 @@ export const M9: CourseModule = {
         "Knowing his team's actual footprint — two Philly, one Pittsburgh, three DMV — lets you ask the grown-up version of the coverage question: 'how do I make sure my deals deserve the hours?'",
     },
   ],
+  writeIn: [
+    {
+      id: "m9w1",
+      prompt:
+        "Cam asks how you'd work with his SE team. Lay out the AE↔SE division of labor.",
+      keyPoints: [
+        "The AE owns: why change (the business case), who cares (the committee and champion), the money (metrics, budget, economic buyer), and the process (decision steps, paper, close plan)",
+        "The SE owns: how it works, the proof, and technical trust",
+        "Discovery is shared — the AE finds the business pain, the SE finds the technical pain",
+        "The one-liner: 'I sell the gap, the SE proves the bridge'",
+      ],
+      model:
+        "Clean lines. I own the why — the business case — the who, meaning the committee and champion, the money, and the process: decision steps, paper, close plan. The SE owns the how and the proof, the technical trust. Discovery we share — I bring the business pain, they bring the technical truth, and we compare notes. The way I think about it: I sell the gap, the SE proves the bridge.",
+    },
+    {
+      id: "m9w2",
+      prompt:
+        "What must be true BEFORE a POV starts — and why do you hold that line so hard?",
+      keyPoints: [
+        "Written success criteria the customer agreed to",
+        "A timebox",
+        "An exec sponsor",
+        "A champion driving it internally",
+        "Plus the qualification gate passed first — real pain, engaged power, a defined process",
+        "A POV without criteria can never officially succeed — it just burns SE weeks ('free consulting')",
+      ],
+      model:
+        "A POV isn't a demo — it's an engineering engagement, so it has to be earned. My rule: no POV until there's written success criteria the customer agreed to, a timebox, an exec sponsor, and a champion driving it internally — and qualification passed first, real pain and engaged power. I hold that line because a POV with no success criteria can never officially succeed; it just eats two weeks of an SE's time and goes quiet. That's free consulting, and it's how you lose an SE team's trust.",
+    },
+    {
+      id: "m9w3",
+      prompt:
+        "Name a few of the \"cardinal sins\" that burn SE trust — and the antidote to each.",
+      keyPoints: [
+        "Dragging an SE into an unqualified deal ('just demo for these guys') → qualify first",
+        "Surprise calls with no brief → a two-minute written brief every time",
+        "Overpromising features or roadmap the SE has to walk back → never promise what the product can't do",
+        "Demo-monkey treatment → bring them in as a partner, not a vending machine",
+        "Going dark after a POV → always debrief, win or lose",
+      ],
+      model:
+        "The fastest ways to lose an SE team: unqualified demos — 'just show up and demo for these guys' — surprise calls with zero brief, overpromising features they have to walk back, treating them like a demo vending machine, and going dark after they invest two weeks in a POV. I plan to be the opposite: qualify before I ask, a two-minute brief before every call, never promise what the product can't do, and always debrief them on the outcome — win or lose. And I'd want to hear it from your team if I ever slip.",
+    },
+    {
+      id: "m9w4",
+      prompt:
+        "A prospect asks for a feature Cribl doesn't have. What do you say in the room?",
+      keyPoints: [
+        "Don't say 'it's on the roadmap' just to keep momentum — overpromising is the sin SEs hate most",
+        "Don't guess",
+        "Capture the request precisely",
+        "Bring the SE in for the real answer",
+        "'I'd rather get you the real answer than guess' builds trust in the room and with the SE",
+      ],
+      model:
+        "I don't reach for 'it's on the roadmap' to keep the momentum going — overpromising is the thing SEs hate most, because they're the ones who have to walk it back. I'd say, 'I don't want to guess on that — let me get you the real answer,' write the request down precisely, and bring my SE in. That builds trust in the room and with my SE at the same time. It's the honest-gap move in deal form.",
+    },
+  ],
 };
 
 export const M10: CourseModule = {
@@ -618,6 +732,49 @@ export const M10: CourseModule = {
       ],
       explain:
         "'I do creative outreach' is a claim; 'here's the video play that got Patrick to take my call' is a receipt. Peers respect receipts — and Patrick already told you that move stood out.",
+    },
+  ],
+  writeIn: [
+    {
+      id: "m10w1",
+      prompt:
+        "Tim's the peer interview. What's he really evaluating — and how do you win it?",
+      keyPoints: [
+        "He's not scoring Cribl knowledge — Kat and Cam cover that",
+        "He's answering for Patrick: would I want this guy next to me in the trenches?",
+        "Culture, work ethic, coachability, and whether your story holds up rep-to-rep without the polish",
+        "Red flags peers smell: arrogance, vagueness, bad-mouthing, zero curiosity",
+        "Win it by being genuinely curious about his world and consistent about yours",
+      ],
+      model:
+        "Tim isn't testing my Cribl knowledge — Kat and Cam own that. He's answering one question for Patrick: would I want this guy next to me? Culture, work ethic, coachability, and whether my story holds up rep-to-rep without the interview polish. Peers smell arrogance, vagueness, and bad-mouthing instantly. So I win it by being genuinely curious about what his weeks actually look like and dead consistent about how I operate.",
+    },
+    {
+      id: "m10w2",
+      prompt:
+        "Give your 90-second story for a peer rep — the founder background and the pivot to Cribl.",
+      keyPoints: [
+        "8 years B2B sales (employee benefits — broker-as-channel, consensus buys)",
+        "6 years as a founder — bootstrapped, sold the first company early 2025, started a second",
+        "Family brought you home to Philly; startup risk stopped fitting a four-kid life",
+        "Not retreating — choosing: 'ran the whole army, now want to be a sniper on a bigger one'",
+        "Honest beat: haven't sold in this industry — but built a learning system that's closing the gap fast, and made partner calls this weekend",
+      ],
+      model:
+        "Eight years in B2B sales — employee benefits, where the broker was the channel and everything was a consensus buy — then six years as a founder. Bootstrapped, sold the first company early last year, started a second. Family brought us home to Philly, and honestly the startup risk stopped fitting a four-kid life. I'm not retreating from founding — I'm choosing: I ran the whole army for six years, now I want to be a sniper on a bigger one and go deep on the one thing I'm best at. The gap is industry knowledge, and I built a system that's closing it fast — I'm literally studying inside it.",
+    },
+    {
+      id: "m10w3",
+      prompt:
+        "Why must your \"how I run my process\" answer match exactly what you told Patrick?",
+      keyPoints: [
+        "They compare notes",
+        "Inconsistency reads as telling each audience what it wants to hear",
+        "Same four layers, same MEDDPICC discipline, same cadence numbers",
+        "Consistency across interviewers is itself the signal — it's how he really operates, not interview theater",
+      ],
+      model:
+        "Because they compare notes. If I tell Patrick one thing and Tim another, it reads as telling each person what they want to hear — and that's the fastest way to lose a peer's trust. So it's the same story everywhere: the four layers, MEDDPICC as a diagnostic, Force Management's gap language, and the 10-10-10 cadence as the floor. The consistency is itself the signal — this is actually how I operate, not interview theater.",
     },
   ],
 };

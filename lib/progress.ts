@@ -1,11 +1,18 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { MODULES } from "@/lib/content";
+import { GAME_PLAN, MODULES } from "@/lib/content";
 
 export const PASS_MARK = 90;
 /** A module only counts as *complete* on a flawless run. */
 export const COMPLETE_MARK = 100;
+/** Write-in quizzes are harder (typed from memory), so they pass at a lower bar. */
+export const WRITE_IN_PASS_MARK = 75;
+
+/** The storage key for a module's write-in quiz, kept separate from its multiple-choice score. */
+export function writeInId(moduleId: string) {
+  return `${moduleId}-write`;
+}
 
 export interface QuizResult {
   best: number;
@@ -18,13 +25,24 @@ export interface QuizResult {
 export interface ProgressState {
   quizzes: Record<string, QuizResult>;
   plan: Record<string, boolean>;
+  /** Per-card day override for the game plan, e.g. dragging "Module 1" from Saturday to Sunday. */
+  planDay: Record<string, string>;
+  /** Sort key per game-plan card; a moved card gets a high value so it lands at the bottom of its new day. */
+  planOrder: Record<string, number>;
   times: Record<string, string>;
   /** Gauntlet results, keyed "{person}-{level}" e.g. "kat-3". */
   interviews: Record<string, QuizResult>;
 }
 
 const KEY = "goat-progress-v1";
-const DEFAULT: ProgressState = { quizzes: {}, plan: {}, times: {}, interviews: {} };
+const DEFAULT: ProgressState = {
+  quizzes: {},
+  plan: {},
+  planDay: {},
+  planOrder: {},
+  times: {},
+  interviews: {},
+};
 
 let cacheRaw: string | null = null;
 let cacheParsed: ProgressState = DEFAULT;
@@ -62,7 +80,7 @@ export function useProgress(): ProgressState {
   return useSyncExternalStore(subscribe, read, () => DEFAULT);
 }
 
-export function recordQuiz(id: string, scorePct: number) {
+export function recordQuiz(id: string, scorePct: number, passMark = PASS_MARK) {
   const s = read();
   const prev = s.quizzes[id];
   const best = Math.max(prev?.best ?? 0, scorePct);
@@ -72,7 +90,7 @@ export function recordQuiz(id: string, scorePct: number) {
       ...s.quizzes,
       [id]: {
         best,
-        passed: best >= PASS_MARK,
+        passed: best >= passMark,
         completed: best >= COMPLETE_MARK,
         attempts: (prev?.attempts ?? 0) + 1,
       },
@@ -83,6 +101,28 @@ export function recordQuiz(id: string, scorePct: number) {
 export function togglePlan(id: string) {
   const s = read();
   write({ ...s, plan: { ...s.plan, [id]: !s.plan[id] } });
+}
+
+/** The day a game-plan card currently lives on: its dragged-to override, or its original day. */
+export function planDayOf(s: ProgressState, item: { id: string; day: string }): string {
+  return s.planDay?.[item.id] ?? item.day;
+}
+
+/** Sort key for a card within its day. Untouched cards keep their natural order; moved cards sort last. */
+export function planOrderOf(s: ProgressState, id: string, naturalIndex: number): number {
+  return s.planOrder?.[id] ?? naturalIndex;
+}
+
+/** Move a game-plan card to another day, dropping it at the bottom of that day's list. */
+export function movePlanItem(id: string, day: string) {
+  const s = read();
+  const orders = Object.values(s.planOrder ?? {});
+  const nextOrder = Math.max(GAME_PLAN.length, ...orders) + 1;
+  write({
+    ...s,
+    planDay: { ...s.planDay, [id]: day },
+    planOrder: { ...s.planOrder, [id]: nextOrder },
+  });
 }
 
 export function setInterviewTime(id: string, value: string) {
@@ -106,17 +146,26 @@ export function bestFor(s: ProgressState, id: string): number | null {
   return s.quizzes[id]?.best ?? null;
 }
 
-export function countPassed(s: ProgressState) {
-  return UNIT_IDS.filter((id) => isPassed(s, id)).length;
+/**
+ * A unit "counts" when it's fully cleared. A module now requires BOTH its
+ * multiple-choice and its write-in quiz to pass; exams have only one quiz.
+ */
+export function unitPassed(s: ProgressState, id: string): boolean {
+  if (id.startsWith("exam-")) return isPassed(s, id);
+  return isPassed(s, id) && isPassed(s, writeInId(id));
 }
 
-/** Boss exams unlock once modules 1–9 are passed (module 10 is bonus). */
+export function countPassed(s: ProgressState) {
+  return UNIT_IDS.filter((id) => unitPassed(s, id)).length;
+}
+
+/** Boss exams unlock once modules 1–9 are fully passed — both quizzes each (module 10 is bonus). */
 export function examsUnlocked(s: ProgressState) {
-  return MODULES.filter((m) => !m.bonus).every((m) => isPassed(s, m.id));
+  return MODULES.filter((m) => !m.bonus).every((m) => unitPassed(s, m.id));
 }
 
 export function missingForExams(s: ProgressState) {
-  return MODULES.filter((m) => !m.bonus && !isPassed(s, m.id));
+  return MODULES.filter((m) => !m.bonus && !unitPassed(s, m.id));
 }
 
 // ─── The Gauntlet (voice interviews) ────────────────────────────────

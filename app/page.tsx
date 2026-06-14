@@ -2,20 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Check,
-  ChevronRight,
-  Lock,
-  NotebookPen,
-  Pencil,
-} from "lucide-react";
-import {
-  EXAMS,
-  GAME_PLAN,
-  INTERVIEWS,
-  MODULES,
-  PERIODS,
-} from "@/lib/content";
+import { Check, Lock, NotebookPen, Pencil } from "lucide-react";
+import { EXAMS, INTERVIEWS, MODULES, PERIODS } from "@/lib/content";
 import {
   bestFor,
   countPassed,
@@ -25,12 +13,13 @@ import {
   isComplete,
   isPassed,
   setInterviewTime,
-  togglePlan,
   UNIT_IDS,
   useProgress,
+  writeInId,
   type ProgressState,
 } from "@/lib/progress";
 import { countdownLabel, formatSlot, useNow } from "@/components/countdown";
+import { GamePlan } from "@/components/game-plan";
 import { Sheet } from "@/components/sheet";
 import { cn } from "@/lib/utils";
 
@@ -55,6 +44,36 @@ function StatusChip({ s, id }: { s: ProgressState; id: string }) {
   );
 }
 
+/** Compact per-quiz pill for the module cards — one for multiple-choice, one for write-in. */
+function LabeledChip({
+  s,
+  id,
+  label,
+}: {
+  s: ProgressState;
+  id: string;
+  label: string;
+}) {
+  const best = bestFor(s, id);
+  const passed = isPassed(s, id);
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold",
+        best === null
+          ? "bg-mist text-muted"
+          : passed
+            ? "bg-teal-tint text-teal-dark"
+            : "bg-gold-soft text-gold-deep"
+      )}
+    >
+      {passed ? <Check size={10} strokeWidth={3} /> : null}
+      {label}
+      {best === null ? "" : ` ${best}%`}
+    </span>
+  );
+}
+
 export default function Dashboard() {
   const s = useProgress();
   const now = useNow();
@@ -65,8 +84,6 @@ export default function Dashboard() {
   const goat = passed === total;
   const unlocked = examsUnlocked(s);
   const gauntletPassed = gauntletPassedCount(s);
-
-  const days = Array.from(new Set(GAME_PLAN.map((p) => p.day)));
 
   return (
     <main className="mx-auto w-full max-w-xl space-y-8 lg:max-w-5xl">
@@ -82,14 +99,14 @@ export default function Dashboard() {
           than you need to be.
         </h1>
         <p className="mt-2 text-sm leading-relaxed text-ink/75">
-          Built from your Patrick and Ami transcripts plus cribl.io. Pass every
-          quiz at 90%+ — modules, then both simulations — and the Kat and Cam
-          calls are yours.
+          Built from your Patrick and Ami transcripts plus cribl.io. Clear every
+          module both ways — multiple-choice and write-in — then both
+          simulations, and the Kat and Cam calls are yours.
         </p>
         <div className="mt-5">
           <div className="flex items-baseline justify-between text-xs font-semibold">
             <span className="text-ink/70">
-              {passed} of {total} quizzes passed
+              {passed} of {total} cleared
             </span>
             <span className="text-violet-dark">
               {Math.round((passed / total) * 100)}%
@@ -161,67 +178,7 @@ export default function Dashboard() {
       </div>
 
       {/* ── Game plan ── */}
-      <section>
-        <h2 className="font-display text-lg font-bold">The game plan</h2>
-        <p className="mt-0.5 text-sm text-muted">
-          Check things off — the weekend is enough if you follow the order.
-        </p>
-        <div className="mt-3 space-y-4 lg:grid lg:grid-cols-4 lg:items-start lg:gap-4 lg:space-y-0">
-          {days.map((day) => (
-            <div key={day}>
-              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-faint">
-                {day}
-              </p>
-              <div className="mt-1.5 overflow-hidden rounded-2xl bg-surface shadow-card">
-                {GAME_PLAN.filter((p) => p.day === day).map((item, i, arr) => {
-                  const done = !!s.plan[item.id];
-                  return (
-                    <div
-                      key={item.id}
-                      className={cn(
-                        "flex items-center gap-3 px-4 py-3",
-                        i < arr.length - 1 && "border-b border-line"
-                      )}
-                    >
-                      <button
-                        onClick={() => togglePlan(item.id)}
-                        aria-label={done ? "Mark not done" : "Mark done"}
-                        className={cn(
-                          "flex h-5 w-5 shrink-0 items-center justify-center rounded-md transition-colors duration-150 ease-out",
-                          done ? "bg-teal-deep text-white" : "bg-mist"
-                        )}
-                      >
-                        {done ? <Check size={13} strokeWidth={3} /> : null}
-                      </button>
-                      {item.href ? (
-                        <Link
-                          href={item.href}
-                          className={cn(
-                            "flex flex-1 items-center justify-between gap-2 text-sm leading-snug",
-                            done ? "text-faint" : "text-ink"
-                          )}
-                        >
-                          {item.label}
-                          <ChevronRight size={15} className="shrink-0 text-faint" />
-                        </Link>
-                      ) : (
-                        <span
-                          className={cn(
-                            "flex-1 text-sm leading-snug",
-                            done ? "text-faint" : "text-ink"
-                          )}
-                        >
-                          {item.label}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <GamePlan />
 
       {/* ── Periods & modules ── */}
       {PERIODS.map((period) => (
@@ -252,17 +209,17 @@ export default function Dashboard() {
                   {m.number}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <p className="font-semibold leading-tight">{m.title}</p>
-                    <StatusChip s={s} id={m.id} />
-                  </div>
+                  <p className="font-semibold leading-tight">{m.title}</p>
                   <p className="mt-1 text-[13px] leading-snug text-muted">
                     {m.tagline}
                   </p>
-                  <p className="mt-1.5 text-[11px] font-medium text-faint">
-                    {m.minutes} min · {m.quiz.length}-question quiz
-                    {m.bonus ? " · bonus" : ""}
-                  </p>
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    <LabeledChip s={s} id={m.id} label="Quiz" />
+                    <LabeledChip s={s} id={writeInId(m.id)} label="Write-in" />
+                    <span className="text-[11px] font-medium text-faint">
+                      {m.minutes} min{m.bonus ? " · bonus" : ""}
+                    </span>
+                  </div>
                   {m.audience ? (
                     <span className="mt-2 inline-block rounded-full bg-gold-soft px-2.5 py-0.5 text-[11px] font-bold text-gold-deep">
                       {m.audience}
@@ -306,7 +263,7 @@ export default function Dashboard() {
                 <p className="mt-1.5 text-[13px] leading-snug text-white/80">
                   {unlocked
                     ? `${exam.questions.length} scenarios · pass at 90%`
-                    : "Unlocks once Modules 1–9 are passed."}
+                    : "Unlocks once you pass both quizzes for Modules 1–9."}
                 </p>
               </div>
             );

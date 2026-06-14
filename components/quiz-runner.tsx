@@ -2,10 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Check, RotateCcw } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import type { QuizQuestion } from "@/lib/content";
 import { PASS_MARK, recordQuiz, useProgress } from "@/lib/progress";
 import { cn, shuffle } from "@/lib/utils";
+import { QuizResultScreen } from "./quiz-result";
 
 export function QuizRunner({
   kicker,
@@ -71,81 +72,15 @@ export function QuizRunner({
 
   // ── Results screen ────────────────────────────────────────────────
   if (finalPct !== null) {
-    const passed = finalPct >= PASS_MARK;
     return (
-      <div className="flex min-h-[70dvh] flex-col">
-        <header className="mb-8 flex items-center justify-between">
-          <Link
-            href={backHref}
-            className="flex items-center gap-1.5 text-sm font-medium text-muted transition-colors duration-150 hover:text-ink"
-          >
-            <ArrowLeft size={16} /> {backLabel}
-          </Link>
-        </header>
-
-        <div
-          className={cn(
-            "rounded-2.5xl p-8 text-center duration-150 animate-in fade-in",
-            passed ? "bg-ink text-white" : "bg-surface shadow-card"
-          )}
-        >
-          <div className="text-5xl">{passed ? "🐐" : "📚"}</div>
-          <div
-            className={cn(
-              "mt-4 font-display text-6xl font-bold",
-              passed ? "text-gold" : "text-ink"
-            )}
-          >
-            {finalPct}%
-          </div>
-          <p
-            className={cn(
-              "mt-2 font-display text-xl font-bold",
-              passed ? "text-white" : "text-ink"
-            )}
-          >
-            {passed ? "Passed — GOAT level." : `Not yet — ${PASS_MARK}% to pass.`}
-          </p>
-          <p className={cn("mt-2 text-sm", passed ? "text-white/65" : "text-muted")}>
-            {passed
-              ? "This material is yours now. Say it out loud once for good measure."
-              : "Retakes are free and the questions reshuffle. Skim the module once more, then run it back."}
-          </p>
-          {stored ? (
-            <p className={cn("mt-4 text-xs", passed ? "text-white/50" : "text-faint")}>
-              Best: {stored.best}% · Attempt {stored.attempts}
-            </p>
-          ) : null}
-        </div>
-
-        <div className="mt-4 grid gap-2">
-          {!passed ? (
-            <button
-              onClick={retake}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal py-3.5 font-semibold text-ink transition-transform duration-150 ease-out active:scale-[0.99]"
-            >
-              <RotateCcw size={16} /> Retake the quiz
-            </button>
-          ) : null}
-          <Link
-            href={backHref}
-            className={cn(
-              "w-full rounded-xl py-3.5 text-center font-semibold transition-transform duration-150 ease-out active:scale-[0.99]",
-              passed ? "bg-ink text-white" : "bg-mist text-ink"
-            )}
-          >
-            {backLabel}
-          </Link>
-          {passed ? (
-            <button
-              onClick={retake}
-              className="w-full rounded-xl bg-mist py-3.5 text-center font-semibold text-muted transition-colors duration-150 hover:text-ink"
-            >
-              Run it again anyway
-            </button>
-          ) : null}
-        </div>
-      </div>
+      <QuizResultScreen
+        finalPct={finalPct}
+        passMark={PASS_MARK}
+        stored={stored}
+        backHref={backHref}
+        backLabel={backLabel}
+        onRetake={retake}
+      />
     );
   }
 

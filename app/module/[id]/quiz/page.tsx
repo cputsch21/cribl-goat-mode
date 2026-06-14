@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { MODULES, MODULES_BY_ID } from "@/lib/content";
-import { QuizRunner } from "@/components/quiz-runner";
+import { QuizModeSwitcher } from "@/components/quiz-mode-switcher";
 
 export function generateStaticParams() {
   return MODULES.map((m) => ({ id: m.id }));
@@ -17,10 +17,11 @@ export default async function ModuleQuizPage({
 
   return (
     <main className="mx-auto w-full max-w-xl lg:max-w-2xl">
-      <QuizRunner
+      <QuizModeSwitcher
         kicker={`Module ${m.number} — ${m.title}`}
-        questions={m.quiz}
-        storageId={m.id}
+        moduleId={m.id}
+        mc={m.quiz}
+        writeIn={m.writeIn}
         backHref={`/module/${m.id}`}
         backLabel="Back to the module"
       />

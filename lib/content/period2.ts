@@ -185,6 +185,49 @@ export const M5: CourseModule = {
         "Listing titles is table stakes; differentiated messaging per persona plus the partner-intel move is what an experienced enterprise seller sounds like. (Bonus: it weaves partners in — exactly what Kat wants to hear.)",
     },
   ],
+  writeIn: [
+    {
+      id: "m5w1",
+      prompt:
+        "Kat asks who you'd call on in a new account. Give the strong, differentiated answer — not just a list of titles.",
+      keyPoints: [
+        "The whole buying committee — it's a consensus buy, four or five yeses, so multi-thread from day one",
+        "A different message per seat: CISO/CIO buys control and reversibility (choice, flexibility, control)",
+        "VP of Observability buys capacity back / less plumbing toil",
+        "Architect buys visibility and reversibility (no one-way doors)",
+        "Engineer buys one control plane / fewer 2am pages",
+        "Use partners to find the informal power",
+      ],
+      model:
+        "The whole committee, and I'd say something different to each seat — that's the difference between an enterprise seller and someone reading the org chart. The CISO buys control and reversibility — choice, flexibility, control. The VP of observability buys capacity back, their team stops being a plumbing crew. The architect buys reversibility, no more one-way doors. The engineer buys one control plane instead of fifty scripts and fewer 2am pages. Same product, four conversations — and I'd lean on partners to find the informal power.",
+    },
+    {
+      id: "m5w2",
+      prompt:
+        "Why map both formal AND informal power in an account — and who's your shortcut to the informal map?",
+      keyPoints: [
+        "The org chart shows titles, but deals get swung by whoever actually has 'juice'",
+        "The trusted architect can outweigh a VP",
+        "Single-threading is fragile — if your one contact leaves or gets overruled, the deal dies",
+        "Partners live in these accounts year-round — they know the informal map best",
+      ],
+      model:
+        "The org chart tells you the titles, but deals get swung by whoever actually has juice — the architect the CISO trusts might outweigh a VP on paper. If I only know the formal map, I'm single-threaded, and the day my one contact leaves or gets overruled, the deal dies. The shortcut to the informal map is partners — they're in these accounts all year, so they know who really has influence.",
+    },
+    {
+      id: "m5w3",
+      prompt:
+        "Patrick sends a new AE to do a \"day in the life\" first — with whom, and why does he start there?",
+      keyPoints: [
+        "Start with the hands-on-keyboard engineers",
+        "They tell you the truth about the account",
+        "Learn what they love, hate, and wish — that's where white space (new use cases) hides",
+        "Executive alignment comes later, through the QBR motion",
+      ],
+      model:
+        "He starts the listening tour at the keyboard — the hands-on engineers. They'll tell you the truth: how they bought Cribl, what they love, what they hate, what they wish it did. That love-hate-wish list is exactly where the white space — the next use cases — is hiding. Executive alignment matters too, but that comes later through the QBR rhythm.",
+    },
+  ],
 };
 
 export const M6: CourseModule = {
@@ -398,6 +441,62 @@ export const M6: CourseModule = {
         "Process = gap → committee → MEDDPICC discipline → success criteria → dated close plan. A demo-first or price-first answer reads as a demand servicer. Stay consistent with what you told Patrick — they compare notes.",
     },
   ],
+  writeIn: [
+    {
+      id: "m6w1",
+      prompt:
+        "Explain Force Management's \"Command of the Message\" in your own words — the way you'd anchor a deal.",
+      keyPoints: [
+        "Sell the gap",
+        "Current state → negative consequences (what staying put is costing them)",
+        "Future state → positive business outcomes (what change is worth)",
+        "Plus the required capabilities and the metrics",
+        "Tie it to their corporate objectives, with metrics agreed up front",
+      ],
+      model:
+        "I anchor every deal on the gap. Where are they today — current state — and what is that costing them? Then the future state and what it's worth in business outcomes. From there it's the capabilities they'd need to get there and the metrics we'll measure, all tied to their corporate objectives and agreed up front. Current state, consequences, future state, outcomes — that's the spine.",
+    },
+    {
+      id: "m6w2",
+      prompt:
+        "How do you actually use MEDDPICC? And a deal's been stuck in legal review for five weeks — which box did you under-work?",
+      keyPoints: [
+        "Use MEDDPICC as a diagnostic, not a checklist of letters to recite",
+        "When a deal stalls, one of the boxes is empty — go find which one",
+        "Here it's the Paper process — legal, procurement, security review",
+        "Map it early: who reviews, how long each step takes, what kills deals",
+      ],
+      model:
+        "I use MEDDPICC as a diagnostic, not a checklist — when a deal stalls, one of those boxes is empty and that tells me exactly what to go fix. Five weeks in legal review is the paper process: legal, procurement, security review. I should've mapped that early — who reviews it, how long each step takes, where deals quietly die — instead of finding out now. That's where quarters go to die if you don't work it.",
+    },
+    {
+      id: "m6w3",
+      prompt:
+        "Recite Patrick's pipeline-generation baseline — daily, weekly, and monthly.",
+      keyPoints: [
+        "Daily: 10 emails + 10 calls + 10 LinkedIn messages to 10 people",
+        "Weekly: 2 partner meetings",
+        "Monthly: 4 field marketing events",
+        "It's the floor, not the ceiling — and in person wherever possible ('sell from your feet, not your seat')",
+      ],
+      model:
+        "Ten emails, ten calls, and ten LinkedIn touches to ten people — every day. Two partner meetings a week. Four field events a month. That's the floor, not the ceiling; do more and more happens. And as much of it in person as I can make happen — sell from your feet, not your seat.",
+    },
+    {
+      id: "m6w4",
+      prompt:
+        "Walk me through your 4-layer territory plan — and be clear which layer gets the most time.",
+      keyPoints: [
+        "Layer 1: deals already in the pipeline — they get the MOST time (closest to revenue, fragile in a handoff)",
+        "Layer 2: top-20 strategic targets — account files, people plans, a named partner angle for each",
+        "Layer 3: the Philly network — born and raised, Penn State, benefits and founder relationships",
+        "Layer 4: creative, personalized cold outreach — video and pattern interrupts, never spray-and-pray",
+        "Weighted in that order",
+      ],
+      model:
+        "Four layers, weighted in order. Layer one is the deals already in the pipeline — they get the most time because they're closest to revenue and the most fragile in a territory handoff. Layer two is a top-20 target list, each with a real account file, a people plan, and a named partner angle. Layer three is my Philly network — born and raised, Penn State, eight years of benefits relationships and my founder network. Layer four is creative, personalized cold outreach — video and pattern interrupts, never spray-and-pray. A video is literally how I got Patrick's attention.",
+    },
+  ],
 };
 
 export const M7: CourseModule = {
@@ -576,6 +675,49 @@ export const M7: CourseModule = {
       ],
       explain:
         "The honest-gap move IS the test. An SE leader has watched a hundred AEs bluff; the one who says 'I don't know, here's my system, and that's when I'd bring you in' is the one he fights to work with. Asking the follow-up shows curiosity, not weakness.",
+    },
+  ],
+  writeIn: [
+    {
+      id: "m7w1",
+      prompt:
+        "Cam drops an acronym you've never heard. What do you actually do — and why is that the right move with an SE leader?",
+      keyPoints: [
+        "Don't bluff and don't crumble — bridge",
+        "Name what you know, own what you don't: 'I don't know that one yet — rather tell you that than guess'",
+        "Point to the system that's closing the gap (this learning machine, the partner calls)",
+        "'In a live deal, that's exactly when I'd bring my SE in'",
+        "Then ask what it means — curiosity, not weakness",
+      ],
+      model:
+        "Honest answer — I don't know that one yet, and I'd rather tell you that than guess. Three weeks ago I couldn't have told you what a SIEM was; here's the system I built to close that gap fast. And in a live deal, that's exactly the kind of question I'd bring my SE in on rather than wing it. Then I'd ask you what it means — I want to learn it.",
+    },
+    {
+      id: "m7w2",
+      prompt:
+        "Draw the data path in words — your whiteboard picture, left to right.",
+      keyPoints: [
+        "Data is born on machines — servers, laptops, firewalls, cloud services",
+        "One agent collects it at the source (Edge)",
+        "It flows through the pipeline (Stream) where it's cleaned, shaped, masked, enriched",
+        "It lands in tiers: the SIEM for security alerting, observability tools for uptime, cheap object storage (S3 / Lake) for the rest",
+        "Search asks questions anywhere along the path without moving data; Replay pulls archived data back when needed",
+      ],
+      model:
+        "Picture it left to right. Data's born on machines — servers, laptops, firewalls, cloud apps. One agent collects it at the source. It flows through the pipeline, where it gets cleaned, shaped, masked, and enriched in flight. Then it lands in the tier it deserves: the SIEM for security alerting, observability tools for uptime, and cheap object storage like S3 or Cribl Lake for everything else. Search can ask questions anywhere along that path without moving the data, and Replay pulls old data back into a tool when an investigation needs it.",
+    },
+    {
+      id: "m7w3",
+      prompt:
+        "Why does \"ingest\" matter so much in a pricing conversation? Use the term naturally.",
+      keyPoints: [
+        "The big analysis tools — SIEMs — bill by the volume of data entering them; that's ingest",
+        "Control the ingest and you control the bill",
+        "Most teams pay SIEM prices to store data nobody ever queries",
+        "Cut 30–50% of what enters the expensive tools and the project funds itself",
+      ],
+      model:
+        "The SIEM bills on ingest — the volume of data entering it — so controlling what you send it is worth real money. Most teams are paying SIEM prices to store data nobody ever queries. Route that to storage you control, keep it searchable, and you cut 30 to 50% of what feeds the expensive tool. That's the savings that funds the whole Cribl project.",
     },
   ],
 };

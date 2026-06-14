@@ -2,6 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "goat-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "autoPort": true,
+      "port": 3000
+    },
+    {
       "name": "goat-prod",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start"],
