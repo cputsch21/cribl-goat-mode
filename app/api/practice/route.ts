@@ -1,11 +1,5 @@
-import {
-  convertToModelMessages,
-  gateway,
-  stepCountIs,
-  streamText,
-  type UIMessage,
-} from "ai";
-import { CANON, KNOWLEDGE } from "@/lib/interview-brain";
+import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import { KNOWLEDGE } from "@/lib/interview-brain";
 
 export const maxDuration = 60;
 
@@ -28,44 +22,24 @@ ${SHARED_RULES}${KNOWLEDGE}`,
 
 Default loop: ask him ONE question from the course material (rotate across: the 30-second pitch, products, platformization, stats, personas, MEDDPICC/Force Management, Patrick's cadence, channel scenarios for Kat, SE scenarios for Cam). When he answers, score it 1–10, name the single biggest upgrade, give the tightened phrasing he should actually say out loud, then ask the next question. If he asks to focus on a topic (e.g. "drill me on channel"), stay there. Keep him moving — short, punchy, specific.
 ${SHARED_RULES}${KNOWLEDGE}`,
-
-  claude: `You are Claude — a brilliant, warm, genuinely useful AI assistant — talking with Chris inside GOAT Mode, the app he built to prep for his Cribl Enterprise AE interviews (Kat on Monday, Cam on Tuesday).
-
-Help him with anything he asks: drafting emails and LinkedIn messages, thinking through a deal or an account, explaining a concept, roleplaying a tough moment, brainstorming, or just talking it through. Be direct, specific, and substantive — go as deep as the question deserves. Use markdown (headings, bold, lists, code blocks) whenever it makes the answer clearer.
-
-You have a knowledge pack about Cribl and Chris's own story below. Lean on it whenever it's relevant, and never contradict it on Cribl facts. If something genuinely isn't covered and you're not certain, say so plainly rather than inventing Cribl specifics, customers, or numbers — Chris cares a lot about never walking into a room with a made-up fact. Outside of Cribl, you're a full general-purpose assistant; be yourself.
-${KNOWLEDGE}${CANON}`,
 };
 
 export async function POST(req: Request) {
   try {
-    const { messages, persona, webSearch } = (await req.json()) as {
+    const { messages, persona } = (await req.json()) as {
       messages: UIMessage[];
       persona?: string;
-      webSearch?: boolean;
     };
     const key = persona && persona in PERSONAS ? persona : "coach";
-    const isOpenChat = key === "claude";
 
-    // CHAT_MODEL lets the chat run on a stronger brain (default Sonnet) without
-    // raising the cost of the cheaper, high-frequency grading/judge routes,
-    // which stay on PRACTICE_MODEL. Both need an AI_GATEWAY_API_KEY with credits.
+    // Haiku 4.5 is included in AI Gateway's free tier. To upgrade the
+    // Practice Room brain after topping up credits, set PRACTICE_MODEL
+    // (e.g. "anthropic/claude-sonnet-4-6") in Vercel env vars.
     const result = streamText({
-      model:
-        process.env.CHAT_MODEL ??
-        process.env.PRACTICE_MODEL ??
-        "anthropic/claude-sonnet-4-6",
+      model: process.env.PRACTICE_MODEL ?? "anthropic/claude-haiku-4-5",
       system: PERSONAS[key],
       messages: await convertToModelMessages(messages),
-      maxOutputTokens: isOpenChat ? 2048 : 600,
-      // Web search is opt-in and open-chat only, so the grounded interview
-      // personas never pull in unvetted web facts.
-      ...(isOpenChat && webSearch
-        ? {
-            tools: { web_search: gateway.tools.perplexitySearch() },
-            stopWhen: stepCountIs(5),
-          }
-        : {}),
+      maxOutputTokens: 600,
     });
 
     return result.toUIMessageStreamResponse();
