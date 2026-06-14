@@ -35,6 +35,16 @@ export interface QuizQuestion {
   explain: string;
 }
 
+export interface WriteInQuestion {
+  id: string;
+  /** Open-ended / scenario prompt — the user types a free-text answer. */
+  prompt: string;
+  /** The ideas a strong answer must hit. The AI grades against these. */
+  keyPoints: string[];
+  /** A strong spoken answer in Chris's voice, revealed after scoring. */
+  model: string;
+}
+
 export interface CourseModule {
   id: string; // m1..m10
   period: 1 | 2 | 3;
@@ -47,6 +57,8 @@ export interface CourseModule {
   bonus?: boolean;
   cards: LessonCard[];
   quiz: QuizQuestion[];
+  /** Harder, free-text version of the quiz — typed answers, AI-scored. */
+  writeIn: WriteInQuestion[];
 }
 
 export interface Exam {

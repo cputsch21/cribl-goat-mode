@@ -96,7 +96,7 @@ export default async function ModulePage({
           href={`/module/${m.id}/quiz`}
           className="w-full rounded-xl bg-teal py-4 text-center font-semibold text-ink transition-transform duration-150 ease-out active:scale-[0.99]"
         >
-          Take the quiz — {m.quiz.length} questions
+          Take the quiz — multiple choice + write-in
         </Link>
         {next ? (
           <Link

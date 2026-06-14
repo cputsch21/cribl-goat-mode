@@ -177,6 +177,64 @@ export const M1: CourseModule = {
         "Choice, flexibility, control — over the entire data strategy. Use these exact words; they're the language Patrick's team sells with, and they'll signal you've internalized the message.",
     },
   ],
+  writeIn: [
+    {
+      id: "m1w1",
+      prompt:
+        "A prospect says: \"We already have Splunk — why would we need Cribl?\" Type your answer the way you'd actually say it.",
+      keyPoints: [
+        "Cribl isn't a rip-and-replace — they keep Splunk",
+        "Cribl sits in front, as a control layer between sources and destinations",
+        "It controls what feeds Splunk: drop the junk, mask sensitive data, route the rest to cheaper storage the customer controls",
+        "Most customers fund Cribl with the license and storage savings",
+        "Frame: keep the tool, cut the bill, gain control",
+      ],
+      model:
+        "Totally — keep Splunk, your team likes it. Cribl isn't a replacement; it sits in front of Splunk as a control layer. We collect your data once, drop the junk, mask the sensitive parts, and send Splunk only the high-value data that's worth its price — everything else goes to cheap storage you control but can still search. You keep the tool, cut the bill, and most customers fund the whole project with the savings.",
+    },
+    {
+      id: "m1w2",
+      prompt:
+        "A non-technical exec asks, \"So what does Cribl actually do?\" Give your 30-second version.",
+      keyPoints: [
+        "Cribl is the control layer for an enterprise's machine data / telemetry",
+        "Collect it once from anywhere",
+        "Cut the junk, protect/mask the sensitive parts",
+        "Deliver each tool only what it needs — security tools, monitoring, cheap storage, or AI systems",
+        "Customers get choice, flexibility, and control — and it usually pays for itself in savings",
+      ],
+      model:
+        "Cribl is the control layer for all the machine data an enterprise generates. We collect it from anywhere, cut the junk, protect the sensitive parts, and deliver it wherever it's useful — security tools, monitoring tools, cheap storage, or the AI systems they're standing up. Customers get choice, flexibility, and control — and it usually pays for itself in savings.",
+    },
+    {
+      id: "m1w3",
+      prompt:
+        "Why does the AI boom make Cribl MORE relevant, not less? Make the case.",
+      keyPoints: [
+        "The new AI agents (security ops, incident response, reliability) are hungry for exactly this telemetry",
+        "Feed them raw, ungoverned data and compute bills blow up and sensitive data leaks into models",
+        "Cribl feeds the agents the right data — governed, masked, relevant, affordable",
+        "Patrick's exec frame: AI readiness, AI governance, AI compliance",
+        "Cribl positions as 'The AI Platform for Telemetry'",
+      ],
+      model:
+        "Everyone's racing to put AI agents on their security and ops data, and those agents are hungry for telemetry. Feed them raw, ungoverned data and two things break: compute bills explode and sensitive data leaks into the models. Cribl is how you feed those agents the right data — governed, masked, and affordable — instead of a firehose of risk. With execs I frame it as AI readiness, governance, and compliance.",
+    },
+    {
+      id: "m1w4",
+      prompt:
+        "Walk me through the tiering \"money story\" — what happens to a customer's data, and why isn't it a hard budget conversation?",
+      keyPoints: [
+        "High-value security data goes to the expensive SIEM and lives there ~90 days",
+        "Then it rolls off to cheap storage the customer controls — still searchable for audits and investigations",
+        "Medium- and low-value data skips the expensive tools entirely",
+        "Customers fund Cribl with the savings, so it's not net-new budget",
+        "Proof point: a customer cut 41% of daily endpoint data, 9.25TB down to 5TB",
+      ],
+      model:
+        "Put data in homes that match its value. The high-value security data earns the expensive tool — about 90 days in the SIEM — then rolls off to cheap storage the customer controls, still searchable for audits and investigations. Everything lower-value skips the expensive tools entirely. That's why it isn't a hard budget conversation: customers fund Cribl with what it saves them. One customer on Cribl's site cut 41% of their daily endpoint data — 9.25 terabytes down to 5 — without losing anything they cared about.",
+    },
+  ],
 };
 
 export const M2: CourseModule = {
@@ -351,6 +409,60 @@ export const M2: CourseModule = {
       ],
       explain:
         "Guard is the data-protection answer in the AI conversation: sensitive values get masked before data ever leaves the network, so adopting AI tools doesn't mean leaking secrets into models.",
+    },
+  ],
+  writeIn: [
+    {
+      id: "m2w1",
+      prompt:
+        "Name Cribl's four products and the one problem each one kills — the way you'd say it on a call.",
+      keyPoints: [
+        "Stream — the engine: collect, transform in flight (reduce/shape/enrich/mask/replay), route anywhere; where the cost savings and control live",
+        "Edge — one vendor-neutral agent that kills agent sprawl; fleet-manage up to 250,000 nodes from one console",
+        "Lake — low-cost, open-format storage with no lock-in ('easy in, easy out')",
+        "Search — search-in-place / federated; query data where it lives for 10x faster investigations",
+        "The motion: collect (Edge) → control (Stream) → store (Lake) → ask (Search)",
+      ],
+      model:
+        "Four products, one motion. Stream is the engine — data in from anywhere, transformed in flight, out to anywhere; that's where the savings and control live. Edge is one neutral agent that replaces the zoo of vendor agents — you manage up to 250,000 machines from one screen. Lake is cheap, open-format storage that doesn't lock your data in. And Search lets you ask questions of data where it already sits — 10x faster investigations. Collect with Edge, control with Stream, store cheap in Lake, ask anything with Search.",
+    },
+    {
+      id: "m2w2",
+      prompt:
+        "A customer says: \"We run five different collection agents on every server and every upgrade is a nightmare.\" Which product, and what do you say?",
+      keyPoints: [
+        "Cribl Edge",
+        "One vendor-neutral agent replaces the per-vendor zoo of agents",
+        "Collects everything at the source (Windows, Linux, Kubernetes) and can process it right there before it crosses the network",
+        "Fleet management: monitor and configure up to 250,000 nodes from one console",
+      ],
+      model:
+        "That's exactly what Edge solves. Instead of five vendor agents on every box, Edge is one neutral agent that collects everything at the source — Windows, Linux, Kubernetes — and can even process the data right there before it crosses the network. And you manage the whole fleet, up to 250,000 nodes, from a single console. The upgrade nightmare goes away.",
+    },
+    {
+      id: "m2w3",
+      prompt:
+        "Where can Cribl deploy, and why does that matter competitively? Be careful to get the government status exactly right.",
+      keyPoints: [
+        "SaaS (Cribl.Cloud), on-prem, or hybrid — workers live wherever the data lives, which also avoids surprise cloud egress bills",
+        "That flexibility reaches locked-down and on-prem environments SaaS-only rivals (Datadog, CrowdStrike) physically can't serve",
+        "It's why the government/public-sector business is growing",
+        "FedRAMP Moderate authorized — but NOT yet IL5 (don't overstate it)",
+      ],
+      model:
+        "Cloud, on-prem, or hybrid — Cribl goes where the data lives, which also avoids surprise egress bills. That's a real moat: SaaS-only competitors like Datadog can't serve the most locked-down environments, and Cribl can. It's a big part of why the government business is growing. On certs, I want to be precise: Cribl is FedRAMP Moderate authorized. It's not yet IL5 — but having a true on-prem product means that path exists.",
+    },
+    {
+      id: "m2w4",
+      prompt:
+        "What is Cribl Guard, and how does it fit the AI conversation?",
+      keyPoints: [
+        "Guard masks sensitive data before it ever leaves the customer's network",
+        "It also flags logging that looks abnormal",
+        "It's the answer to 'how do we adopt AI without leaking sensitive data into models'",
+      ],
+      model:
+        "Cribl Guard masks the sensitive stuff before it ever leaves the customer's network, and flags logging that looks abnormal. That's the direct answer to the question every CISO is asking right now: how do we adopt AI without leaking our secrets into someone's model? Guard handles the masking and governance so they can.",
     },
   ],
 };
@@ -531,6 +643,62 @@ export const M3: CourseModule = {
         "Respect the engineer (open source CAN move data), then reframe to total cost: engineering time, on-call burden, governance, scale, support. Never claim open source 'can't' — that's false and they'll know it.",
     },
   ],
+  writeIn: [
+    {
+      id: "m3w1",
+      prompt:
+        "Explain platformization and Cribl's counter-move, like you're talking to an exec who's heard the pitch from every vendor.",
+      keyPoints: [
+        "Mega-vendors all push 'consolidate onto our platform' — Palo from the firewall, CrowdStrike from the endpoint, Datadog from metrics, Splunk/Cisco from the SIEM",
+        "Execs like it: fewer vendors, fewer contracts, one throat to choke",
+        "Cribl's counter: control the neutral data layer underneath all of them",
+        "If you control your own pipes, any platform choice is reversible — swap tomorrow, run two during a migration",
+        "Their 'all your data lives in us' lock-in leverage disappears",
+      ],
+      model:
+        "Every mega-vendor is running the same play — Palo from the firewall, CrowdStrike from the endpoint, Datadog from metrics, Splunk from the SIEM — all saying 'consolidate onto us.' And it's tempting: fewer vendors, fewer contracts. Here's the thing — platformization is completely fine if you control the data underneath. Control your own pipes and you can pick any platform today and swap it tomorrow, or run two during a migration. Their leverage — 'all your data is in us, good luck leaving' — just evaporates. That's Cribl: the neutral data layer that keeps every platform decision reversible.",
+    },
+    {
+      id: "m3w2",
+      prompt:
+        "Kat or Cam asks: \"Who do you see as Cribl's biggest competitor?\" Give your answer.",
+      keyPoints: [
+        "There's no single like-for-like competitor",
+        "The real competition is the status quo — do nothing, keep overpaying",
+        "DIY open-source pipelines — free software, expensive engineers",
+        "The platforms' own bundled pipelines — which exist to lock data IN, where Cribl's exist to give choice",
+        "Never trash-talk; Cribl wins as Switzerland",
+      ],
+      model:
+        "Honestly, there's no one direct competitor — Cribl wins way more than its unfair share. The real competition shows up three ways. First, the status quo — do nothing and keep overpaying. Second, teams that try to build it themselves with open source — free software, very expensive engineers. Third, the platform vendors bundling a basic pipeline — but their pipeline exists to lock data into their platform, and ours exists to give the customer choice. I never trash-talk any of them — Cribl's whole position is being Switzerland.",
+    },
+    {
+      id: "m3w3",
+      prompt:
+        "An engineer says: \"We could just build this ourselves with open source.\" Respond — without claiming open source can't do it.",
+      keyPoints: [
+        "Respect it — some teams do, and open source genuinely can move data",
+        "Then they discover they've hired a team to babysit pipelines instead of doing security",
+        "Free software isn't free at enterprise scale — engineering time, on-call burden, scale",
+        "And it doesn't come with governance, support, or a roadmap",
+      ],
+      model:
+        "Some teams absolutely do — open source can move data, no question. The catch is what happens next: they've now got engineers babysitting pipelines instead of doing security. Free software isn't free at enterprise scale once you count the engineering time, the on-call burden, and the scale — and it doesn't come with governance, support, or a roadmap. That's the trade I'd want them to make with eyes open.",
+    },
+    {
+      id: "m3w4",
+      prompt:
+        "Why should you never trash-talk Splunk, Datadog, or CrowdStrike in a Cribl deal?",
+      keyPoints: [
+        "They're simultaneously destinations, partners, AND rivals",
+        "Customers love them and keep using them — Cribl feeds them data every day",
+        "Cribl wins by being Switzerland: 'keep what you love, we make it cheaper and better'",
+        "Trash talk would also torch alliance relationships — Palo Alto is literally a named Cribl partner",
+      ],
+      model:
+        "Because they're destinations, partners, and rivals all at once. Customers love these tools and keep using them — Cribl feeds them data every single day. The winning line is 'keep what you love, we'll make it cheaper and better,' not drawing blood. And trash-talking would torch the alliance relationships too — Palo Alto is both a platformization rival and a named Cribl partner. Switzerland is the whole strategy.",
+    },
+  ],
 };
 
 export const M4: CourseModule = {
@@ -694,6 +862,61 @@ export const M4: CourseModule = {
       ],
       explain:
         "~1,500 customers — which alongside $339M ARR tells you these are big enterprise deals, six figures on average. That's the Enterprise AE job in one arithmetic step.",
+    },
+  ],
+  writeIn: [
+    {
+      id: "m4w1",
+      prompt:
+        "Rattle off the headline numbers that prove Cribl's product-market fit — with the right source on each one.",
+      keyPoints: [
+        "50% of the Fortune 100 are customers (cribl.io)",
+        "$339M ARR, growing ~40% year over year (Ami — she joined before $100M and has watched it 3x)",
+        "4th-fastest software company ever to $100M ARR (Patrick)",
+        "~1,500 customers (Patrick)",
+        "Attribute people-numbers to the person who told you — it signals you're connected, not rehearsed",
+      ],
+      model:
+        "Half the Fortune 100 runs Cribl — that's straight from their site. Ami mentioned they're at $339 million ARR now, growing about 40% a year, and she joined before $100M, so she's watched it more than triple. Patrick said they're the fourth-fastest software company ever to $100M, with around 1,500 customers. The product-market-fit conversation is over.",
+    },
+    {
+      id: "m4w2",
+      prompt:
+        "Deploy the \"50% of the Fortune 100\" stat the RIGHT way — not as a bare number. Show me.",
+      keyPoints: [
+        "Don't recite it bare ('did you know 50% of the Fortune 100...')",
+        "Attach the stat to a pain and a story",
+        "e.g. 'most teams come to us when the data bill becomes indefensible — that's how half the Fortune 100 ended up here'",
+        "One stat per point — a barrage of numbers is a rookie tell",
+      ],
+      model:
+        "I'd never just say 'did you know 50% of the Fortune 100 use Cribl?' I'd attach it to the pain: 'Most teams come to us when the SIEM bill becomes indefensible — that's how half the Fortune 100 ended up here.' One number, tied to a story they feel. Reeling off five stats in a row is the tell that you're new.",
+    },
+    {
+      id: "m4w3",
+      prompt:
+        "Give me two or three customer proof points with hard numbers attached.",
+      keyPoints: [
+        "Nutanix: cut firewall log volume 50%",
+        "The EDR case: 41% less daily endpoint data (9.25TB → 5TB)",
+        "Cribl Search: 10x faster investigations",
+        "Logos you can name: Reddit, Sophos, ServiceNow, Accenture Federal Services",
+      ],
+      model:
+        "The pattern's the same across the case studies. Nutanix cut firewall log volume in half. An endpoint-security customer cut 41% of their daily data — 9.25 terabytes down to 5. And Search delivers 10x faster investigations. Names I'd drop: Reddit, Sophos, ServiceNow, Accenture Federal. Cut a third to half of what feeds the expensive tools, investigations get faster, and the team stops saying no.",
+    },
+    {
+      id: "m4w4",
+      prompt:
+        "Which use case opens the door first — and why is SIEM Migration so hot right now?",
+      keyPoints: [
+        "Cost Control is usually the door-opener — it's the universal pain and it funds the project",
+        "SIEM Migration is hot because of Splunk/Cisco churn and new options",
+        "Cribl lets customers switch or run two SIEMs side-by-side without re-plumbing every feed",
+        "When you control the pipes, swapping the destination is easy",
+      ],
+      model:
+        "Cost Control is almost always the foot in the door — it's the universal pain and it funds the project. SIEM Migration is the one that's red-hot right now, with all the Splunk and Cisco churn. The reason Cribl makes it easy: when you control the pipes, you can feed the old and the new SIEM simultaneously during the transition instead of hand-rewiring hundreds of feeds. Then it expands into SOC modernization and telemetry as a shared service.",
     },
   ],
 };
