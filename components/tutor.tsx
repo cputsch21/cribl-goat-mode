@@ -1,6 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useChat } from "@ai-sdk/react";
@@ -16,12 +23,71 @@ import {
 import { cn } from "@/lib/utils";
 
 /**
- * The tutor that lives above the entire interface. A floating launcher on
- * every page opens a slide-in chat drawer whose brain knows which module,
- * quiz, or cram sheet Chris is looking at right now.
+ * Shared open/closed signal for the tutor. Lives in context so the page can
+ * react to it — on desktop the page slides over to make room for the panel
+ * instead of the panel floating on top of everything.
+ */
+type TutorState = { open: boolean; setOpen: (open: boolean) => void };
+const TutorContext = createContext<TutorState | null>(null);
+
+function useTutorState() {
+  const ctx = useContext(TutorContext);
+  if (!ctx) {
+    throw new Error("Tutor pieces must be used inside <TutorProvider>.");
+  }
+  return ctx;
+}
+
+export function TutorProvider({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const value = useMemo(() => ({ open, setOpen }), [open]);
+  return (
+    <TutorContext.Provider value={value}>{children}</TutorContext.Provider>
+  );
+}
+
+/**
+ * Wraps the whole page. When the tutor is open on a wide screen, the page
+ * gently slides left to make room for the panel docked on the right. On
+ * phones there's no room to share, so the page stays put and the tutor opens
+ * on top — handled by the panel itself.
+ */
+export function TutorShell({ children }: { children: React.ReactNode }) {
+  const { open } = useTutorState();
+  return (
+    <div
+      className={cn(
+        "transition-[padding] duration-150 ease-out",
+        open && "lg:pr-[28rem]"
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** True once the viewport is wide enough to show the page and tutor together. */
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setIsDesktop(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+  return isDesktop;
+}
+
+/**
+ * The tutor that lives alongside the entire interface. A floating launcher on
+ * every page opens the chat panel whose brain knows which module, quiz, or
+ * cram sheet Chris is looking at right now. On desktop it docks beside the
+ * page; on phones it slides in on top.
  */
 export function Tutor() {
-  const [open, setOpen] = useState(false);
+  const { open, setOpen } = useTutorState();
+  const isDesktop = useIsDesktop();
   const pathname = usePathname();
   const progress = useProgress();
 
@@ -56,12 +122,18 @@ export function Tutor() {
   }
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      {/* Floating launcher — clears the mobile dock, sits bottom-right on lg. */}
+    // Non-modal on desktop so the page stays fully usable beside the panel;
+    // modal on phones so it behaves like the slide-in drawer it was before.
+    <Dialog.Root open={open} onOpenChange={setOpen} modal={!isDesktop}>
+      {/* Floating launcher — clears the mobile dock, sits bottom-right on lg.
+          Fades away while the panel is open (the panel has its own close). */}
       <Dialog.Trigger asChild>
         <button
           aria-label="Open the GOAT tutor"
-          className="fixed bottom-24 right-4 z-40 flex items-center gap-2 rounded-full bg-ink py-3 pl-3.5 pr-4 text-white shadow-lift transition-all duration-150 ease-out hover:shadow-card active:scale-[0.97] lg:bottom-6 lg:right-6"
+          className={cn(
+            "fixed bottom-24 right-4 z-40 flex items-center gap-2 rounded-full bg-ink py-3 pl-3.5 pr-4 text-white shadow-lift transition-all duration-150 ease-out hover:shadow-card active:scale-[0.97] lg:bottom-6 lg:right-6",
+            open && "pointer-events-none opacity-0"
+          )}
         >
           <GraduationCap size={18} className="text-gold" strokeWidth={2.2} />
           <span className="text-sm font-bold">
@@ -71,8 +143,17 @@ export function Tutor() {
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-40 bg-ink/50 duration-150 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0" />
-        <Dialog.Content className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-canvas shadow-lift outline-none duration-150 ease-out data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right">
+        {/* Dim the page only on phones; on desktop the page stays bright and
+            interactive beside the panel. */}
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-ink/50 duration-150 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0 lg:hidden" />
+        <Dialog.Content
+          onInteractOutside={(event) => {
+            // On desktop the panel sits beside the page, so tapping the page to
+            // keep studying shouldn't close it — only the X (or Esc) does.
+            if (isDesktop) event.preventDefault();
+          }}
+          className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-canvas shadow-lift outline-none duration-150 ease-out data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:animate-in data-[state=open]:slide-in-from-right lg:w-[28rem] lg:max-w-none lg:border-l lg:border-line"
+        >
           {/* Header */}
           <div className="flex items-start justify-between gap-3 border-b border-line bg-surface px-5 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)]">
             <div className="min-w-0">
