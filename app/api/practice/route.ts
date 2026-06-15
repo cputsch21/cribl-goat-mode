@@ -32,11 +32,12 @@ export async function POST(req: Request) {
     };
     const key = persona && persona in PERSONAS ? persona : "coach";
 
-    // Haiku 4.5 is included in AI Gateway's free tier. To upgrade the
-    // Practice Room brain after topping up credits, set PRACTICE_MODEL
-    // (e.g. "anthropic/claude-sonnet-4-6") in Vercel env vars.
+    // The role-play interviewers run on Sonnet by default — sharp, realistic
+    // reps without Opus cost. (The global Tutor is the Opus surface via
+    // TUTOR_MODEL; the grading/judge routes stay on cheap Haiku via
+    // PRACTICE_MODEL.) Override the interviewers with PERSONA_MODEL.
     const result = streamText({
-      model: process.env.PRACTICE_MODEL ?? "anthropic/claude-haiku-4-5",
+      model: process.env.PERSONA_MODEL ?? "anthropic/claude-sonnet-4-6",
       system: PERSONAS[key],
       messages: await convertToModelMessages(messages),
       maxOutputTokens: 600,

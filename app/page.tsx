@@ -139,7 +139,8 @@ export default function Dashboard() {
         </div>
         <div className="mt-3 grid gap-2">
           {INTERVIEWS.map((slot) => {
-            const at = new Date(s.times[slot.id] ?? slot.defaultAt);
+            const raw = s.times[slot.id] ?? slot.defaultAt;
+            const at = raw ? new Date(raw) : null;
             return (
               <div
                 key={slot.id}
@@ -149,7 +150,7 @@ export default function Dashboard() {
                   <p className="font-semibold leading-tight">{slot.name}</p>
                   <p className="mt-0.5 truncate text-xs text-muted">{slot.role}</p>
                   <p className="mt-1 text-xs font-medium text-faint">
-                    {formatSlot(at)}
+                    {at ? formatSlot(at) : "Time TBD"}
                     {slot.id !== "rep" ? (
                       <>
                         {" · "}
@@ -164,15 +165,15 @@ export default function Dashboard() {
                   </p>
                 </div>
                 <span className="shrink-0 rounded-full bg-teal-tint px-3 py-1.5 text-xs font-bold text-teal-dark">
-                  {countdownLabel(at, now)}
+                  {at ? countdownLabel(at, now) : "TBD"}
                 </span>
               </div>
             );
           })}
         </div>
         <p className="mt-2 text-[11px] leading-relaxed text-faint">
-          Times pulled from the call recordings — double-check your calendar
-          invites and adjust if needed.
+          Call times aren't locked yet — add each one with Adjust times once
+          you know it.
         </p>
       </section>
       </div>
@@ -263,7 +264,7 @@ export default function Dashboard() {
                 <p className="mt-1.5 text-[13px] leading-snug text-white/80">
                   {unlocked
                     ? `${exam.questions.length} scenarios · pass at 90%`
-                    : "Unlocks once you pass both quizzes for Modules 1–9."}
+                    : "Unlocks once you pass both quizzes for Modules 1–10."}
                 </p>
               </div>
             );
@@ -311,7 +312,7 @@ export default function Dashboard() {
         <span>
           Every fact in this course is tagged to its source — cribl.io, Patrick,
           or Ami. The two things the app can&apos;t do for you: the weekend calls
-          to your partner friends (script in Module 8) and the LinkedIn pass on
+          to your partner friends (script in Module 9) and the LinkedIn pass on
           Kat and Cam (prompts in the cram sheets).
         </span>
       </footer>
@@ -321,7 +322,7 @@ export default function Dashboard() {
         open={timesOpen}
         onOpenChange={setTimesOpen}
         title="Interview times"
-        description="From the recordings — double-check against your calendar invites."
+        description="Add each call time once you know it."
       >
         <div className="grid gap-4">
           {INTERVIEWS.map((slot) => {

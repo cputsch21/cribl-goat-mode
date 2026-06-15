@@ -34,7 +34,7 @@ export interface ProgressState {
   interviews: Record<string, QuizResult>;
 }
 
-const KEY = "goat-progress-v1";
+const KEY = "goat-progress-v2";
 const DEFAULT: ProgressState = {
   quizzes: {},
   plan: {},

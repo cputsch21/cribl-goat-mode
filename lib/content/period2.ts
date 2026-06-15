@@ -1,562 +1,104 @@
 import type { CourseModule } from "./types";
 
-export const M5: CourseModule = {
-  id: "m5",
-  period: 2,
-  number: 5,
-  title: "The Buyers",
-  tagline: "Five personas, one product, five different conversations",
-  minutes: 12,
-  cards: [
-    {
-      id: "m5c1",
-      title: "It's a committee, not a person",
-      paragraphs: [
-        "You already told Patrick this and he loved it: enterprise deals are consensus buys — four or five people minimum have to say yes, and you can waste months building a great relationship with someone who can't sign. Your job is to map the whole committee early.",
-        "Patrick's addition: map the formal power (titles, org chart) AND the informal power — who actually has juice, whose opinion the CISO trusts. Partners often know the informal map better than anyone inside the account.",
-      ],
-      sayThis:
-        "I learned the hard way early in my career: you can build a great relationship with the wrong person. Now the first thing I build is a map of the whole buying committee — formal and informal power.",
-      source: "chris",
-    },
-    {
-      id: "m5c2",
-      title: "The CISO / CIO",
-      paragraphs: [
-        "What they care about: risk, cost, audit and compliance, vendor strategy, and lately AI readiness. They're being pitched platformization from every direction and they're under budget pressure.",
-        "Patrick's exec-level message, almost verbatim: you get full choice, flexibility, and control over your data strategy — so you can use data as a strategic advantage for risk, visibility, audit, and compliance, and keep the company running safely, soundly, securely.",
-      ],
-      sayThis:
-        "For a CISO it's one sentence: control your data layer and every platform decision becomes reversible — choice, flexibility, and control over the whole data strategy.",
-      source: "patrick",
-    },
-    {
-      id: "m5c3",
-      title: "The VP of Observability / IT leadership",
-      paragraphs: [
-        "What they care about: tool sprawl, team toil, uptime and SLAs, and the migration projects they're scared to start. Their teams spend enormous time wiring data feeds instead of improving reliability.",
-        "The message: onboard new data sources in hours instead of weeks, cut the plumbing toil, and make migrations safe — run old and new side-by-side. Hughes (from the case studies) is the reference: their observability team finally stopped saying no to requests.",
-      ],
-      sayThis:
-        "For the VP of observability: your team stops being a plumbing crew. New sources in hours, migrations without fear, and capacity to say yes again.",
-      source: "cribl.io",
-    },
-    {
-      id: "m5c4",
-      title: "The architect",
-      paragraphs: [
-        "What they care about: where data lives, how it flows, what happens when the company adopts the next tool — and increasingly, how the AI stack will plug in. They hate one-way doors.",
-        "Patrick's architect message: you get a complete picture of where all the data lives and where it's going, and you can bring on new technologies as they come online in the AI era — without re-architecting anything.",
-      ],
-      sayThis:
-        "For an architect: Cribl makes every data flow visible and every destination swappable — it's the layer that future-proofs the stack for whatever comes next.",
-      source: "patrick",
-    },
-    {
-      id: "m5c5",
-      title: "The engineer (hands on keyboard)",
-      paragraphs: [
-        "What they care about: getting data in is a pain — agents on every box, parsing and normalizing for each tool, 2am pages when feeds break. They're the ones who'll actually use Cribl daily, and they make or break the technical evaluation.",
-        "Patrick's engineer message: you control all the integrations and decide where data goes — one place to manage what used to be fifty scripts. These are also the people he sends new AEs to first: the day-in-the-life listening tour. They know the truth about the account.",
-      ],
-      sayThis:
-        "For the engineer: one control plane instead of fifty scripts and five agents. You decide what goes where, and getting data in stops being your whole job.",
-      source: "patrick",
-    },
-    {
-      id: "m5c6",
-      title: "Drill: same product, five sentences",
-      paragraphs: [
-        "The interview version of this skill: when Kat or Cam asks 'who do you call on?', don't just list titles — show you'd say something different to each. That's what separates a real enterprise seller from someone reading the org chart.",
-        "CISO: control and reversibility. CIO: cost and strategy. VP: toil and capacity. Architect: visibility and future-proofing. Engineer: one control plane, less pain. Multi-thread from day one — and use partners to find the informal power.",
-      ],
-      sayThis:
-        "The pitch changes per seat: the CISO buys control, the VP buys capacity back, the architect buys reversibility, the engineer buys fewer 2am pages. Same product, four different conversations.",
-      source: "craft",
-    },
-  ],
-  quiz: [
-    {
-      id: "m5q1",
-      prompt: "'Choice, flexibility, and control over the data strategy' is the message for:",
-      options: [
-        { text: "The hands-on engineer" },
-        { text: "The CISO / CIO", correct: true },
-        { text: "The procurement team" },
-      ],
-      explain:
-        "That's Patrick's executive pitch verbatim. Execs buy strategic control and reversibility; engineers buy relief from plumbing pain. Match the altitude to the seat.",
-    },
-    {
-      id: "m5q2",
-      prompt: "'One control plane instead of five agents and fifty scripts' lands best with:",
-      options: [
-        { text: "The CFO" },
-        { text: "The hands-on engineer", correct: true },
-        { text: "The CISO" },
-      ],
-      explain:
-        "The engineer lives the agent-sprawl, parsing, 2am-page pain daily. Talk toil reduction with them — save 'data strategy' language for the executives.",
-    },
-    {
-      id: "m5q3",
-      prompt: "Patrick sends a new AE to do a 'day in the life' first with:",
-      options: [
-        { text: "The CISO, to establish executive alignment immediately" },
-        {
-          text: "The hands-on-keyboard engineers — how they bought Cribl, what they love, hate, and wish for",
-          correct: true,
-        },
-        { text: "Procurement, to understand the paper process early" },
-      ],
-      explain:
-        "The listening tour starts at the keyboard: engineers tell you the truth, and their love/hate/wish list is where new use cases (white space) hide. Executive alignment comes after, via the QBR motion.",
-    },
-    {
-      id: "m5q4",
-      prompt: "Formal vs. informal power — why does it matter?",
-      options: [
-        {
-          text: "The org chart shows titles, but deals are swung by whoever actually has juice — and partners often know that informal map best",
-          correct: true,
-        },
-        { text: "It doesn't — enterprise deals follow the org chart" },
-        { text: "Informal power only matters in small companies" },
-      ],
-      explain:
-        "Patrick's phrase: figure out 'who has influence and who has juice.' The trusted architect may outweigh a VP. Partners, who live in these accounts year-round, are your shortcut to the informal map.",
-    },
-    {
-      id: "m5q5",
-      prompt:
-        "You've got one enthusiastic engineer champion and no one else engaged. What's the risk?",
-      options: [
-        {
-          text: "You're single-threaded — if your one contact leaves or gets overruled, the deal dies. Build the committee.",
-          correct: true,
-        },
-        { text: "No real risk — a strong technical champion is all you need" },
-        { text: "The risk is moving too fast — slow down with the engineer" },
-      ],
-      explain:
-        "Your own hard-won lesson from the benefits days: a relationship with the wrong (or only one) person is a stepping stone, not a strategy. Four or five yeses make an enterprise deal.",
-    },
-    {
-      id: "m5q6",
-      prompt: "The VP of Observability's most resonant outcome:",
-      options: [
-        { text: "Audit-ready compliance reporting" },
-        {
-          text: "Team stops doing plumbing — new data sources in hours, migrations without fear, capacity to say yes again",
-          correct: true,
-        },
-        { text: "Endpoint agent consolidation" },
-      ],
-      explain:
-        "Toil and capacity are the VP's currency (the Hughes story: the team could finally say yes to requests). Compliance is the CISO's; agents are the engineer's daily pain.",
-    },
-    {
-      id: "m5q7",
-      prompt: "Why do architects specifically love the Cribl story?",
-      options: [
-        {
-          text: "Every flow becomes visible and every destination swappable — no more one-way doors as the AI era adds new tools",
-          correct: true,
-        },
-        { text: "It eliminates the need for architecture reviews" },
-        { text: "It standardizes the company on a single vendor" },
-      ],
-      explain:
-        "Architects hate irreversible decisions. Patrick's architect pitch: see where all data lives and goes, and onboard new technologies without re-architecting. Reversibility is the gift.",
-    },
-    {
-      id: "m5q8",
-      prompt:
-        "Kat asks who you'd call on in a new account. The strongest shape of answer:",
-      options: [
-        { text: "'CISOs and CIOs — always start at the top.'" },
-        {
-          text: "'The whole committee, with a different message per seat — CISO buys control, VP buys capacity, architect buys reversibility, engineer buys relief. And I'd use partners to find the informal power.'",
-          correct: true,
-        },
-        { text: "'Engineers first, always — they're the real buyers at Cribl.'" },
-      ],
-      explain:
-        "Listing titles is table stakes; differentiated messaging per persona plus the partner-intel move is what an experienced enterprise seller sounds like. (Bonus: it weaves partners in — exactly what Kat wants to hear.)",
-    },
-  ],
-  writeIn: [
-    {
-      id: "m5w1",
-      prompt:
-        "Kat asks who you'd call on in a new account. Give the strong, differentiated answer — not just a list of titles.",
-      keyPoints: [
-        "The whole buying committee — it's a consensus buy, four or five yeses, so multi-thread from day one",
-        "A different message per seat: CISO/CIO buys control and reversibility (choice, flexibility, control)",
-        "VP of Observability buys capacity back / less plumbing toil",
-        "Architect buys visibility and reversibility (no one-way doors)",
-        "Engineer buys one control plane / fewer 2am pages",
-        "Use partners to find the informal power",
-      ],
-      model:
-        "The whole committee, and I'd say something different to each seat — that's the difference between an enterprise seller and someone reading the org chart. The CISO buys control and reversibility — choice, flexibility, control. The VP of observability buys capacity back, their team stops being a plumbing crew. The architect buys reversibility, no more one-way doors. The engineer buys one control plane instead of fifty scripts and fewer 2am pages. Same product, four conversations — and I'd lean on partners to find the informal power.",
-    },
-    {
-      id: "m5w2",
-      prompt:
-        "Why map both formal AND informal power in an account — and who's your shortcut to the informal map?",
-      keyPoints: [
-        "The org chart shows titles, but deals get swung by whoever actually has 'juice'",
-        "The trusted architect can outweigh a VP",
-        "Single-threading is fragile — if your one contact leaves or gets overruled, the deal dies",
-        "Partners live in these accounts year-round — they know the informal map best",
-      ],
-      model:
-        "The org chart tells you the titles, but deals get swung by whoever actually has juice — the architect the CISO trusts might outweigh a VP on paper. If I only know the formal map, I'm single-threaded, and the day my one contact leaves or gets overruled, the deal dies. The shortcut to the informal map is partners — they're in these accounts all year, so they know who really has influence.",
-    },
-    {
-      id: "m5w3",
-      prompt:
-        "Patrick sends a new AE to do a \"day in the life\" first — with whom, and why does he start there?",
-      keyPoints: [
-        "Start with the hands-on-keyboard engineers",
-        "They tell you the truth about the account",
-        "Learn what they love, hate, and wish — that's where white space (new use cases) hides",
-        "Executive alignment comes later, through the QBR motion",
-      ],
-      model:
-        "He starts the listening tour at the keyboard — the hands-on engineers. They'll tell you the truth: how they bought Cribl, what they love, what they hate, what they wish it did. That love-hate-wish list is exactly where the white space — the next use cases — is hiding. Executive alignment matters too, but that comes later through the QBR rhythm.",
-    },
-  ],
-};
-
-export const M6: CourseModule = {
-  id: "m6",
-  period: 2,
-  number: 6,
-  title: "The System",
-  tagline: "Force Management, MEDDPICC, and Patrick's playbook — speak it natively",
-  minutes: 15,
-  cards: [
-    {
-      id: "m6c1",
-      title: "Force Management in one card",
-      paragraphs: [
-        "Ami told you directly: Cribl runs Force Management (they just rolled it out) plus MEDDICC. Force Management's core — 'Command of the Message' — is about selling the gap: where the customer is today (current state) and what it's costing them (negative consequences), versus where they could be (future state) and what that's worth (positive business outcomes). Then: what capabilities they need to get there, and how they'll measure success.",
-        "Here's your cheat code — Patrick already quizzed you with this exact language in your first call: 'What's their current state? Negative consequences? Future state? How does it attach to their corporate objectives? What business outcomes are we driving?' Answer in that vocabulary and you sound like you've already been to their bootcamp.",
-      ],
-      sayThis:
-        "I anchor every deal on the gap: current state and what it's costing them, future state and what it's worth — tied to their corporate objectives, with metrics we agree on up front.",
-      source: "ami",
-    },
-    {
-      id: "m6c2",
-      title: "MEDDPICC, mapped to a Cribl deal",
-      paragraphs: [
-        "Metrics — the numbers that justify the deal: SIEM ingest cut 40%, investigations 10x faster. Economic buyer — who owns the budget (often the CISO or CIO). Decision criteria — how they'll judge (usually the proof-of-value success criteria). Decision process — the steps and dates to a signature. Paper process — legal, procurement, security review; where deals quietly die. Identify pain — the bleeding: indefensible bill, scary migration, AI mandate. Champion — the person who sells when you're not in the room. Competition — status quo, DIY, bundled pipelines.",
-        "You name-dropped MEDDPICC to Patrick already. The trap now would be reciting letters; in the interviews, use it diagnostically — 'if a deal stalls, it's because one of these is missing, so I go find which one.'",
-      ],
-      sayThis:
-        "I use MEDDPICC as a diagnostic — when a deal stalls, one of those boxes is empty. Usually it's the champion or the paper process, and that tells me exactly what to go fix.",
-      source: "craft",
-    },
-    {
-      id: "m6c3",
-      title: "Patrick's playbook for existing accounts",
-      paragraphs: [
-        "He laid out his coaching sequence explicitly. 1) Tier the existing accounts. 2) Run the day-in-the-life listening tour with the hands-on engineers: how they bought Cribl, why, what they love, hate, wish — that's where white space (new use cases) hides. 3) Establish a quarterly cadence — QBRs where their leadership shows up, you make your contacts look good, and Cribl's specialist teams (Search, Lake) introduce new capabilities. 4) Executive alignment: bring Patrick or the VP in to build top-level relationships.",
-        "The outcome of the motion: new use cases to run at existing business. Expansion isn't an accident — it's a calendar.",
-      ],
-      sayThis:
-        "Existing accounts get a system: tier them, listening tour with the engineers, quarterly business reviews with their leadership in the room, and executive alignment — that's how white space turns into pipeline.",
-      source: "patrick",
-    },
-    {
-      id: "m6c4",
-      title: "The PG math (pipeline generation)",
-      paragraphs: [
-        "Patrick is prescriptive about the baseline, and he'll expect you to know it: 10 emails + 10 phone calls + 10 LinkedIn messages to 10 people, daily. Two partner meetings a week. Four field marketing events a month. Do that and pipeline happens; do more and more happens.",
-        "His style notes: take meetings in person — coffees and lunches 'spider' your network through the territory. 'Sell from your feet, not your seat.' Be a street rat — out hustling, mixing it up, building rapport. Your 10-in-person-meetings-a-month goal fits right into this; he confirmed it's realistic.",
-      ],
-      sayThis:
-        "Ten emails, ten calls, ten LinkedIn touches a day; two partner meetings a week; four field events a month — that's the floor, not the ceiling. And as much of it in person as I can make happen.",
-      source: "patrick",
-    },
-    {
-      id: "m6c5",
-      title: "Your 4-layer territory plan (the one you already pitched)",
-      paragraphs: [
-        "Patrick responded well to this — keep telling it the same way. Layer 1: deals already in the pipeline — they get the most time, transition them carefully. Layer 2: the top-20 strategic targets — build account files, people plans, and partner angles for each. Layer 3: your network — Philly born and raised, Penn State, eight years of benefits relationships, founder network. Layer 4: strategic cold outreach — personal, creative, pattern-interrupt (your video play that got Patrick's attention), never spray-and-pray.",
-        "Time-weight them in that order. When Tim asks about your process, this is the spine of the answer too — they will compare notes.",
-      ],
-      sayThis:
-        "Four layers: live pipeline first, then a top-20 target list with real account plans, then my Philly network, then creative cold outreach — weighted in that order.",
-      source: "chris",
-    },
-    {
-      id: "m6c6",
-      title: "Demand generator, not demand servicer",
-      paragraphs: [
-        "Patrick's sharpest filter: there are sellers who generate demand and sellers who service demand someone else created — and the second kind 'flop very quickly' at Cribl because you're activating people who don't know what Cribl is yet. Buyers need to hear the story six, seven, eight times. His metaphor: the gritty defensive lineman who gets hit every snap and is ready when the hole opens.",
-        "Your counter-evidence when this comes up: founder life was 100% demand generation — five-percent close rates, fundraising rejections, no inbound anything. You've already lived the grit; now it gets a system.",
-      ],
-      sayThis:
-        "I know the difference between generating demand and servicing it — I spent six years where nothing happened unless I made it happen. The 10-10-10 baseline is just structure around what I already do.",
-      source: "patrick",
-    },
-  ],
-  quiz: [
-    {
-      id: "m6q1",
-      prompt: "The core of Force Management's 'Command of the Message':",
-      options: [
-        {
-          text: "Sell the gap: current state and its negative consequences vs. future state and its positive business outcomes — tied to corporate objectives, with agreed metrics",
-          correct: true,
-        },
-        { text: "A scripted demo flow that every rep follows identically" },
-        { text: "Lead every deal with maximum discounting authority" },
-      ],
-      explain:
-        "Current state → pain → future state → outcomes, attached to what the company is publicly trying to do. Patrick used this exact vocabulary unprompted in your first call — mirror it.",
-    },
-    {
-      id: "m6q2",
-      prompt: "A deal is signed-off technically but has sat in 'legal review' for five weeks. Which MEDDPICC letter did you under-work?",
-      options: [
-        { text: "M — Metrics" },
-        { text: "P — Paper process", correct: true },
-        { text: "I — Identify pain" },
-      ],
-      explain:
-        "Paper process: legal, procurement, security review. Map it early — who reviews, how long each step takes, what kills deals — or watch your quarter die in someone's contract queue.",
-    },
-    {
-      id: "m6q3",
-      prompt: "'The person who sells for you when you're not in the room' is the:",
-      options: [
-        { text: "Economic buyer" },
-        { text: "Champion", correct: true },
-        { text: "Coach" },
-      ],
-      explain:
-        "A champion has personal skin in the game and the influence to push. At Cribl that's often the architect or engineer whose life the product fixes. No champion, no deal — it's the most common empty box.",
-    },
-    {
-      id: "m6q4",
-      prompt: "Patrick's daily PG baseline:",
-      options: [
-        { text: "25 cold calls before noon" },
-        {
-          text: "10 emails + 10 calls + 10 LinkedIn messages to 10 people, every day",
-          correct: true,
-        },
-        { text: "5 personalized videos a day" },
-      ],
-      explain:
-        "10-10-10 daily is the floor. On top: two partner meetings a week and four field events a month. Quote it back to him and to Tim — it's their shared operating language.",
-    },
-    {
-      id: "m6q5",
-      prompt: "The weekly and monthly layers above the daily baseline:",
-      options: [
-        { text: "1 partner meeting a month, 1 field event a quarter" },
-        {
-          text: "2 partner meetings a week, 4 field events a month",
-          correct: true,
-        },
-        { text: "Daily partner standups, weekly field events" },
-      ],
-      explain:
-        "Two partner meetings a week (remember that one for Kat — it's a quarter of the PG system), four field marketing events a month. In person wherever possible: 'sell from your feet, not your seat.'",
-    },
-    {
-      id: "m6q6",
-      prompt: "In Patrick's existing-account motion, what's the QBR actually for?",
-      options: [
-        { text: "Reviewing support tickets and renewal paperwork" },
-        {
-          text: "Getting customer leadership in the room, making your contacts look good, and introducing new capabilities (Search, Lake) — turning white space into pipeline",
-          correct: true,
-        },
-        { text: "Renegotiating pricing quarterly" },
-      ],
-      explain:
-        "The QBR is an expansion engine disguised as a check-in: leadership shows up, your champions get credit, specialist teams seed new use cases, and executive alignment gets built.",
-    },
-    {
-      id: "m6q7",
-      prompt: "In your 4-layer territory plan, what gets the MOST time?",
-      options: [
-        { text: "Layer 4 — creative cold outreach, because new logos matter most" },
-        {
-          text: "Layer 1 — deals already in the pipeline",
-          correct: true,
-        },
-        { text: "Layer 3 — personal network coffees" },
-      ],
-      explain:
-        "Live pipeline first — those deals are closest to revenue and most fragile during a territory handoff. Then top-20 strategic targets, then network activation, then cold outreach. Weighted, in that order.",
-    },
-    {
-      id: "m6q8",
-      prompt: "Patrick's 'demand servicer' warning describes someone who:",
-      options: [
-        {
-          text: "Thrives on inbound and existing demand but flops where buyers don't know the product exists yet",
-          correct: true,
-        },
-        { text: "Spends too much time servicing existing customers" },
-        { text: "Relies too heavily on SEs in deals" },
-      ],
-      explain:
-        "Cribl sellers activate people who've never heard the story — it takes six-plus touches and real grit. Your founder years are the counter-evidence: nobody was inbound-ing you funding or customers.",
-    },
-    {
-      id: "m6q9",
-      prompt: "Engineers on the listening tour tell you they 'love Stream but wish search across the S3 archive was faster.' That's:",
-      options: [
-        {
-          text: "White space — a Cribl Search expansion conversation waiting to happen, via the QBR",
-          correct: true,
-        },
-        { text: "A support ticket — route it and move on" },
-        { text: "A churn risk signal — escalate to Patrick immediately" },
-      ],
-      explain:
-        "Love/hate/wish answers ARE the expansion map. A wish for faster archive search is a Cribl Search use case — bring the overlay team to the next QBR and turn the wish into pipeline.",
-    },
-    {
-      id: "m6q10",
-      prompt: "Tim asks: 'Walk me through your process when you get a new opportunity.' Your spine:",
-      options: [
-        {
-          text: "Qualify the gap (current vs. future state), map the committee and the MEDDPICC boxes, agree on success criteria before any POV, drive the decision and paper process by dates",
-          correct: true,
-        },
-        { text: "Get a demo scheduled as fast as possible — momentum is everything" },
-        { text: "Send pricing early to qualify hard on budget" },
-      ],
-      explain:
-        "Process = gap → committee → MEDDPICC discipline → success criteria → dated close plan. A demo-first or price-first answer reads as a demand servicer. Stay consistent with what you told Patrick — they compare notes.",
-    },
-  ],
-  writeIn: [
-    {
-      id: "m6w1",
-      prompt:
-        "Explain Force Management's \"Command of the Message\" in your own words — the way you'd anchor a deal.",
-      keyPoints: [
-        "Sell the gap",
-        "Current state → negative consequences (what staying put is costing them)",
-        "Future state → positive business outcomes (what change is worth)",
-        "Plus the required capabilities and the metrics",
-        "Tie it to their corporate objectives, with metrics agreed up front",
-      ],
-      model:
-        "I anchor every deal on the gap. Where are they today — current state — and what is that costing them? Then the future state and what it's worth in business outcomes. From there it's the capabilities they'd need to get there and the metrics we'll measure, all tied to their corporate objectives and agreed up front. Current state, consequences, future state, outcomes — that's the spine.",
-    },
-    {
-      id: "m6w2",
-      prompt:
-        "How do you actually use MEDDPICC? And a deal's been stuck in legal review for five weeks — which box did you under-work?",
-      keyPoints: [
-        "Use MEDDPICC as a diagnostic, not a checklist of letters to recite",
-        "When a deal stalls, one of the boxes is empty — go find which one",
-        "Here it's the Paper process — legal, procurement, security review",
-        "Map it early: who reviews, how long each step takes, what kills deals",
-      ],
-      model:
-        "I use MEDDPICC as a diagnostic, not a checklist — when a deal stalls, one of those boxes is empty and that tells me exactly what to go fix. Five weeks in legal review is the paper process: legal, procurement, security review. I should've mapped that early — who reviews it, how long each step takes, where deals quietly die — instead of finding out now. That's where quarters go to die if you don't work it.",
-    },
-    {
-      id: "m6w3",
-      prompt:
-        "Recite Patrick's pipeline-generation baseline — daily, weekly, and monthly.",
-      keyPoints: [
-        "Daily: 10 emails + 10 calls + 10 LinkedIn messages to 10 people",
-        "Weekly: 2 partner meetings",
-        "Monthly: 4 field marketing events",
-        "It's the floor, not the ceiling — and in person wherever possible ('sell from your feet, not your seat')",
-      ],
-      model:
-        "Ten emails, ten calls, and ten LinkedIn touches to ten people — every day. Two partner meetings a week. Four field events a month. That's the floor, not the ceiling; do more and more happens. And as much of it in person as I can make happen — sell from your feet, not your seat.",
-    },
-    {
-      id: "m6w4",
-      prompt:
-        "Walk me through your 4-layer territory plan — and be clear which layer gets the most time.",
-      keyPoints: [
-        "Layer 1: deals already in the pipeline — they get the MOST time (closest to revenue, fragile in a handoff)",
-        "Layer 2: top-20 strategic targets — account files, people plans, a named partner angle for each",
-        "Layer 3: the Philly network — born and raised, Penn State, benefits and founder relationships",
-        "Layer 4: creative, personalized cold outreach — video and pattern interrupts, never spray-and-pray",
-        "Weighted in that order",
-      ],
-      model:
-        "Four layers, weighted in order. Layer one is the deals already in the pipeline — they get the most time because they're closest to revenue and the most fragile in a territory handoff. Layer two is a top-20 target list, each with a real account file, a people plan, and a named partner angle. Layer three is my Philly network — born and raised, Penn State, eight years of benefits relationships and my founder network. Layer four is creative, personalized cold outreach — video and pattern interrupts, never spray-and-pray. A video is literally how I got Patrick's attention.",
-    },
-  ],
-};
+// ─────────────────────────────────────────────────────────────
+// ACT 2 — KNOW THE PRODUCT
+// The sidebar, but still deep. Enough product to talk value, carry
+// an honest technical conversation, and be credible in the room —
+// without pretending to be the SE. Two modules, consolidated from
+// the old four.
+// ─────────────────────────────────────────────────────────────
 
 export const M7: CourseModule = {
   id: "m7",
   period: 2,
   number: 7,
-  title: "Talk Tech Without Faking It",
-  tagline: "Honest fluency: the mental picture, the vocabulary, the recovery move",
-  minutes: 10,
+  title: "What Cribl Sells & Why It Matters",
+  tagline: "The problem, the platform, and the honest fluency to talk it",
+  minutes: 16,
   cards: [
     {
       id: "m7c1",
-      title: "Why this module exists",
+      title: "The problem, in one breath",
       paragraphs: [
-        "Cam isn't testing whether you can configure a pipeline — he's testing whether you can carry a technical conversation honestly: use the vocabulary correctly, know where your knowledge ends, and handle the edge gracefully. You've told everyone you can't bullshit. Good — that's the brand. This module makes sure you rarely need to.",
-        "The standard isn't 'expert.' It's 'dangerous enough to whiteboard, humble enough to hand off.'",
+        "Every big company's machines — servers, laptops, firewalls, cloud apps — constantly produce records of what's happening. That's telemetry: logs, metrics, events. Security teams need it to catch attacks. IT teams need it to keep systems up.",
+        "Here's the squeeze: the amount of this data roughly doubles every couple of years, every tool wants its own copy in its own format, and the big analysis tools charge by how much you feed them. So costs explode, engineers drown in plumbing work, and most of what gets stored in the expensive tools is junk that never gets looked at.",
       ],
       sayThis:
-        "I'm not going to pretend to be an engineer — my job is to be dangerous enough to whiteboard the story and smart enough to bring my SE in before I'm out of my depth.",
+        "Enterprises don't have a data shortage — they have a data control problem. The bills grow faster than the budgets, and every tool wants the same data in a different shape.",
       source: "craft",
     },
     {
       id: "m7c2",
-      title: "The data path — your mental picture",
+      title: "What Cribl does — and your 30-second version",
       paragraphs: [
-        "Hold this picture and you can navigate almost any technical exchange: Data is born on machines (servers, laptops, firewalls, cloud services). Agents collect it there (that's Edge). It flows through the pipeline (Stream) where it's cleaned, shaped, masked, enriched. Then it lands in destinations: the SIEM for security alerting (Splunk, Sentinel...), observability tools for uptime (Datadog...), and cheap object storage (S3, Cribl Lake) for everything else. Search can ask questions anywhere along that path — without moving the data. Replay pulls old data from storage back into a tool when needed.",
-        "Practice drawing it once on paper: sources → agent → pipeline → three destination tiers, with Search across the top. That's the whiteboard.",
+        "Cribl sits in the middle — between where data is born (the sources) and where it gets used (the destinations: Splunk, Datadog, Elastic, cheap cloud storage, AI systems). Collect it once, then shape it in flight: drop the junk, mask the sensitive parts, add useful context, convert the format. Then route it wherever it's useful. It connects to 80+ sources and destinations, which is why nobody has to rip anything out to adopt it.",
+        "Memorize the 30-second version until it's boring — both Kat and Cam will, in some form, check whether you can say what Cribl does. The three words to always land are Patrick's: choice, flexibility, and control.",
       ],
       sayThis:
-        "Born on machines, collected by one agent, shaped in the pipeline, landed in the right tier — SIEM, observability, or cheap storage — with search across all of it.",
-      source: "patrick",
+        "Cribl is the control layer for all the machine data an enterprise generates. We collect it from anywhere, cut the junk, protect the sensitive parts, and deliver it wherever it's useful — security tools, monitoring tools, cheap storage, or the AI systems they're standing up. Customers get choice, flexibility, and control — and it usually pays for itself in savings.",
+      source: "chris",
     },
     {
       id: "m7c3",
-      title: "The twelve terms that will definitely come up",
+      title: "The four products, one motion",
       paragraphs: [
-        "Telemetry (machine data: logs, metrics, traces). Log (timestamped record of an event). SIEM ('sim' — the security team's alerting/analysis hub). SOC (security operations center — the team watching the screens). Observability (knowing your systems' health from their outputs — the IT side of the house). Ingest (data entering a tool — what the expensive tools bill on). Index (how a tool organizes data for fast search — costly). Agent (small software on each machine that collects and ships data). S3 / object storage (cheap, infinitely scalable cloud storage; S3 is also the de facto standard interface). EDR (endpoint detection & response — CrowdStrike et al). OTel / OpenTelemetry (open standard for emitting telemetry). Replay (pull archived data back into a tool on demand).",
-        "The full deck — about 40 terms including the channel and sales vocabulary — lives in Flashcards. Two passes today, one tomorrow.",
+        "Stream — the engine: collect from anywhere, transform in flight (reduce junk, shape per destination, enrich, mask, replay), route anywhere. Petabyte scale. It's where the cost savings and control live. Edge — one vendor-neutral agent that replaces the zoo of per-vendor collectors; fleet-manage up to 250,000 nodes from one console.",
+        "Search — ask questions of data where it already lives (S3, the lake, the edge) without 'rehydrating' it back into an expensive tool first; Cribl claims 10x faster investigations. Lake — low-cost, open-format storage with no lock-in ('easy in, easy out'). The suite in one breath: collect with Edge, control with Stream, store cheap in Lake, ask anything with Search.",
       ],
       sayThis:
-        "The SIEM bills on ingest — that's why controlling what you send it is worth real money.",
-      source: "craft",
+        "Four products, one motion: collect it with Edge, control it with Stream, store it cheap in Lake, and ask it anything with Search.",
+      source: "cribl.io",
     },
     {
       id: "m7c4",
-      title: "Sentences that signal fluency",
+      title: "The money story: tiering",
       paragraphs: [
-        "A few composed lines that deploy vocabulary naturally — practice saying them aloud. 'Most teams are paying SIEM prices to store data nobody ever queries — route that to object storage and keep it searchable.' 'Agent fatigue is real — five collectors per server, and every upgrade cycle is a project. One neutral agent changes the math.' 'The replay story sells itself to anyone who's been through an incident: keep ninety days hot, archive the rest, pull back exactly what the investigation needs.'",
-        "Notice the pattern: every sentence is pain → mechanism → outcome. Vocabulary in service of a point, never decoration.",
+        "Patrick's value story is about putting data in homes that match its value. High-value security data goes to the expensive analysis tool (the SIEM) and lives there ~90 days. After that it rolls off to cheap storage the customer controls — still there for audits and investigations. The medium- and low-value data skips the expensive tools entirely.",
+        "That's why this isn't a hard budget conversation: customers usually fund Cribl with what it saves them on licenses and storage. Real example from Cribl's site: one customer cut 41% of daily endpoint-security data — from 9.25TB to 5TB — without losing anything they cared about.",
       ],
       sayThis:
-        "Most teams pay SIEM prices to store data nobody ever queries. Route it to storage you control, keep it searchable, replay it when an investigation actually needs it.",
-      source: "craft",
+        "Send your highest-value data to the expensive tools, route everything else to storage you control — most customers fund the project with the savings.",
+      source: "patrick",
     },
     {
       id: "m7c5",
+      title: "Why now: the AI pressure",
+      paragraphs: [
+        "Every board is pushing AI initiatives, and the new AI agents — for security operations, incident response, reliability — are hungry for exactly this telemetry. Feed them raw, ungoverned data and two things happen: compute bills blow up, and sensitive company data can leak into models.",
+        "Patrick frames the executive conversation as three words: AI readiness, AI governance, AI compliance. Cribl's public positioning leans straight in: 'The AI Platform for Telemetry,' serving data to both humans and AI agents. The pipes you control become the safety layer for the AI era. (Cribl Guard masks sensitive data before it leaves the network; AI Copilot helps build pipelines.)",
+      ],
+      sayThis:
+        "Everyone's racing to put AI agents on their security and ops data. Cribl is how you feed those agents the right data — governed, masked, and affordable — instead of a firehose of risk.",
+      source: "patrick",
+    },
+    {
+      id: "m7c6",
+      title: "Where it runs — and the government nuance",
+      paragraphs: [
+        "Cribl runs as SaaS (Cribl.Cloud), on-prem, or hybrid — workers live wherever the data lives, which also avoids surprise cloud egress bills. Patrick thinks the hybrid flexibility is a real moat: SaaS-only rivals like Datadog physically can't serve the most locked-down environments.",
+        "Public sector: Cribl is FedRAMP Moderate authorized (cleared for government cloud use). It is NOT yet IL5 — the higher bar where agencies run a sealed copy in classified environments — but having a true on-prem offering means that path exists at all. Get this nuance exactly right; faking certs is a credibility killer.",
+      ],
+      sayThis:
+        "Cloud, on-prem, or hybrid — Cribl goes where the data lives. That flexibility is why the government business is growing and why SaaS-only competitors can't follow. On certs I'm precise: FedRAMP Moderate authorized, not yet IL5.",
+      source: "patrick",
+    },
+    {
+      id: "m7c7",
+      title: "The data path — your whiteboard picture",
+      paragraphs: [
+        "Hold this picture and you can navigate almost any technical exchange: data is born on machines, an agent collects it (Edge), it flows through the pipeline (Stream) where it's cleaned, shaped, masked, enriched, then lands in tiers — the SIEM for security alerting, observability tools for uptime, cheap object storage (S3, Lake) for the rest. Search asks questions anywhere along the path without moving the data; Replay pulls archived data back into a tool when needed.",
+        "The terms that will come up, fast: telemetry (machine data — logs/metrics/traces), SIEM ('sim' — the security team's alerting hub, bills on ingest), SOC (the security team), observability (the IT-health side), ingest (data entering a tool — what the expensive tools bill on), agent, S3 (cheap object storage, also the standard interface), EDR (endpoint detection — CrowdStrike), replay. The full deck lives in Flashcards.",
+      ],
+      sayThis:
+        "Born on machines, collected by one agent, shaped in the pipeline, landed in the right tier — SIEM, observability, or cheap storage — with search across all of it. The SIEM bills on ingest, which is why controlling what you send it is worth real money.",
+      source: "patrick",
+    },
+    {
+      id: "m7c8",
       title: "The honest-gap move",
       paragraphs: [
-        "At some point Cam will reach the edge of your knowledge — possibly on purpose. The move: don't bluff, don't crumble, bridge. Name what you do know, own what you don't, and show the system that closes the gap.",
-        "The recovery script: 'Honest answer — I don't know that one yet. Three weeks ago I couldn't have told you what a SIEM was; here's what I've done since' — and your learning system (this app, the partner calls, the use-case study) IS the answer. Then: 'and in a live deal, that's a question I'd bring my SE in on rather than guess.' That last sentence is exactly what an SE leader wants to hear an AE say.",
+        "At some point an interviewer or a customer will reach the edge of your knowledge — maybe on purpose. The move: don't bluff, don't crumble, bridge. Name what you know, own what you don't, and show the system that closes the gap. This is your brand — you've told everyone you can't bullshit — and it's exactly what an SE leader wants to hear an AE say.",
+        "The recovery script: 'Honest answer — I don't know that one yet. A few weeks ago I couldn't have told you what a SIEM was; here's what I've done since' — and your learning system IS the answer — 'and in a live deal, that's a question I'd bring my SE in on rather than guess.'",
       ],
       sayThis:
         "I don't know that one yet — and I'd rather tell you that than guess. Here's how I've been closing the gap, and in a deal that's the moment I'd bring my SE in.",
@@ -566,34 +108,81 @@ export const M7: CourseModule = {
   quiz: [
     {
       id: "m7q1",
-      prompt: "What's a SIEM?",
+      prompt: "Where does Cribl sit in a customer's world?",
       options: [
+        { text: "It replaces the SIEM as the main security analysis tool" },
         {
-          text: "The security team's central hub for collecting, analyzing, and alerting on security data — bills largely on data ingest",
+          text: "Between data sources and destinations — a control layer in the middle",
           correct: true,
         },
-        { text: "An endpoint agent that blocks malware" },
-        { text: "A cloud storage tier for archived logs" },
+        { text: "On the endpoint, as an antivirus-style agent only" },
       ],
       explain:
-        "Security Information and Event Management — say 'sim.' Splunk and Microsoft Sentinel are the household names. Its ingest-based pricing is the root of the cost pain Cribl fixes.",
+        "Cribl is the layer between where data is born and everywhere it needs to go. It doesn't replace Splunk or Datadog — it controls and optimizes what feeds them. 'We're not a rip-and-replace' disarms most early objections.",
     },
     {
       id: "m7q2",
-      prompt: "Observability, in this world, refers to:",
+      prompt: "A non-technical exec asks 'so what does Cribl do?' Strongest answer:",
       options: [
+        { text: "We're a telemetry pipeline with 80+ integrations supporting schema-on-need transformations" },
         {
-          text: "The IT side — understanding system health and performance from outputs (logs, metrics, traces); Datadog's home turf",
+          text: "We put you back in control of your machine data — collect it once, clean it, protect it, send each tool only what it needs. It usually pays for itself in savings.",
           correct: true,
         },
-        { text: "Physical security camera infrastructure" },
-        { text: "A compliance framework for data retention" },
+        { text: "We're like Splunk, but cheaper" },
       ],
       explain:
-        "Two houses buy telemetry: security (SIEM/SOC) and observability (IT health/uptime). Cribl serves both — that's the 'IT and security' framing on everything they publish.",
+        "Lead with control and outcomes, not features. The first answer is jargon soup; the third positions Cribl as a SIEM competitor (it isn't) and 'cheaper X' is a race to the bottom.",
     },
     {
       id: "m7q3",
+      prompt: "Match the problem to the product: 'We run five collection agents on every server and upgrades are a nightmare.'",
+      options: [
+        { text: "Cribl Search" },
+        { text: "Cribl Edge", correct: true },
+        { text: "Cribl Lake" },
+      ],
+      explain:
+        "Agent sprawl is Edge's problem to kill: one vendor-neutral agent, fleet-managed — up to 250,000 nodes from a single console.",
+    },
+    {
+      id: "m7q4",
+      prompt: "'Our investigations stall because pulling archived data back into the SIEM takes days.'",
+      options: [
+        { text: "Cribl Search — query the data where it sits, no rehydration", correct: true },
+        { text: "Cribl Edge — collect less data in the first place" },
+        { text: "Buy more SIEM capacity" },
+      ],
+      explain:
+        "Search-in-place is the differentiator: ask questions of data in S3, the lake, or at the edge without moving it. That's the '10x faster investigations' claim on cribl.io.",
+    },
+    {
+      id: "m7q5",
+      prompt: "In Patrick's tiering story, what happens to the highest-value data?",
+      options: [
+        {
+          text: "It goes to the SIEM for ~90 days, then rolls off to low-cost storage the customer controls",
+          correct: true,
+        },
+        { text: "It's deleted after being analyzed once" },
+        { text: "It all stays in the SIEM forever, just compressed" },
+      ],
+      explain:
+        "High-value data earns the expensive home — ~90 days in the SIEM — then moves to cheap storage (S3 or Lake) where it's still searchable. Everything lower-value skips the expensive tools entirely.",
+    },
+    {
+      id: "m7q6",
+      prompt: "Cribl's government certification status (per Patrick):",
+      options: [
+        { text: "FedRAMP Moderate authorized; not yet IL5", correct: true },
+        { text: "IL5 authorized; FedRAMP pending" },
+        { text: "No government authorizations yet" },
+      ],
+      explain:
+        "FedRAMP Moderate = authorized for government cloud. IL5 — sealed copies in classified environments — isn't there yet, but the on-prem product makes that path possible. Faking certs is a credibility killer.",
+    },
+    {
+      id: "m7q7",
       prompt: "Why does 'ingest' matter so much in pricing conversations?",
       options: [
         {
@@ -604,63 +193,7 @@ export const M7: CourseModule = {
         { text: "Regulators cap ingest for compliance reasons" },
       ],
       explain:
-        "Ingest-based billing is the economic engine of the whole category — and of Cribl's value prop: cut 30–50% of what enters the expensive tools and the project funds itself.",
-    },
-    {
-      id: "m7q4",
-      prompt: "S3 in a sentence:",
-      options: [
-        {
-          text: "Amazon's cheap object storage — and the de facto standard interface other storage systems speak too",
-          correct: true,
-        },
-        { text: "A Splunk product tier" },
-        { text: "A security certification level" },
-      ],
-      explain:
-        "S3 = cheap, bottomless cloud storage. Because it became the standard interface, 'S3-compatible' storage is everywhere — which is exactly what Cribl Search can query in place (Patrick: 'S3 is a protocol').",
-    },
-    {
-      id: "m7q5",
-      prompt: "'Replay' means:",
-      options: [
-        {
-          text: "Pulling archived data from cheap storage back into an analysis tool when an investigation or audit needs it",
-          correct: true,
-        },
-        { text: "Re-running a failed pipeline job" },
-        { text: "Recording a demo for the buying committee" },
-      ],
-      explain:
-        "Replay is what makes aggressive tiering safe: archive boldly because you can always pull data back. Anyone who's lived through an incident response immediately gets why this matters.",
-    },
-    {
-      id: "m7q6",
-      prompt: "OpenTelemetry (OTel) is:",
-      options: [
-        {
-          text: "An open standard for how systems emit telemetry — vendor-neutral by design, so it rhymes with Cribl's whole philosophy",
-          correct: true,
-        },
-        { text: "Cribl's proprietary agent protocol" },
-        { text: "A Datadog pricing plan" },
-      ],
-      explain:
-        "OTel standardizes how apps emit logs/metrics/traces. If it comes up, the safe true sentence: 'vendor-neutral emission standard — fits the same philosophy as Cribl, and Cribl works with it.'",
-    },
-    {
-      id: "m7q7",
-      prompt: "EDR is:",
-      options: [
-        {
-          text: "Endpoint detection and response — CrowdStrike's category; its agents generate huge data volumes",
-          correct: true,
-        },
-        { text: "Enterprise data retention — a compliance policy" },
-        { text: "A type of database index" },
-      ],
-      explain:
-        "EDR watches endpoints for threats — and floods the SIEM with data. That's why the 41% EDR-reduction case study (9.25TB → 5TB daily) is such a relatable proof point.",
+        "Ingest-based billing is the economic engine of the category — and of Cribl's value prop: cut 30–50% of what enters the expensive tools and the project funds itself.",
     },
     {
       id: "m7q8",
@@ -674,14 +207,57 @@ export const M7: CourseModule = {
         { text: "Take your best guess from context — showing reasoning beats admitting ignorance" },
       ],
       explain:
-        "The honest-gap move IS the test. An SE leader has watched a hundred AEs bluff; the one who says 'I don't know, here's my system, and that's when I'd bring you in' is the one he fights to work with. Asking the follow-up shows curiosity, not weakness.",
+        "The honest-gap move IS the test. An SE leader has watched a hundred AEs bluff; the one who says 'I don't know, here's my system, and that's when I'd bring you in' is the one he fights to work with.",
     },
   ],
   writeIn: [
     {
       id: "m7w1",
       prompt:
-        "Cam drops an acronym you've never heard. What do you actually do — and why is that the right move with an SE leader?",
+        "A non-technical exec asks, \"So what does Cribl actually do?\" Give your 30-second version.",
+      keyPoints: [
+        "Cribl is the control layer for an enterprise's machine data / telemetry",
+        "Collect it once from anywhere",
+        "Cut the junk, protect/mask the sensitive parts",
+        "Deliver each tool only what it needs — security tools, monitoring, cheap storage, or AI systems",
+        "Customers get choice, flexibility, and control — and it usually pays for itself in savings",
+      ],
+      model:
+        "Cribl is the control layer for all the machine data an enterprise generates. We collect it from anywhere, cut the junk, protect the sensitive parts, and deliver it wherever it's useful — security tools, monitoring tools, cheap storage, or the AI systems they're standing up. Customers get choice, flexibility, and control — and it usually pays for itself in savings.",
+    },
+    {
+      id: "m7w2",
+      prompt:
+        "Name Cribl's four products and the one problem each one kills — the way you'd say it on a call.",
+      keyPoints: [
+        "Stream — the engine: collect, transform in flight (reduce/shape/enrich/mask/replay), route anywhere; where the savings and control live",
+        "Edge — one vendor-neutral agent that kills agent sprawl; fleet-manage up to 250,000 nodes from one console",
+        "Lake — low-cost, open-format storage with no lock-in ('easy in, easy out')",
+        "Search — search-in-place / federated; query data where it lives for 10x faster investigations",
+        "The motion: collect (Edge) → control (Stream) → store (Lake) → ask (Search)",
+      ],
+      model:
+        "Four products, one motion. Stream is the engine — data in from anywhere, transformed in flight, out to anywhere; that's where the savings and control live. Edge is one neutral agent that replaces the zoo of vendor agents — you manage up to 250,000 machines from one screen. Lake is cheap, open-format storage that doesn't lock your data in. And Search lets you ask questions of data where it already sits — 10x faster investigations. Collect with Edge, control with Stream, store cheap in Lake, ask anything with Search.",
+    },
+    {
+      id: "m7w3",
+      prompt:
+        "Draw the data path in words — your whiteboard picture, left to right — and use 'ingest' naturally.",
+      keyPoints: [
+        "Data is born on machines — servers, laptops, firewalls, cloud services",
+        "One agent collects it at the source (Edge)",
+        "It flows through the pipeline (Stream) where it's cleaned, shaped, masked, enriched",
+        "It lands in tiers: the SIEM for security alerting, observability tools for uptime, cheap object storage (S3 / Lake) for the rest",
+        "Search asks questions anywhere without moving data; Replay pulls archived data back",
+        "The SIEM bills on ingest — controlling what you send it is worth real money",
+      ],
+      model:
+        "Picture it left to right. Data's born on machines — servers, laptops, firewalls, cloud apps. One agent collects it at the source. It flows through the pipeline, where it gets cleaned, shaped, masked, and enriched in flight. Then it lands in the tier it deserves: the SIEM for security alerting, observability tools for uptime, and cheap object storage like S3 or Cribl Lake for the rest. Search can ask questions anywhere along that path without moving the data, and Replay pulls old data back when an investigation needs it. And the reason it all matters: the SIEM bills on ingest, so controlling what you send it is worth real money.",
+    },
+    {
+      id: "m7w4",
+      prompt:
+        "An interviewer reaches the edge of your technical knowledge. What do you actually do — and why is that the right move?",
       keyPoints: [
         "Don't bluff and don't crumble — bridge",
         "Name what you know, own what you don't: 'I don't know that one yet — rather tell you that than guess'",
@@ -690,36 +266,270 @@ export const M7: CourseModule = {
         "Then ask what it means — curiosity, not weakness",
       ],
       model:
-        "Honest answer — I don't know that one yet, and I'd rather tell you that than guess. Three weeks ago I couldn't have told you what a SIEM was; here's the system I built to close that gap fast. And in a live deal, that's exactly the kind of question I'd bring my SE in on rather than wing it. Then I'd ask you what it means — I want to learn it.",
-    },
-    {
-      id: "m7w2",
-      prompt:
-        "Draw the data path in words — your whiteboard picture, left to right.",
-      keyPoints: [
-        "Data is born on machines — servers, laptops, firewalls, cloud services",
-        "One agent collects it at the source (Edge)",
-        "It flows through the pipeline (Stream) where it's cleaned, shaped, masked, enriched",
-        "It lands in tiers: the SIEM for security alerting, observability tools for uptime, cheap object storage (S3 / Lake) for the rest",
-        "Search asks questions anywhere along the path without moving data; Replay pulls archived data back when needed",
-      ],
-      model:
-        "Picture it left to right. Data's born on machines — servers, laptops, firewalls, cloud apps. One agent collects it at the source. It flows through the pipeline, where it gets cleaned, shaped, masked, and enriched in flight. Then it lands in the tier it deserves: the SIEM for security alerting, observability tools for uptime, and cheap object storage like S3 or Cribl Lake for everything else. Search can ask questions anywhere along that path without moving the data, and Replay pulls old data back into a tool when an investigation needs it.",
-    },
-    {
-      id: "m7w3",
-      prompt:
-        "Why does \"ingest\" matter so much in a pricing conversation? Use the term naturally.",
-      keyPoints: [
-        "The big analysis tools — SIEMs — bill by the volume of data entering them; that's ingest",
-        "Control the ingest and you control the bill",
-        "Most teams pay SIEM prices to store data nobody ever queries",
-        "Cut 30–50% of what enters the expensive tools and the project funds itself",
-      ],
-      model:
-        "The SIEM bills on ingest — the volume of data entering it — so controlling what you send it is worth real money. Most teams are paying SIEM prices to store data nobody ever queries. Route that to storage you control, keep it searchable, and you cut 30 to 50% of what feeds the expensive tool. That's the savings that funds the whole Cribl project.",
+        "Honest answer — I don't know that one yet, and I'd rather tell you that than guess. A few weeks ago I couldn't have told you what a SIEM was; here's the system I built to close that gap fast. And in a live deal, that's exactly the kind of question I'd bring my SE in on rather than wing it. Then I'd ask you what it means — I want to learn it. With an SE leader, that honesty is the whole point: they've watched a hundred AEs bluff, and the one who doesn't is the one they fight to work with.",
     },
   ],
 };
 
-export const PERIOD2 = [M5, M6, M7];
+export const M8: CourseModule = {
+  id: "m8",
+  period: 2,
+  number: 8,
+  title: "The Battlefield & The Receipts",
+  tagline: "Why the neutral data layer wins — and the numbers that prove it",
+  minutes: 14,
+  cards: [
+    {
+      id: "m8c1",
+      title: "The platformization war",
+      paragraphs: [
+        "Every mega-vendor is running the same play: 'consolidate onto our platform.' Palo Alto comes at the customer from the firewall. CrowdStrike from the endpoint. Datadog from monitoring. Splunk/Cisco from the SIEM. Each tells the CISO: stop buying best-of-breed point tools, our platform is good enough at everything.",
+        "And execs are listening — fewer vendors, fewer contracts, one throat to choke. This is the single most important market dynamic to understand before your calls.",
+      ],
+      sayThis:
+        "Palo's coming from the firewall, CrowdStrike from the endpoint, Datadog from metrics — everyone's selling platformization. The fight is over who controls the data underneath.",
+      source: "patrick",
+    },
+    {
+      id: "m8c2",
+      title: "Cribl's counter-move",
+      paragraphs: [
+        "The data layer is the neutral ground under all those platforms. If the customer controls their own data pipes, platformization stops being a trap: pick any platform today, swap it tomorrow, run two during a migration. The platforms' leverage — 'all your data is in us, good luck leaving' — evaporates.",
+        "This is why Cribl describes itself as vendor-neutral everywhere. The customer's data strategy becomes the strategic asset, not any one vendor's platform.",
+      ],
+      sayThis:
+        "It's completely fine to lean into platformization — if you control the data. Control the pipes and you can swap the platform whenever you want. That's Cribl.",
+      source: "patrick",
+    },
+    {
+      id: "m8c3",
+      title: "So who's the competition?",
+      paragraphs: [
+        "There's no single like-for-like competitor — you said this to Patrick and he confirmed it ('we're winning way more than our unfair share'). The real competition shows up three ways: the status quo (do nothing, keep overpaying), build-it-yourself with open-source pipelines (free software, expensive engineers), and the platforms' own bundled pipeline features — which exist to keep data flowing INTO their platform, not to give the customer choice.",
+        "Posture matters: never trash-talk. Cribl wins as Switzerland. The platforms are simultaneously partners, destinations, and rivals — that's normal here (Palo Alto is literally a named Cribl partner).",
+      ],
+      sayThis:
+        "Honestly, the biggest competitor is the status quo. Second is 'our platform vendor throws in a basic pipeline' — but their pipeline exists to lock data in, and ours exists to give you choice.",
+      source: "chris",
+    },
+    {
+      id: "m8c4",
+      title: "The AI conversation at the top",
+      paragraphs: [
+        "Where CISO conversations are right now: everyone's experimenting with AI, and even the experiments blow out compute budgets and create governance headaches — agent systems with brittle connections, no oversight, sensitive data wandering into models.",
+        "The umbrella Patrick named: AI readiness, AI governance, AI compliance. The new agentic security tools (an 'AI SOC analyst,' an AI incident responder) only work if fed accurate, relevant, governed data. Useful parallel for execs: Databricks and Snowflake play this 'controlled data layer' game for general business data; Cribl is that layer for telemetry.",
+      ],
+      sayThis:
+        "Every CISO is asking the same two questions: how do we feed AI the right data, and how do we make sure it never leaks the wrong data. Cribl is the control point for both.",
+      source: "patrick",
+    },
+    {
+      id: "m8c5",
+      title: "Objections clinic",
+      paragraphs: [
+        "'We already have Splunk/Datadog.' → Great — keep them. Cribl makes them cheaper and better by controlling what feeds them. Not a rip-and-replace.",
+        "'Is this really necessary?' → Your data doubles every couple of years, your license bill tracks it, and your AI initiatives need governed data. The status quo is the expensive choice. 'We could build this with open source.' → Some teams do — then they discover they've hired a team to babysit pipelines instead of doing security. Free software isn't free at enterprise scale, and it doesn't come with governance, support, or a roadmap.",
+      ],
+      sayThis:
+        "You don't have to change anything you love — Cribl makes the tools you already have cheaper and better, and gives you an exit ramp you'll be glad exists later.",
+      source: "craft",
+    },
+    {
+      id: "m8c6",
+      title: "The headline numbers",
+      paragraphs: [
+        "Have these cold, with their sources straight. From cribl.io: 50% of the Fortune 100 are customers. From Ami: $339M ARR (the subscription run-rate), growing ~40% year over year, and she joined before $100M, so she's watched it 3x. From Patrick: 4th-fastest software company ever to $100M ARR, around 1,500 customers.",
+        "Why sources matter: 'Ami mentioned you're at $339M now' sounds connected. Misquoting a stat you can't back up sounds like a guy who skimmed a press release. (These are last-known figures — present them as approximate, and check the live number.)",
+      ],
+      sayThis:
+        "Half the Fortune 100 runs Cribl, and Ami mentioned you've more than tripled since she joined — fourth-fastest company to $100 million. The product-market fit conversation is over.",
+      source: "ami",
+    },
+    {
+      id: "m8c7",
+      title: "Proof points — logos and stories with numbers",
+      paragraphs: [
+        "Logos you can name (cribl.io case studies): Reddit, Sophos, Accenture Federal Services, Cox Automotive, Hughes, Pegasystems, ServiceNow, Nutanix. Pick a security one (Sophos), a federal one (Accenture Federal), and a consumer brand for range.",
+        "Stories with numbers attached: Nutanix cut firewall log volume 50%. The EDR case: 41% less daily endpoint data (9.25TB → 5TB). Search: 10x faster investigations. Hughes: the observability team finally says yes to more requests (that one's about capacity, not cost). The pattern is always the same — cut a third to half of what feeds the expensive tools, investigations get faster, the team stops saying no.",
+      ],
+      sayThis:
+        "The pattern across the case studies is the same: cut a third to half of the data feeding the expensive tools, investigations get faster, and the team stops saying no to new requests.",
+      source: "cribl.io",
+    },
+    {
+      id: "m8c8",
+      title: "The use-case menu + how to deploy a stat",
+      paragraphs: [
+        "Cribl organizes its story around six repeatable plays: Cost Control (the door-opener), SIEM Migration (move or run two SIEMs without re-plumbing — huge right now with Splunk/Cisco churn), SOC Modernization (better data to security, incl. the AI angle), Investigations (Search speed), Site Reliability (the IT/uptime side), and Telemetry as a Shared Service. Cost Control opens the door; the rest are the expansion story.",
+        "And the discipline: stats don't persuade on their own — attach them to a pain. Not '50% of the Fortune 100 use Cribl,' but 'most teams come to us when the SIEM bill becomes indefensible — that's how half the Fortune 100 ended up here.' One stat per point, attached to a story, with a source you trust.",
+      ],
+      sayThis:
+        "Most customers show up when the data bill becomes indefensible — that's how half the Fortune 100 got here. Cost control is the door; then migration, SOC modernization, and telemetry as a shared service.",
+      source: "craft",
+    },
+  ],
+  quiz: [
+    {
+      id: "m8q1",
+      prompt: "What is 'platformization'?",
+      options: [
+        {
+          text: "Mega-vendors pushing customers to consolidate many point tools onto their single platform",
+          correct: true,
+        },
+        { text: "Moving from on-prem software to cloud platforms" },
+        { text: "Standardizing all data on one open format" },
+      ],
+      explain:
+        "Palo, CrowdStrike, Datadog, Splunk/Cisco — all selling 'consolidate onto us.' Knowing the word and who's pushing it instantly signals market fluency.",
+    },
+    {
+      id: "m8q2",
+      prompt: "Why does controlling the data layer defuse platform lock-in?",
+      options: [
+        {
+          text: "If you control your own pipes, you can adopt any platform and still swap it later — their 'all your data lives in us' leverage disappears",
+          correct: true,
+        },
+        { text: "It encrypts the data so platforms can't read it" },
+        { text: "It forces platforms to lower prices through regulation" },
+      ],
+      explain:
+        "Patrick's core argument: platformization is fine IF you control the data. The customer keeps choice, flexibility, control — and every vendor has to keep earning the business.",
+    },
+    {
+      id: "m8q3",
+      prompt: "Kat or Cam asks: 'Who's Cribl's biggest competitor?' Strongest answer:",
+      options: [
+        { text: "Splunk — the legacy player everyone wants to beat" },
+        {
+          text: "There's no one direct competitor — the real fights are the status quo, DIY open-source pipelines, and platform vendors bundling pipelines to keep data locked in",
+          correct: true,
+        },
+        { text: "Datadog, because they have the most money" },
+      ],
+      explain:
+        "Naming one vendor misreads the category. The sophisticated answer covers status quo, DIY, and bundled pipelines — and notes the incentive difference: their pipelines lock data in; Cribl's gives choice.",
+    },
+    {
+      id: "m8q4",
+      prompt: "Why never trash-talk Splunk, Datadog, or CrowdStrike in a Cribl deal?",
+      options: [
+        {
+          text: "They're destinations, partners, and rivals at once — Cribl wins as Switzerland, and the customer keeps using them",
+          correct: true,
+        },
+        { text: "Legal reasons — disparagement clauses in partner contracts" },
+        { text: "Actually, you should — differentiation requires drawing blood" },
+      ],
+      explain:
+        "Cribl feeds these platforms data every day; customers love them. 'Keep what you love, we'll make it cheaper and better' wins — and trash talk torches alliances (Palo Alto is a named Cribl partner).",
+    },
+    {
+      id: "m8q5",
+      prompt: "Patrick's three-word umbrella for the executive AI conversation:",
+      options: [
+        { text: "AI speed, AI scale, AI savings" },
+        { text: "AI readiness, AI governance, AI compliance", correct: true },
+        { text: "AI agents, AI models, AI data" },
+      ],
+      explain:
+        "Readiness (is our data ready to feed AI?), governance (who controls what the AI sees?), compliance (can we prove it?). Use this trio with anyone senior and you're speaking their language.",
+    },
+    {
+      id: "m8q6",
+      prompt: "The ARR and growth numbers Ami gave you (present as approximate):",
+      options: [
+        { text: "$100M ARR, growing 100% a year" },
+        { text: "~$339M ARR, growing about 40% a year", correct: true },
+        { text: "$1B ARR, growing about 20% a year" },
+      ],
+      explain:
+        "~$339M ARR, ~40% YoY, and she joined before $100M. Patrick separately said 4th-fastest ever to $100M. Cite people for people-numbers, and flag them as last-known — 'check the live figure.'",
+    },
+    {
+      id: "m8q7",
+      prompt: "Which use case is usually the door-opener in a first conversation?",
+      options: [
+        { text: "Telemetry as a Shared Service" },
+        { text: "Cost Control", correct: true },
+        { text: "Site Reliability" },
+      ],
+      explain:
+        "Cost is the universal pain — it funds the project and gets meetings. Migration, SOC modernization, and shared-service telemetry are the expansion story once you're in.",
+    },
+    {
+      id: "m8q8",
+      prompt: "Strongest way to deploy the Fortune 100 stat:",
+      options: [
+        { text: "'Did you know 50% of the Fortune 100 use Cribl?'" },
+        {
+          text: "'Most teams come to us when the data bill becomes indefensible — that's how half the Fortune 100 ended up here.'",
+          correct: true,
+        },
+        { text: "List it alongside ARR, growth rate, and customer count for maximum impact" },
+      ],
+      explain:
+        "Stat + pain + story beats stat alone. And one number per point — a stat barrage is a rookie tell.",
+    },
+  ],
+  writeIn: [
+    {
+      id: "m8w1",
+      prompt:
+        "Explain platformization and Cribl's counter-move, like you're talking to an exec who's heard the pitch from every vendor.",
+      keyPoints: [
+        "Mega-vendors all push 'consolidate onto our platform' — Palo from firewall, CrowdStrike from endpoint, Datadog from metrics, Splunk/Cisco from the SIEM",
+        "Execs like it: fewer vendors, fewer contracts, one throat to choke",
+        "Cribl's counter: control the neutral data layer underneath all of them",
+        "If you control your own pipes, any platform choice is reversible — swap tomorrow, run two during a migration",
+        "Their 'all your data lives in us' lock-in leverage disappears",
+      ],
+      model:
+        "Every mega-vendor is running the same play — Palo from the firewall, CrowdStrike from the endpoint, Datadog from metrics, Splunk from the SIEM — all saying 'consolidate onto us.' And it's tempting: fewer vendors, fewer contracts. Here's the thing — platformization is completely fine if you control the data underneath. Control your own pipes and you can pick any platform today and swap it tomorrow, or run two during a migration. Their leverage — 'all your data is in us, good luck leaving' — just evaporates. That's Cribl: the neutral data layer that keeps every platform decision reversible.",
+    },
+    {
+      id: "m8w2",
+      prompt:
+        "Kat or Cam asks: \"Who do you see as Cribl's biggest competitor?\" Give your answer.",
+      keyPoints: [
+        "There's no single like-for-like competitor",
+        "The real competition is the status quo — do nothing, keep overpaying",
+        "DIY open-source pipelines — free software, expensive engineers",
+        "The platforms' own bundled pipelines — which exist to lock data IN, where Cribl's give choice",
+        "Never trash-talk; Cribl wins as Switzerland",
+      ],
+      model:
+        "Honestly, there's no one direct competitor — Cribl wins way more than its unfair share. The real competition shows up three ways. First, the status quo — do nothing and keep overpaying. Second, teams that try to build it themselves with open source — free software, very expensive engineers. Third, the platform vendors bundling a basic pipeline — but their pipeline exists to lock data into their platform, and ours exists to give the customer choice. I never trash-talk any of them — Cribl's whole position is being Switzerland.",
+    },
+    {
+      id: "m8w3",
+      prompt:
+        "Rattle off the headline numbers that prove Cribl's product-market fit — with the right source on each, and the right hedge.",
+      keyPoints: [
+        "50% of the Fortune 100 are customers (cribl.io)",
+        "~$339M ARR, growing ~40% year over year (Ami — she joined before $100M and has watched it 3x)",
+        "4th-fastest software company ever to $100M ARR (Patrick)",
+        "~1,500 customers (Patrick)",
+        "Attribute people-numbers to the person who told you; present figures as last-known / approximate",
+      ],
+      model:
+        "Half the Fortune 100 runs Cribl — that's straight from their site. Ami mentioned they're around $339 million ARR now, growing about 40% a year, and she joined before $100M, so she's watched it more than triple. Patrick said they're the fourth-fastest software company ever to $100M, with around 1,500 customers. I'd present the dollar figures as last-known and check the live number — but the product-market-fit conversation is over.",
+    },
+    {
+      id: "m8w4",
+      prompt:
+        "Which use case opens the door first — and why is SIEM Migration so hot right now?",
+      keyPoints: [
+        "Cost Control is usually the door-opener — universal pain, and it funds the project",
+        "SIEM Migration is hot because of Splunk/Cisco churn and new options",
+        "Cribl lets customers switch or run two SIEMs side-by-side without re-plumbing every feed",
+        "When you control the pipes, swapping the destination is easy",
+      ],
+      model:
+        "Cost Control is almost always the foot in the door — it's the universal pain and it funds the project. SIEM Migration is the one that's red-hot right now, with all the Splunk and Cisco churn. The reason Cribl makes it easy: when you control the pipes, you can feed the old and the new SIEM simultaneously during the transition instead of hand-rewiring hundreds of feeds. Then it expands into SOC modernization and telemetry as a shared service.",
+    },
+  ],
+};
+
+export const PERIOD2 = [M7, M8];
