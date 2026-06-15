@@ -4,7 +4,7 @@ import "./globals.css";
 import { SWRegister } from "@/components/sw-register";
 import { BottomNav } from "@/components/bottom-nav";
 import { TopBar } from "@/components/top-bar";
-import { Tutor } from "@/components/tutor";
+import { Tutor, TutorProvider, TutorShell } from "@/components/tutor";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -44,12 +44,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-cribl-soft font-body text-ink antialiased">
-        <TopBar />
-        <div className="min-h-dvh w-full px-4 pb-32 pt-[calc(env(safe-area-inset-top)+0.625rem)] sm:px-6 lg:px-8 lg:pb-16 lg:pt-8">
-          {children}
-        </div>
-        <BottomNav />
-        <Tutor />
+        <TutorProvider>
+          {/* Everything in the shell slides left to make room for the tutor
+              panel on wide screens; the panel itself sits outside it. */}
+          <TutorShell>
+            <TopBar />
+            <div className="min-h-dvh w-full px-4 pb-32 pt-[calc(env(safe-area-inset-top)+0.625rem)] sm:px-6 lg:px-8 lg:pb-16 lg:pt-8">
+              {children}
+            </div>
+            <BottomNav />
+          </TutorShell>
+          <Tutor />
+        </TutorProvider>
         <SWRegister />
       </body>
     </html>
