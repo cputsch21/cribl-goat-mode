@@ -8,7 +8,8 @@ import {
 
 export const maxDuration = 60;
 
-const MIN_USER_TURNS = 6;
+// Match the call screen: a round is judgeable once it's run this long.
+const MIN_SECONDS = 30;
 
 interface TranscriptLine {
   role: "user" | "interviewer";
@@ -87,12 +88,13 @@ export async function POST(req: Request) {
     }
 
     const userTurns = transcript.filter((t) => t.role === "user").length;
-    if (userTurns < MIN_USER_TURNS) {
+    const secs = seconds ?? 0;
+    if (secs < MIN_SECONDS) {
       return Response.json({
         incomplete: true,
-        reason: `That was too short to judge — you spoke ${userTurns} time${
-          userTurns === 1 ? "" : "s"
-        }, and a real round needs at least ${MIN_USER_TURNS} answers. Run it back and go the distance.`,
+        reason: `That was too short to judge — the call ran ${secs} second${
+          secs === 1 ? "" : "s"
+        }, and a round needs at least ${MIN_SECONDS}. Run it back and go a little longer.`,
       });
     }
 

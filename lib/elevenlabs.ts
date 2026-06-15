@@ -6,6 +6,10 @@
 const API = "https://api.elevenlabs.io/v1";
 const AGENT_NAME = "goat-gauntlet";
 
+// How fast the interviewers talk. 1.0 = normal; ElevenLabs allows 0.7–1.2.
+// Nudge this up toward 1.2 for snappier, down toward 1.0 for calmer.
+const SPEECH_SPEED = 1.2;
+
 export function elevenKey(): string {
   return (
     process.env.ELEVEN_LABS_API_KEY ?? process.env.ELEVENLABS_API_KEY ?? ""
@@ -96,7 +100,10 @@ function agentConfig(defaultVoiceId: string) {
         first_message: "Hey Chris — ready when you are.",
         language: "en",
       },
-      ...(defaultVoiceId ? { tts: { voice_id: defaultVoiceId } } : {}),
+      tts: {
+        ...(defaultVoiceId ? { voice_id: defaultVoiceId } : {}),
+        speed: SPEECH_SPEED,
+      },
       conversation: { max_duration_seconds: 1500 },
     },
     platform_settings: {
@@ -173,7 +180,10 @@ export async function patchAgentPersona(
           first_message: firstMessage,
           language: "en",
         },
-        ...(voiceId ? { tts: { voice_id: voiceId } } : {}),
+        tts: {
+          ...(voiceId ? { voice_id: voiceId } : {}),
+          speed: SPEECH_SPEED,
+        },
       },
     }),
   });

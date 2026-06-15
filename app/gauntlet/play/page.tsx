@@ -46,7 +46,9 @@ interface Verdict {
   tripwiresHit: string[];
 }
 
-const MIN_TURNS = 6;
+// A round is judgeable once it's run this long — short interviews (the
+// friendly L1 chats) are meant to be short, so we gate on time, not answer count.
+const MIN_SECONDS = 30;
 
 function PlayInner() {
   const params = useSearchParams();
@@ -92,7 +94,10 @@ function PlayInner() {
     },
     onError: () => {
       if (phaseRef.current === "connecting" || phaseRef.current === "live") {
-        if (transcriptRef.current.filter((t) => t.role === "user").length >= MIN_TURNS) {
+        const secs = startedAtRef.current
+          ? Math.floor((Date.now() - startedAtRef.current) / 1000)
+          : 0;
+        if (phaseRef.current === "live" && secs >= MIN_SECONDS) {
           void finish(false);
         } else {
           setErrorMsg(
@@ -209,14 +214,15 @@ function PlayInner() {
         }
       }
       const lines = transcriptRef.current;
-      const turns = lines.filter((t) => t.role === "user").length;
-      if (turns < MIN_TURNS) {
+      const seconds = startedAtRef.current
+        ? Math.floor((Date.now() - startedAtRef.current) / 1000)
+        : 0;
+      if (seconds < MIN_SECONDS) {
         setPhase("tooShort");
         return;
       }
       setPhase("judging");
       try {
-        const seconds = Math.floor((Date.now() - startedAtRef.current) / 1000);
         const res = await fetch("/api/gauntlet/judge", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -470,8 +476,9 @@ function PlayInner() {
           <div className="text-5xl">⏱️</div>
           <p className="font-display text-xl font-bold">Too short to judge</p>
           <p className="mx-auto max-w-sm text-sm leading-relaxed text-muted">
-            A real round needs at least {MIN_TURNS} answers from you. Run it
-            back and go the distance — hang in until {p.name.split(" ")[0]} wraps it up.
+            A round needs at least {MIN_SECONDS} seconds of real conversation
+            to score. Run it back and give {p.name.split(" ")[0]} a couple of
+            real answers before wrapping up.
           </p>
           <button
             onClick={start}
