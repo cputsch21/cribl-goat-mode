@@ -1,16 +1,16 @@
 import type { CourseModule } from "./types";
 
-export const M8: CourseModule = {
-  id: "m8",
+export const KAT: CourseModule = {
+  id: "m9",
   period: 3,
-  number: 8,
+  number: 9,
   title: "The Kat Module",
   tagline: "Channel is how Cribl eats — show her you'll make partners love working with you",
   minutes: 16,
-  audience: "Built for Monday 3:30 — Kat Hummel",
+  audience: "Built for Kat Hummel — the channel call",
   cards: [
     {
-      id: "m8c1",
+      id: "m9c1",
       title: "Who Kat is and what she's evaluating",
       paragraphs: [
         "Kat Hummel is the Partner Business Manager for the region — she owns Cribl's relationships with the partner firms (the resellers and integrators), builds pipeline through them, runs joint events, and enables their sellers to spot Cribl opportunities. Ami hired her and describes her as 'very connected, very professional, very kind, very good human.'",
@@ -21,7 +21,7 @@ export const M8: CourseModule = {
       source: "ami",
     },
     {
-      id: "m8c2",
+      id: "m9c2",
       title: "Why channel is existential at Cribl",
       paragraphs: [
         "Ami's number: Cribl is ~95% channel-driven. Patrick said '100% channel.' Either way: essentially every deal involves a partner. Cribl's own site calls it a 'partner-first organization' and says it plainly: 'We work with the RIGHT partners, not EVERY partner.'",
@@ -32,7 +32,7 @@ export const M8: CourseModule = {
       source: "ami",
     },
     {
-      id: "m8c3",
+      id: "m9c3",
       title: "The cast of characters",
       paragraphs: [
         "Solution providers / VARs — advise customers, resell, and implement: SHI, Optiv, GuidePoint Security, Presidio, Ahead, Trace3 are the national names in Cribl's ecosystem (several confirmed on cribl.io's partner page; Ami named SHI, Optiv, Presidio, Ahead, GuidePoint for this region, plus Philly boutiques). Optiv and GuidePoint are security-specialized; SHI is the volume giant (huge, NJ-based); Ahead and Presidio lean infrastructure/cloud.",
@@ -43,7 +43,7 @@ export const M8: CourseModule = {
       source: "cribl.io",
     },
     {
-      id: "m8c4",
+      id: "m9c4",
       title: "The vocabulary that matters to her",
       paragraphs: [
         "Deal registration: a partner files a claim on an opportunity they sourced, locking in their margin and protection. Respecting deal reg is the #1 etiquette rule — it's the partner's incentive to bring Cribl deals at all. Going around a partner's registration to run direct is how an AE gets blacklisted by the entire partner community.",
@@ -54,7 +54,7 @@ export const M8: CourseModule = {
       source: "craft",
     },
     {
-      id: "m8c5",
+      id: "m9c5",
       title: "What a great AE looks like to a PBM",
       paragraphs: [
         "Bring partners in early — when there's still services revenue and influence to share — not at the end for paperwork. Joint account planning on the top-20 list: which partner has the relationship in each target, and what's the play. Two partner meetings a week (it's literally in Patrick's PG baseline — Kat almost certainly knows his system). Give as much as you take: pass leads to partners, share intel, co-host events, make their reps look good in front of their customers.",
@@ -65,7 +65,7 @@ export const M8: CourseModule = {
       source: "patrick",
     },
     {
-      id: "m8c6",
+      id: "m9c6",
       title: "Your unfair advantage — used the right way",
       paragraphs: [
         "You have real friends at Ahead, SHI, Presidio, and ModernOps from growing up and selling in Philly. That's genuinely rare for a new AE. The wrong way to use it with Kat: as a flex ('I already know everybody'). The right way: as an asset you'll deploy under her guidance — she owns these relationships at the firm level; your personal connections accelerate her plays.",
@@ -76,7 +76,7 @@ export const M8: CourseModule = {
       source: "ami",
     },
     {
-      id: "m8c7",
+      id: "m9c7",
       title: "Likely questions, strong answers",
       paragraphs: [
         "'Have you worked with channel partners before?' — Honest version: not in this two-tier tech model — in benefits the brokers WERE the channel, so I've sold with and through intermediaries, and I know the golden rule is making them money. Then show you've learned the model: deal reg, co-sell, sourced vs. influenced, MDF. Honesty + fluency beats fake experience.",
@@ -87,7 +87,7 @@ export const M8: CourseModule = {
       source: "chris",
     },
     {
-      id: "m8c8",
+      id: "m9c8",
       title: "Five sharp questions to ask Kat",
       paragraphs: [
         "(1) Which partners actually drive pipeline in this region, versus just fulfill? (2) When you look at your best AE relationship — what does that person do that the average AE doesn't? (3) How do you and the AE typically split a top-20 account list — who takes which doors? (4) Where's partner-sourced pipeline strongest right now — security, observability, public sector? (5) If I start in July, what's the one thing I could do in my first 30 days that would make your life easier?",
@@ -100,7 +100,7 @@ export const M8: CourseModule = {
   ],
   quiz: [
     {
-      id: "m8q1",
+      id: "m9q1",
       prompt: "How much of Cribl's business runs through the channel?",
       options: [
         { text: "About half" },
@@ -111,7 +111,7 @@ export const M8: CourseModule = {
         "Essentially every deal involves a partner. That single number explains why this interview exists: an AE who creates channel friction is a non-starter, whatever else they bring.",
     },
     {
-      id: "m8q2",
+      id: "m9q2",
       prompt: "Deal registration is:",
       options: [
         {
@@ -125,7 +125,7 @@ export const M8: CourseModule = {
         "Deal reg is the economic engine of partner trust. The partner who sources a deal gets protected margin on it; an AE who circumvents that gets quietly frozen out by every partner in the territory.",
     },
     {
-      id: "m8q3",
+      id: "m9q3",
       prompt:
         "A partner registered a deal at one of YOUR top-20 targets — an account you wanted to crack direct. You:",
       options: [
@@ -140,7 +140,7 @@ export const M8: CourseModule = {
         "A partner-registered deal at your target is GOOD news: warm relationships + protected partner economics + your execution. Contesting or running parallel torches the relationship Kat spent years building — over one deal.",
     },
     {
-      id: "m8q4",
+      id: "m9q4",
       prompt: "Which pairing is right?",
       options: [
         {
@@ -154,7 +154,7 @@ export const M8: CourseModule = {
         "Knowing each partner's lane tells you which one fits which play: SIEM-migration deal → security specialist (Optiv/GuidePoint); FedRAMP opportunity → Carahsoft; infrastructure modernization → Ahead/Presidio; everywhere → SHI.",
     },
     {
-      id: "m8q5",
+      id: "m9q5",
       prompt: "When should a partner enter a deal you sourced yourself?",
       options: [
         { text: "At the end — to process the paperwork and take their margin" },
@@ -168,7 +168,7 @@ export const M8: CourseModule = {
         "Bringing partners in early is what 'partner-first' means in practice. They add implementation services (sweetens their economics), account intel, and exec relationships — and they remember which AEs share early. (At ~95% channel, 'keep it direct' isn't even on the menu.)",
     },
     {
-      id: "m8q6",
+      id: "m9q6",
       prompt: "The 'intel loop' Patrick described with partners:",
       options: [
         {
@@ -182,7 +182,7 @@ export const M8: CourseModule = {
         "Two-way intel is the real channel motion: you bring fresh signal, they bring the informal power map they've built over years inside the account. That exchange is what your two partner meetings a week are FOR.",
     },
     {
-      id: "m8q7",
+      id: "m9q7",
       prompt: "The right way to present your friendships at Ahead/SHI/Presidio to Kat:",
       options: [
         { text: "'I already have the partner relationships covered in this region.'" },
@@ -196,7 +196,7 @@ export const M8: CourseModule = {
         "Kat owns these partnerships; an AE claiming them as 'covered' sounds like friction. The winning frame: 'I bring warm doors — you call the plays.' That's a force multiplier, not a turf grab.",
     },
     {
-      id: "m8q8",
+      id: "m9q8",
       prompt: "Ami's pre-interview homework was to:",
       options: [
         {
@@ -210,7 +210,7 @@ export const M8: CourseModule = {
         "'Talk to your friends at Ahead or SHI — ask them about Cribl.' Opening the Kat call with 'I called two partner friends this weekend; here's what I heard' is the single highest-credibility move available to you Monday.",
     },
     {
-      id: "m8q9",
+      id: "m9q9",
       prompt: "Palo Alto Networks appears on Cribl's partner page — while also platformizing against the category. This is:",
       options: [
         {
@@ -224,7 +224,7 @@ export const M8: CourseModule = {
         "The ecosystem is tangled on purpose: Cribl feeds data TO the platforms, so they integrate with it even while competing for the consolidation narrative. Switzerland status is the whole position — speak of every vendor respectfully.",
     },
     {
-      id: "m8q10",
+      id: "m9q10",
       prompt: "Strongest question to ask Kat (of these):",
       options: [
         { text: "'How many partners does Cribl have nationally?'" },
@@ -240,7 +240,7 @@ export const M8: CourseModule = {
   ],
   writeIn: [
     {
-      id: "m8w1",
+      id: "m9w1",
       prompt:
         "Kat asks: \"Have you worked with channel partners before?\" Give your honest, fluent answer.",
       keyPoints: [
@@ -254,7 +254,7 @@ export const M8: CourseModule = {
         "Not in this exact two-tier tech model — I'll be straight about that. But in benefits, the broker was the channel, so I spent eight years selling with and through intermediaries, and I know the golden rule cold: the partner has to make money or there is no next deal. What's new for me is this industry's mechanics — deal reg, sourced versus influenced, MDF — and that's exactly what I've been studying.",
     },
     {
-      id: "m8w2",
+      id: "m9w2",
       prompt:
         "A partner registered a deal at one of YOUR top-20 targets — an account you wanted to crack direct. What do you do, and why?",
       keyPoints: [
@@ -268,7 +268,7 @@ export const M8: CourseModule = {
         "That's good news, not a turf problem. I co-sell it with them — make them money on it and use their relationship to get deeper than I could alone. What I don't do is contest the registration or run my own contacts in parallel; that torches a relationship Kat spent years building, over one deal. If a partner registered it, that's their deal, and protecting that is what keeps the next ten referrals coming.",
     },
     {
-      id: "m8w3",
+      id: "m9w3",
       prompt:
         "Why is channel existential at Cribl — and why do partners genuinely love selling it?",
       keyPoints: [
@@ -281,7 +281,7 @@ export const M8: CourseModule = {
         "Ami says about 95% channel-driven; Patrick just says 100%. Either way, essentially every deal has a partner in it — that's why an AE who creates channel friction is a non-starter. And partners love Cribl because it's vendor-neutral: it makes everything else in their bag work better, so there's nothing to rip out, plus services revenue attached. Cribl's own pitch to them is 'become the data broker for your customers.' It's the easiest co-sell in their bag.",
     },
     {
-      id: "m8w4",
+      id: "m9w4",
       prompt:
         "What was Ami's pre-interview homework, and how do you open the Kat call with it?",
       keyPoints: [
@@ -296,17 +296,17 @@ export const M8: CourseModule = {
   ],
 };
 
-export const M9: CourseModule = {
-  id: "m9",
+export const CAM: CourseModule = {
+  id: "m10",
   period: 3,
-  number: 9,
+  number: 10,
   title: "The Cam Module",
   tagline: "The AE↔SE partnership — prove his team's hours will be safe with you",
   minutes: 16,
-  audience: "Built for Tuesday — Cam Borgl",
+  audience: "Built for Cam Borgl — the SE leader call",
   cards: [
     {
-      id: "m9c1",
+      id: "m10c1",
       title: "Who Cam is and what he's evaluating",
       paragraphs: [
         "Cam Borgl leads Sales Engineering for the region — Patrick's words: 'the SE leader.' His SEs are the scarce resource in every deal: Ami called them 'the technical gurus... they're salesy too' and said the AE-SE relationship is 'vital' and 'super important to them.' Patrick's mid-Atlantic coverage: two SEs in the Philly area, one in Pittsburgh, three in the DMV.",
@@ -317,7 +317,7 @@ export const M9: CourseModule = {
       source: "ami",
     },
     {
-      id: "m9c2",
+      id: "m10c2",
       title: "What SEs actually do in a Cribl deal",
       paragraphs: [
         "Technical discovery (mapping the customer's data sources, tools, volumes, pain). Tailored demos — never generic, always built on the customer's actual world. The POV — proof of value: a time-boxed hands-on evaluation in the customer's environment, run against agreed success criteria. Architecture design and sizing. Technical objection handling. And at QBRs: introducing new capabilities (Search, Lake) to expand accounts.",
@@ -328,7 +328,7 @@ export const M9: CourseModule = {
       source: "craft",
     },
     {
-      id: "m9c3",
+      id: "m10c3",
       title: "Division of labor",
       paragraphs: [
         "The AE owns: why change (the business case), who cares (the committee and champion), the money (metrics, budget, economic buyer), and the process (decision steps, paper, close plan). The SE owns: how it works, the proof, and technical trust. Both share discovery — the AE finds the business pain, the SE finds the technical pain, and they compare notes.",
@@ -339,7 +339,7 @@ export const M9: CourseModule = {
       source: "craft",
     },
     {
-      id: "m9c4",
+      id: "m10c4",
       title: "The cardinal sins (he's seen them all)",
       paragraphs: [
         "Dragging an SE into an unqualified deal — no pain, no power, no process, just 'can you demo for these guys?' Surprise calls with zero brief, where the SE discovers the audience live. Overpromising — committing features or roadmap the product doesn't have, leaving the SE to walk it back. Demo-monkey treatment — 'just show up and demo, I'll take it from there.' Going dark after the POV — the SE invests two weeks, then never hears the outcome. Letting a POV start with no success criteria, so it can never officially succeed.",
@@ -350,7 +350,7 @@ export const M9: CourseModule = {
       source: "craft",
     },
     {
-      id: "m9c5",
+      id: "m10c5",
       title: "The good-AE contract",
       paragraphs: [
         "Before any call: a brief — who's in the room (names, roles, what each cares about), what we already know, what we need to learn, what next step we're driving to. A quick joint call plan: who opens, who handles what, what 'good' looks like. After: a debrief and shared notes — the MEDDPICC state lives where the SE can see it.",
@@ -361,7 +361,7 @@ export const M9: CourseModule = {
       source: "craft",
     },
     {
-      id: "m9c6",
+      id: "m10c6",
       title: "The whiteboard you should be able to draw",
       paragraphs: [
         "Before: spaghetti. Dozens of sources, each hard-wired to specific tools, five agents per server, every new tool means re-plumbing everything, the SIEM bill eating the budget. After: sources flow through one control layer (Edge collects, Stream shapes and routes) into tiers — high-value to the SIEM (~90 days), the rest to low-cost storage (Lake/S3) — with Search asking questions across all of it, and governed, masked feeds going to the AI systems. One picture, told left to right.",
@@ -372,10 +372,10 @@ export const M9: CourseModule = {
       source: "patrick",
     },
     {
-      id: "m9c7",
+      id: "m10c7",
       title: "Likely questions, strong answers",
       paragraphs: [
-        "'How technical are you?' — Don't inflate, don't shrink: six years as a founder sitting between business and engineering; you speak the language, you don't write the code; you're three weeks into this space and here's the system you built to close the gap (you're literally inside it). 'What does Cribl do?' — your Module 1 thirty-second pitch, possibly with the whiteboard picture. 'When do you bring an SE in?' — after qualification: real pain, engaged power, a defined process — with a brief; their hours should land on deals that can close.",
+        "'How technical are you?' — Don't inflate, don't shrink: six years as a founder sitting between business and engineering; you speak the language, you don't write the code; you're three weeks into this space and here's the system you built to close the gap (you're literally inside it). 'What does Cribl do?' — your 30-second pitch, possibly with the whiteboard picture. 'When do you bring an SE in?' — after qualification: real pain, engaged power, a defined process — with a brief; their hours should land on deals that can close.",
         "'How would you run a POV?' — success criteria agreed in writing, timebox, exec sponsor, champion driving internally, debrief at the end regardless of outcome. If he pushes into territory you don't know — that's the honest-gap move from Module 7, and with Cam it's almost certainly the real test.",
       ],
       sayThis:
@@ -383,7 +383,7 @@ export const M9: CourseModule = {
       source: "chris",
     },
     {
-      id: "m9c8",
+      id: "m10c8",
       title: "Five sharp questions to ask Cam",
       paragraphs: [
         "(1) What separates your best AE partnership from the average one? (2) Where do deals most often stall technically here — and what could the AE have done earlier? (3) How does your team like to get briefed — what format actually gets read? (4) What does a typical POV look like at Cribl — length, criteria, who drives? (5) How is SE coverage shared across the team in the mid-Atlantic — and how do I make sure my deals deserve the hours?",
@@ -396,7 +396,7 @@ export const M9: CourseModule = {
   ],
   quiz: [
     {
-      id: "m9q1",
+      id: "m10q1",
       prompt: "In the AE↔SE division of labor, the AE owns:",
       options: [
         { text: "The demo, the architecture, and the POV execution" },
@@ -410,7 +410,7 @@ export const M9: CourseModule = {
         "You sell the gap; the SE proves the bridge. Discovery is shared — business pain (you) and technical pain (them). Saying this cleanly is the single most important answer in the Cam call.",
     },
     {
-      id: "m9q2",
+      id: "m10q2",
       prompt: "What must exist BEFORE a POV starts?",
       options: [
         { text: "A signed purchase order" },
@@ -424,7 +424,7 @@ export const M9: CourseModule = {
         "A POV without success criteria can never officially succeed — it just consumes SE weeks and goes quiet. Criteria + timebox + sponsor + champion is the discipline that makes Cam's team trust you with their hours.",
     },
     {
-      id: "m9q3",
+      id: "m10q3",
       prompt: "An AE asks an SE to 'just demo for these guys' — no background, no agenda. Which sin is this?",
       options: [
         { text: "Going dark after the POV" },
@@ -435,7 +435,7 @@ export const M9: CourseModule = {
         "Treating the SE as a demo vending machine — no context on who's in the room or what 'good' looks like — is the most common way AEs burn SE trust. The antidote is a two-minute written brief. Every time.",
     },
     {
-      id: "m9q4",
+      id: "m10q4",
       prompt: "A prospect asks for a feature Cribl doesn't have. You:",
       options: [
         { text: "Say it's on the roadmap — keep momentum, sort details later" },
@@ -449,7 +449,7 @@ export const M9: CourseModule = {
         "Overpromising is the sin SEs hate most, because they're the ones who walk it back. 'I'd rather get you the real answer than guess' builds trust in the room AND with your SE — it's the honest-gap move in deal form.",
     },
     {
-      id: "m9q5",
+      id: "m10q5",
       prompt: "A pre-call brief for your SE contains:",
       options: [
         {
@@ -463,7 +463,7 @@ export const M9: CourseModule = {
         "Four lines, two minutes to write, and the SE walks in armed: audience, knowns, unknowns, target outcome. The format matters less than the habit — ask Cam how his team likes it (it's one of your five questions).",
     },
     {
-      id: "m9q6",
+      id: "m10q6",
       prompt: "When does a deal EARN an SE's hours?",
       options: [
         { text: "The moment a prospect agrees to any meeting" },
@@ -477,7 +477,7 @@ export const M9: CourseModule = {
         "First meetings are usually yours to run solo with the business story. SE hours enter once there's qualified pain, the right people engaged, and a path to a decision — that's the conversion discipline Cam is hiring for.",
     },
     {
-      id: "m9q7",
+      id: "m10q7",
       prompt: "Cam asks: 'How technical are you, really?' Strongest answer:",
       options: [
         { text: "'Very — I founded a software company, so I can hold my own with any engineer.'" },
@@ -491,7 +491,7 @@ export const M9: CourseModule = {
         "Inflating gets found out in minutes by an SE leader; shrinking ('that's what SEs are for') signals demo-monkey treatment ahead. Calibrated honesty plus a visible learning system is the only answer that survives follow-up questions.",
     },
     {
-      id: "m9q8",
+      id: "m10q8",
       prompt: "After a two-week POV, the deal stalls. What does the SE get?",
       options: [
         {
@@ -505,7 +505,7 @@ export const M9: CourseModule = {
         "Going dark after an SE invests weeks is how partnerships die quietly. The debrief habit costs ten minutes and tells Cam's team their work matters — they will fight to be on your deals.",
     },
     {
-      id: "m9q9",
+      id: "m10q9",
       prompt: "The 'after' picture on your whiteboard, left to right:",
       options: [
         {
@@ -519,7 +519,7 @@ export const M9: CourseModule = {
         "Left to right: born → collected → controlled → tiered → searchable → AI-ready. Cribl sits BEFORE the destinations (that's the whole point — control what feeds them). Practice saying it while sketching; it's Patrick's three-level pitch in one picture.",
     },
     {
-      id: "m9q10",
+      id: "m10q10",
       prompt: "Mid-Atlantic SE coverage, per Patrick:",
       options: [
         { text: "One SE for the whole region, based in DC" },
@@ -535,7 +535,7 @@ export const M9: CourseModule = {
   ],
   writeIn: [
     {
-      id: "m9w1",
+      id: "m10w1",
       prompt:
         "Cam asks how you'd work with his SE team. Lay out the AE↔SE division of labor.",
       keyPoints: [
@@ -548,7 +548,7 @@ export const M9: CourseModule = {
         "Clean lines. I own the why — the business case — the who, meaning the committee and champion, the money, and the process: decision steps, paper, close plan. The SE owns the how and the proof, the technical trust. Discovery we share — I bring the business pain, they bring the technical truth, and we compare notes. The way I think about it: I sell the gap, the SE proves the bridge.",
     },
     {
-      id: "m9w2",
+      id: "m10w2",
       prompt:
         "What must be true BEFORE a POV starts — and why do you hold that line so hard?",
       keyPoints: [
@@ -563,7 +563,7 @@ export const M9: CourseModule = {
         "A POV isn't a demo — it's an engineering engagement, so it has to be earned. My rule: no POV until there's written success criteria the customer agreed to, a timebox, an exec sponsor, and a champion driving it internally — and qualification passed first, real pain and engaged power. I hold that line because a POV with no success criteria can never officially succeed; it just eats two weeks of an SE's time and goes quiet. That's free consulting, and it's how you lose an SE team's trust.",
     },
     {
-      id: "m9w3",
+      id: "m10w3",
       prompt:
         "Name a few of the \"cardinal sins\" that burn SE trust — and the antidote to each.",
       keyPoints: [
@@ -577,7 +577,7 @@ export const M9: CourseModule = {
         "The fastest ways to lose an SE team: unqualified demos — 'just show up and demo for these guys' — surprise calls with zero brief, overpromising features they have to walk back, treating them like a demo vending machine, and going dark after they invest two weeks in a POV. I plan to be the opposite: qualify before I ask, a two-minute brief before every call, never promise what the product can't do, and always debrief them on the outcome — win or lose. And I'd want to hear it from your team if I ever slip.",
     },
     {
-      id: "m9w4",
+      id: "m10w4",
       prompt:
         "A prospect asks for a feature Cribl doesn't have. What do you say in the room?",
       keyPoints: [
@@ -593,18 +593,18 @@ export const M9: CourseModule = {
   ],
 };
 
-export const M10: CourseModule = {
-  id: "m10",
+export const TIM: CourseModule = {
+  id: "m11",
   period: 3,
-  number: 10,
+  number: 11,
   title: "The Rep Call",
   tagline: "Tim's 30 minutes — the would-I-want-this-guy-in-the-trenches test",
   minutes: 8,
   bonus: true,
-  audience: "Built for Tuesday — right after Cam",
+  audience: "Built for Tim — the peer call",
   cards: [
     {
-      id: "m10c1",
+      id: "m11c1",
       title: "What a peer interview is for",
       paragraphs: [
         "Tim isn't scoring your Cribl knowledge — Kat and Cam cover that. He's answering one question for Patrick: would I want this guy next to me? Culture, work ethic, coachability, and whether your story holds up rep-to-rep, without the interview polish.",
@@ -615,7 +615,7 @@ export const M10: CourseModule = {
       source: "craft",
     },
     {
-      id: "m10c2",
+      id: "m11c2",
       title: "Your story in 90 seconds",
       paragraphs: [
         "Eight years of B2B sales (employee benefits — broker-as-channel, consensus buys), then six years as a founder: bootstrapped, sold the first company in early '25, started the second. Family reasons brought you home to Philly, and the startup risk stopped fitting a four-kid life. You're not retreating — you're choosing: from generalist running the whole army to specialist sniper on a bigger one, doing the one thing you love most.",
@@ -626,7 +626,7 @@ export const M10: CourseModule = {
       source: "chris",
     },
     {
-      id: "m10c3",
+      id: "m11c3",
       title: "Your process, the consistent version",
       paragraphs: [
         "They WILL compare notes with Patrick, so tell the same story: four layers (live pipeline → top-20 with account plans → Philly network → creative cold), MEDDPICC as the diagnostic, Force Management's gap language for the message, and Patrick's cadence as the floor — 10-10-10 daily, two partner meetings a week, four field events a month, as much in person as possible.",
@@ -637,7 +637,7 @@ export const M10: CourseModule = {
       source: "chris",
     },
     {
-      id: "m10c4",
+      id: "m11c4",
       title: "Questions that make Tim like you",
       paragraphs: [
         "(1) What does a good week actually look like — calendar-wise? (2) What surprised you most after joining? (3) Where does pipeline really come from here — your own PG, SDRs, partners — what's the honest mix? (4) Knowing what you know now, what would you do differently in your first 90 days? (5) How real is the 10-10-10 in practice?",
@@ -650,7 +650,7 @@ export const M10: CourseModule = {
   ],
   quiz: [
     {
-      id: "m10q1",
+      id: "m11q1",
       prompt: "Tim's real assignment from Patrick is to assess:",
       options: [
         { text: "Your Cribl product knowledge in depth" },
@@ -664,7 +664,7 @@ export const M10: CourseModule = {
         "Kat owns the channel test, Cam owns the technical test — Tim owns the 'is this guy real?' test. Curiosity and consistency win it; polish without substance loses it.",
     },
     {
-      id: "m10q2",
+      id: "m11q2",
       prompt: "Why must your process answer match what you told Patrick?",
       options: [
         {
@@ -678,7 +678,7 @@ export const M10: CourseModule = {
         "Same four layers, same MEDDPICC discipline, same cadence numbers. Consistency across interviewers is itself the signal: this is actually how he operates, not interview theater.",
     },
     {
-      id: "m10q3",
+      id: "m11q3",
       prompt: "Best use of your founder background with a peer rep:",
       options: [
         { text: "Establish seniority — you've run companies, this role should be easy" },
@@ -692,7 +692,7 @@ export const M10: CourseModule = {
         "'This should be easy' is the arrogance red flag in one sentence. The winning frame is humble-confident: the grit transfers, the industry knowledge is being earned in public, fast.",
     },
     {
-      id: "m10q4",
+      id: "m11q4",
       prompt: "The sharpest pipeline question for Tim:",
       options: [
         { text: "'What's your quota and are you hitting it?'" },
@@ -706,7 +706,7 @@ export const M10: CourseModule = {
         "It's the question a working seller asks — operational, honest, and it tells you exactly what your first six months will feel like. Quota-prying gets guarded answers; lead-complaining sounds like a demand servicer.",
     },
     {
-      id: "m10q5",
+      id: "m11q5",
       prompt: "Tim vents about something annoying internally. You:",
       options: [
         {
@@ -720,7 +720,7 @@ export const M10: CourseModule = {
         "Sometimes it's a vent, sometimes it's a test. Curious-and-grounded is the only response that wins both versions. Joining the complaining fails the test; lecturing him fails the vibe.",
     },
     {
-      id: "m10q6",
+      id: "m11q6",
       prompt: "Your video-prospecting story belongs in this call because:",
       options: [
         {
@@ -736,7 +736,7 @@ export const M10: CourseModule = {
   ],
   writeIn: [
     {
-      id: "m10w1",
+      id: "m11w1",
       prompt:
         "Tim's the peer interview. What's he really evaluating — and how do you win it?",
       keyPoints: [
@@ -750,7 +750,7 @@ export const M10: CourseModule = {
         "Tim isn't testing my Cribl knowledge — Kat and Cam own that. He's answering one question for Patrick: would I want this guy next to me? Culture, work ethic, coachability, and whether my story holds up rep-to-rep without the interview polish. Peers smell arrogance, vagueness, and bad-mouthing instantly. So I win it by being genuinely curious about what his weeks actually look like and dead consistent about how I operate.",
     },
     {
-      id: "m10w2",
+      id: "m11w2",
       prompt:
         "Give your 90-second story for a peer rep — the founder background and the pivot to Cribl.",
       keyPoints: [
@@ -764,7 +764,7 @@ export const M10: CourseModule = {
         "Eight years in B2B sales — employee benefits, where the broker was the channel and everything was a consensus buy — then six years as a founder. Bootstrapped, sold the first company early last year, started a second. Family brought us home to Philly, and honestly the startup risk stopped fitting a four-kid life. I'm not retreating from founding — I'm choosing: I ran the whole army for six years, now I want to be a sniper on a bigger one and go deep on the one thing I'm best at. The gap is industry knowledge, and I built a system that's closing it fast — I'm literally studying inside it.",
     },
     {
-      id: "m10w3",
+      id: "m11w3",
       prompt:
         "Why must your \"how I run my process\" answer match exactly what you told Patrick?",
       keyPoints: [
@@ -779,4 +779,4 @@ export const M10: CourseModule = {
   ],
 };
 
-export const PERIOD3 = [M8, M9, M10];
+export const PERIOD3 = [KAT, CAM, TIM];

@@ -16,7 +16,7 @@ export default async function CramPage({
   const sheet = CRAM_SHEETS.find((c) => c.id === id);
   if (!sheet) notFound();
 
-  const moduleHref = sheet.id === "kat" ? "/module/m8" : "/module/m9";
+  const moduleHref = sheet.id === "kat" ? "/module/m9" : "/module/m10";
 
   return (
     <main className="mx-auto w-full max-w-xl lg:max-w-4xl">
