@@ -31,6 +31,15 @@ export const ROLES = [
   "Blocker",
 ] as const;
 export const SENTIMENTS = ["Positive", "Neutral", "Negative"] as const;
+export const MEETING_TYPES = [
+  "Discovery",
+  "Technical Validation",
+  "Economic Buyer Meeting",
+  "Business Case Review",
+  "Negotiation",
+  "Executive Briefing",
+  "Follow-up",
+] as const;
 
 export type Stage = (typeof STAGES)[number];
 export type Product = (typeof PRODUCTS)[number];
@@ -227,6 +236,31 @@ export interface Action {
   due: string;
   done: boolean;
 }
+/** The structured meeting-prep doc Claude returns, saved per meeting. */
+export interface PrepDoc {
+  objective: string;
+  successOutcome: string;
+  agenda: string[];
+  proofPoints: string[];
+  gaps: { gap: string; questions: string[] }[];
+  objections: { objection: string; response: string }[];
+  valueFraming: { before: string; capability: string; after: string };
+}
+export interface Meeting {
+  id: string;
+  type: string;
+  date: string;
+  objective: string;
+  /** ids into the deal's stakeholders */
+  attendeeIds: string[];
+  attendeesNote: string;
+  /** what's known / unknown going in */
+  context: string;
+  prep: PrepDoc | null;
+  prepAt: number | null;
+  createdAt: number;
+  updatedAt: number;
+}
 export interface Deal {
   id: string;
   account: string;
@@ -240,6 +274,7 @@ export interface Deal {
   value: Record<string, string>;
   stakeholders: Stakeholder[];
   actions: Action[];
+  meetings: Meeting[];
   createdAt: number;
   updatedAt: number;
 }
@@ -278,6 +313,7 @@ export function newDeal(): Deal {
     value: freshValue(),
     stakeholders: [],
     actions: [],
+    meetings: [],
     createdAt: now,
     updatedAt: now,
   };
@@ -395,11 +431,20 @@ function read(): DealsState {
   if (raw === cacheRaw) return cacheParsed;
   cacheRaw = raw;
   try {
-    cacheParsed = raw ? (JSON.parse(raw) as DealsState) : DEFAULT;
+    cacheParsed = raw ? normalize(JSON.parse(raw) as DealsState) : DEFAULT;
   } catch {
     cacheParsed = DEFAULT;
   }
   return cacheParsed;
+}
+
+/** Back-fill fields added in later phases so older saved deals stay valid. */
+function normalize(s: DealsState): DealsState {
+  if (!s?.deals) return DEFAULT;
+  for (const id in s.deals) {
+    if (!Array.isArray(s.deals[id].meetings)) s.deals[id].meetings = [];
+  }
+  return s;
 }
 
 function write(next: DealsState) {
@@ -451,6 +496,54 @@ export function patchDeal(id: string, patch: Partial<Deal>) {
   write({
     ...s,
     deals: { ...s.deals, [id]: { ...cur, ...patch, updatedAt: Date.now() } },
+  });
+}
+
+/* ── Meetings (per deal) ── */
+
+export function freshMeeting(): Meeting {
+  const now = Date.now();
+  return {
+    id: uid("m_"),
+    type: "Discovery",
+    date: "",
+    objective: "",
+    attendeeIds: [],
+    attendeesNote: "",
+    context: "",
+    prep: null,
+    prepAt: null,
+    createdAt: now,
+    updatedAt: now,
+  };
+}
+
+export function addMeeting(dealId: string): string {
+  const m = freshMeeting();
+  const d = read().deals[dealId];
+  if (d) patchDeal(dealId, { meetings: [m, ...(d.meetings ?? [])] });
+  return m.id;
+}
+
+export function patchMeeting(
+  dealId: string,
+  meetingId: string,
+  patch: Partial<Meeting>
+) {
+  const d = read().deals[dealId];
+  if (!d) return;
+  patchDeal(dealId, {
+    meetings: (d.meetings ?? []).map((m) =>
+      m.id === meetingId ? { ...m, ...patch, updatedAt: Date.now() } : m
+    ),
+  });
+}
+
+export function deleteMeeting(dealId: string, meetingId: string) {
+  const d = read().deals[dealId];
+  if (!d) return;
+  patchDeal(dealId, {
+    meetings: (d.meetings ?? []).filter((m) => m.id !== meetingId),
   });
 }
 
@@ -612,6 +705,23 @@ function exampleDeal(): Deal {
       { id: "a_ex3", text: "Scope the POV success criteria with Priya (SOC)", owner: "me", due: "2026-07-31", done: false },
       { id: "a_ex4", text: "Map the security review + procurement steps (paper process)", owner: "me", due: "2026-08-07", done: false },
       { id: "a_ex5", text: "Build the business-case deck for Dana", owner: "me", due: "2026-08-21", done: false },
+    ],
+    meetings: [
+      {
+        id: "m_ex1",
+        type: "Economic Buyer Meeting",
+        date: "2026-07-24",
+        objective:
+          "Earn Dana's sponsorship: get her to validate the savings number and agree to a business-case review.",
+        attendeeIds: ["s_ex1", "s_ex2"],
+        attendeesNote: "",
+        context:
+          "First time meeting Dana (CISO); Marcus is setting it up. She owns the Splunk budget and the 11/30 renewal. Unknown: her appetite for change vs. just re-signing.",
+        prep: null,
+        prepAt: null,
+        createdAt: now,
+        updatedAt: now,
+      },
     ],
     createdAt: now,
     updatedAt: now,
