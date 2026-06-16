@@ -40,6 +40,17 @@ export const MEETING_TYPES = [
   "Executive Briefing",
   "Follow-up",
 ] as const;
+/** The Command of the Message arc a pitch deck follows. */
+export const SLIDE_KINDS = [
+  "title",
+  "before",
+  "whyChange",
+  "capability",
+  "after",
+  "proof",
+  "cta",
+] as const;
+export type SlideKind = (typeof SLIDE_KINDS)[number];
 
 export type Stage = (typeof STAGES)[number];
 export type Product = (typeof PRODUCTS)[number];
@@ -246,6 +257,19 @@ export interface PrepDoc {
   objections: { objection: string; response: string }[];
   valueFraming: { before: string; capability: string; after: string };
 }
+/** A pitch-deck slide and the deck Claude returns, saved per meeting. */
+export interface Slide {
+  heading: string;
+  bullets: string[];
+  speakerNotes: string;
+  /** which beat of the Command of the Message arc (see SLIDE_KINDS) */
+  kind: string;
+}
+export interface Deck {
+  title: string;
+  subtitle: string;
+  slides: Slide[];
+}
 export interface Meeting {
   id: string;
   type: string;
@@ -258,6 +282,8 @@ export interface Meeting {
   context: string;
   prep: PrepDoc | null;
   prepAt: number | null;
+  deck: Deck | null;
+  deckAt: number | null;
   createdAt: number;
   updatedAt: number;
 }
@@ -513,6 +539,8 @@ export function freshMeeting(): Meeting {
     context: "",
     prep: null,
     prepAt: null,
+    deck: null,
+    deckAt: null,
     createdAt: now,
     updatedAt: now,
   };
@@ -719,6 +747,8 @@ function exampleDeal(): Deal {
           "First time meeting Dana (CISO); Marcus is setting it up. She owns the Splunk budget and the 11/30 renewal. Unknown: her appetite for change vs. just re-signing.",
         prep: null,
         prepAt: null,
+        deck: null,
+        deckAt: null,
         createdAt: now,
         updatedAt: now,
       },
