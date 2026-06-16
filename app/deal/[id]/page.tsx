@@ -14,7 +14,9 @@ import {
   Users,
   ListChecks,
   AlertTriangle,
+  Sparkles,
 } from "lucide-react";
+import { Coach } from "@/components/deal/coach";
 import {
   useDeal,
   useHydrated,
@@ -64,13 +66,20 @@ function healthFill(h: number) {
   return h >= 67 ? "bg-good" : h >= 34 ? "bg-warn" : "bg-danger";
 }
 
-type SectionId = "scorecard" | "meddpicc" | "value" | "stakeholders" | "actions";
+type SectionId =
+  | "scorecard"
+  | "meddpicc"
+  | "value"
+  | "stakeholders"
+  | "actions"
+  | "coach";
 const SECTIONS: { id: SectionId; label: string; icon: typeof Gauge }[] = [
   { id: "scorecard", label: "Scorecard", icon: Gauge },
   { id: "meddpicc", label: "MEDDPICC", icon: Target },
   { id: "value", label: "Value Framework", icon: Layers },
   { id: "stakeholders", label: "Stakeholders", icon: Users },
   { id: "actions", label: "Action Plan", icon: ListChecks },
+  { id: "coach", label: "Coach", icon: Sparkles },
 ];
 
 export default function DealPage() {
@@ -316,6 +325,10 @@ export default function DealPage() {
         {section === "actions" && (
           <ActionPlan deal={deal} add={addAction} set={setAction} del={delAction} />
         )}
+        {/* Kept mounted so the coaching conversation survives section switches. */}
+        <div className={section === "coach" ? "" : "hidden"}>
+          <Coach deal={deal} />
+        </div>
       </div>
     </main>
   );
