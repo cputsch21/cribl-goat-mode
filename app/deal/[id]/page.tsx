@@ -15,8 +15,10 @@ import {
   ListChecks,
   AlertTriangle,
   Sparkles,
+  CalendarDays,
 } from "lucide-react";
 import { Coach } from "@/components/deal/coach";
+import { Meetings } from "@/components/deal/meetings";
 import {
   useDeal,
   useHydrated,
@@ -72,6 +74,7 @@ type SectionId =
   | "value"
   | "stakeholders"
   | "actions"
+  | "meetings"
   | "coach";
 const SECTIONS: { id: SectionId; label: string; icon: typeof Gauge }[] = [
   { id: "scorecard", label: "Scorecard", icon: Gauge },
@@ -79,6 +82,7 @@ const SECTIONS: { id: SectionId; label: string; icon: typeof Gauge }[] = [
   { id: "value", label: "Value Framework", icon: Layers },
   { id: "stakeholders", label: "Stakeholders", icon: Users },
   { id: "actions", label: "Action Plan", icon: ListChecks },
+  { id: "meetings", label: "Meetings", icon: CalendarDays },
   { id: "coach", label: "Coach", icon: Sparkles },
 ];
 
@@ -325,7 +329,11 @@ export default function DealPage() {
         {section === "actions" && (
           <ActionPlan deal={deal} add={addAction} set={setAction} del={delAction} />
         )}
-        {/* Kept mounted so the coaching conversation survives section switches. */}
+        {/* Coach + Meetings stay mounted so an open chat or an in-progress
+            prep generation survives switching sections. */}
+        <div className={section === "meetings" ? "" : "hidden"}>
+          <Meetings deal={deal} />
+        </div>
         <div className={section === "coach" ? "" : "hidden"}>
           <Coach deal={deal} />
         </div>

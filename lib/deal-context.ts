@@ -8,6 +8,7 @@ import {
   healthScore,
   guidance,
   type Deal,
+  type Meeting,
 } from "@/lib/deals";
 
 export function buildDealContext(deal: Deal): string {
@@ -89,5 +90,26 @@ export function buildDealContext(deal: Deal): string {
     }
   }
 
+  return l.join("\n");
+}
+
+/** Describes one meeting (type, who's in the room, the objective) for the prep model. */
+export function buildMeetingContext(deal: Deal, meeting: Meeting): string {
+  const l: string[] = [];
+  l.push(`MEETING TYPE: ${meeting.type}`);
+  if (meeting.date) l.push(`DATE: ${meeting.date}`);
+
+  const named = meeting.attendeeIds
+    .map((id) => deal.stakeholders.find((s) => s.id === id))
+    .filter((s): s is NonNullable<typeof s> => Boolean(s))
+    .map(
+      (s) =>
+        `${s.name || "(unnamed)"}${s.title ? `, ${s.title}` : ""} — ${s.role}, sentiment ${s.sentiment}`
+    );
+  const who = [...named, meeting.attendeesNote].filter(Boolean).join("; ");
+  l.push(`ATTENDEES: ${who || "(not specified)"}`);
+
+  l.push(`REP'S OBJECTIVE FOR THIS MEETING: ${meeting.objective || "(not specified)"}`);
+  l.push(`WHAT'S KNOWN / UNKNOWN GOING IN: ${meeting.context || "(not specified)"}`);
   return l.join("\n");
 }
