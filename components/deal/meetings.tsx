@@ -20,6 +20,7 @@ import {
   type PrepDoc,
 } from "@/lib/deals";
 import { buildDealContext, buildMeetingContext } from "@/lib/deal-context";
+import { DeckPanel } from "@/components/deal/deck";
 
 const inp =
   "w-full rounded-xl bg-mist px-3 py-2.5 text-sm text-ink placeholder-faint outline-none transition focus:bg-white focus:ring-2 focus:ring-teal/30";
@@ -286,6 +287,8 @@ function MeetingDetail({
       </div>
 
       {meeting.prep ? <PrepView prep={meeting.prep} /> : null}
+
+      <DeckPanel deal={deal} meeting={meeting} />
     </div>
   );
 }
