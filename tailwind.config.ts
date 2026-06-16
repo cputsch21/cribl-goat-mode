@@ -48,6 +48,18 @@ const config: Config = {
           DEFAULT: "#d6453a",
           tint: "#fdeeec",
         },
+        // Deal Command health signals: red (Missing) / amber (Weak) / green
+        // (Strong). danger above carries the red; these two complete the set.
+        warn: {
+          DEFAULT: "#e0920a",
+          soft: "#fbf1da",
+          deep: "#a26605",
+        },
+        good: {
+          DEFAULT: "#10b07e",
+          soft: "#e4f6ef",
+          deep: "#0a7d59",
+        },
       },
       backgroundImage: {
         // The cribl.io hero gradient: aqua → periwinkle → lavender.
