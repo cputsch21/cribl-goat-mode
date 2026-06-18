@@ -270,6 +270,29 @@ export interface Deck {
   subtitle: string;
   slides: Slide[];
 }
+/** One spoken turn in a rehearsal transcript. */
+export interface SimLine {
+  role: "rep" | "buyer";
+  text: string;
+}
+/** The methodology-graded debrief Claude returns after a rehearsal. */
+export interface SimDebrief {
+  score: number;
+  summary: string;
+  advanced: boolean;
+  advanceNote: string;
+  meddpicc: { area: string; verdict: "Hit" | "Partial" | "Missed"; note: string }[];
+  valueExecution: string[];
+  strengths: string[];
+  fixes: { issue: string; sayThis: string }[];
+}
+/** A saved rehearsal: who the AI played, the transcript, and the debrief. */
+export interface Sim {
+  buyer: string;
+  transcript: SimLine[];
+  seconds: number;
+  debrief: SimDebrief | null;
+}
 export interface Meeting {
   id: string;
   type: string;
@@ -284,6 +307,8 @@ export interface Meeting {
   prepAt: number | null;
   deck: Deck | null;
   deckAt: number | null;
+  sim: Sim | null;
+  simAt: number | null;
   createdAt: number;
   updatedAt: number;
 }
@@ -468,7 +493,12 @@ function read(): DealsState {
 function normalize(s: DealsState): DealsState {
   if (!s?.deals) return DEFAULT;
   for (const id in s.deals) {
-    if (!Array.isArray(s.deals[id].meetings)) s.deals[id].meetings = [];
+    const d = s.deals[id];
+    if (!Array.isArray(d.meetings)) d.meetings = [];
+    for (const m of d.meetings) {
+      if (m.sim === undefined) m.sim = null;
+      if (m.simAt === undefined) m.simAt = null;
+    }
   }
   return s;
 }
@@ -541,9 +571,30 @@ export function freshMeeting(): Meeting {
     prepAt: null,
     deck: null,
     deckAt: null,
+    sim: null,
+    simAt: null,
     createdAt: now,
     updatedAt: now,
   };
+}
+
+/** The stakeholder the AI role-plays as the buyer: prefer the toughest
+    decision-maker among the meeting's attendees, else the deal's. */
+export function pickBuyer(deal: Deal, meeting: Meeting): Stakeholder | null {
+  const attendees = meeting.attendeeIds
+    .map((id) => deal.stakeholders.find((s) => s.id === id))
+    .filter((s): s is Stakeholder => Boolean(s));
+  const pool = attendees.length ? attendees : deal.stakeholders;
+  if (!pool.length) return null;
+  const rank: Record<string, number> = {
+    "Economic Buyer": 0,
+    Blocker: 1,
+    "Technical Buyer": 2,
+    Influencer: 3,
+    Coach: 4,
+    Champion: 5,
+  };
+  return [...pool].sort((a, b) => (rank[a.role] ?? 3) - (rank[b.role] ?? 3))[0];
 }
 
 export function addMeeting(dealId: string): string {
@@ -749,6 +800,8 @@ function exampleDeal(): Deal {
         prepAt: null,
         deck: null,
         deckAt: null,
+        sim: null,
+        simAt: null,
         createdAt: now,
         updatedAt: now,
       },

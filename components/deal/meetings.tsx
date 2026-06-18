@@ -21,6 +21,7 @@ import {
 } from "@/lib/deals";
 import { buildDealContext, buildMeetingContext } from "@/lib/deal-context";
 import { DeckPanel } from "@/components/deal/deck";
+import { SimPanel } from "@/components/deal/sim";
 
 const inp =
   "w-full rounded-xl bg-mist px-3 py-2.5 text-sm text-ink placeholder-faint outline-none transition focus:bg-white focus:ring-2 focus:ring-teal/30";
@@ -289,6 +290,8 @@ function MeetingDetail({
       {meeting.prep ? <PrepView prep={meeting.prep} /> : null}
 
       <DeckPanel deal={deal} meeting={meeting} />
+
+      <SimPanel deal={deal} meeting={meeting} />
     </div>
   );
 }
