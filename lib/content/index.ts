@@ -24,3 +24,4 @@ export const TOTAL_UNITS = MODULES.length + EXAMS.length;
 export { EXAMS, KAT_EXAM, CAM_EXAM, FLASHCARDS, CRAM_SHEETS, GAME_PLAN, INTERVIEWS };
 export * from "./types";
 export * from "./dataflow";
+export * from "./cheatsheet";
