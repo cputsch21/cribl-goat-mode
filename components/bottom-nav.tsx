@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, Mic, Footprints, Target } from "lucide-react";
+import { Home, Layers, Mic, Footprints, Target, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { href: "/", label: "Course", icon: Home, exact: true },
+  { href: "/cheat-sheet", label: "Cheat", icon: Zap, exact: false },
   { href: "/flashcards", label: "Flashcards", icon: Layers, exact: false },
   { href: "/gauntlet", label: "Gauntlet", icon: Mic, exact: false },
   { href: "/goat-trail", label: "Trail", icon: Footprints, exact: false },
@@ -16,8 +17,8 @@ const ITEMS = [
 export function BottomNav() {
   const pathname = usePathname();
   return (
-    <nav className="fixed bottom-4 left-1/2 z-30 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-2xl bg-ink px-2 py-1.5 shadow-lift lg:hidden">
-      <div className="grid grid-cols-5">
+    <nav className="fixed bottom-4 left-1/2 z-30 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-2xl bg-ink px-1.5 py-1.5 shadow-lift lg:hidden">
+      <div className="grid grid-cols-6">
         {ITEMS.map(({ href, label, icon: Icon, exact }) => {
           const active = exact ? pathname === href : pathname.startsWith(href);
           return (
@@ -25,7 +26,7 @@ export function BottomNav() {
               key={href}
               href={href}
               className={cn(
-                "flex flex-col items-center gap-0.5 rounded-xl py-2 text-[11px] font-medium transition-colors duration-150 ease-out",
+                "flex flex-col items-center gap-0.5 rounded-xl py-2 text-[10px] font-medium whitespace-nowrap transition-colors duration-150 ease-out",
                 active ? "text-gold" : "text-white/55 hover:text-white/85"
               )}
             >
