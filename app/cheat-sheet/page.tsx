@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { ChevronRight, Sparkles } from "lucide-react";
 import {
-  CHEAT_CALLS,
   CHEAT_ITEMS,
   CHEAT_STATS,
   PITCH,
@@ -107,7 +105,7 @@ export default function CheatSheetPage() {
       <section className="mt-8">
         <h2 className="font-display text-lg font-bold">The ten that win the room</h2>
         <p className="mt-0.5 text-sm text-muted">
-          Universal — true in all three calls. Tap a play to drill in.
+          Universal — true in every room. Tap a play to drill in.
         </p>
         <div className="mt-3 space-y-2">
           {CHEAT_ITEMS.map((item, i) => (
@@ -139,64 +137,9 @@ export default function CheatSheetPage() {
         </ul>
       </section>
 
-      {/* ── The three calls ── */}
-      <section className="mt-8">
-        <h2 className="font-display text-lg font-bold">The three calls</h2>
-        <p className="mt-0.5 text-sm text-muted">
-          One glance each — what they&apos;re testing, your best line, the
-          trap.
-        </p>
-        <div className="mt-3 grid gap-2 lg:grid-cols-3 lg:gap-3">
-          {CHEAT_CALLS.map((call) => (
-            <div
-              key={call.id}
-              className="flex flex-col rounded-2.5xl bg-surface p-5 shadow-card"
-            >
-              <p className="font-display font-bold leading-tight">{call.name}</p>
-              <p className="mt-0.5 text-xs text-muted">{call.role}</p>
-
-              <div className="mt-3.5 space-y-3">
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-faint">
-                    Testing
-                  </p>
-                  <p className="mt-1 text-[14px] leading-snug text-ink/90">
-                    {call.tests}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-teal-dark">
-                    Say
-                  </p>
-                  <p className="mt-1 border-l-2 border-teal pl-2.5 text-[14px] font-medium leading-snug text-ink">
-                    “{call.say}”
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-danger">
-                    Trap
-                  </p>
-                  <p className="mt-1 text-[14px] leading-snug text-ink/90">
-                    {call.trap}
-                  </p>
-                </div>
-              </div>
-
-              <Link
-                href={call.href}
-                className="mt-4 flex items-center justify-center gap-1 rounded-xl bg-mist py-2.5 text-center text-[13px] font-semibold text-muted transition-colors duration-150 ease-out hover:text-ink"
-              >
-                {call.hrefLabel} <ChevronRight size={14} />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Footer reminder ── */}
       <footer className="mt-8 rounded-2xl bg-mist p-4 text-[12px] leading-relaxed text-muted">
-        This is the floor — your one-screen walk-in. Thirty minutes before each
-        call, the Kat and Cam cram sheets go deeper. Every line here traces to
+        This is the floor — your one-screen walk-in. Every line here traces to
         cribl.io, Patrick, or Ami — say the numbers as approximate, and never
         bluff a cert.
       </footer>

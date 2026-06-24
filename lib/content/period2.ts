@@ -532,4 +532,255 @@ export const M8: CourseModule = {
   ],
 };
 
-export const PERIOD2 = [M7, M8];
+// ─────────────────────────────────────────────────────────────
+// The macro / "why now" — the forces in the industry that exist
+// independent of Cribl, and why they're all peaking at once. Sits
+// next to the product (m7) and the battlefield (m8). Bonus, so it
+// teaches without changing the exam-unlock gate.
+// ─────────────────────────────────────────────────────────────
+
+export const M12: CourseModule = {
+  id: "m12",
+  period: 2,
+  number: 12,
+  title: "Why Now — The Industry",
+  tagline: "The macro forces behind the category — and why they're all peaking at once",
+  minutes: 12,
+  bonus: true,
+  cards: [
+    {
+      id: "m12c1",
+      title: "The data explosion is the whole reason this category exists",
+      paragraphs: [
+        "Start with the force underneath everything. Every machine an enterprise runs — servers, laptops, firewalls, cloud apps — constantly produces telemetry: logs, metrics, traces, events. Security teams need it to catch attacks; IT teams need it to keep systems up. And the volume only goes one direction: Cribl's own framing is that telemetry roughly doubles about every 18 months.",
+        "Sit with what that means. The data doubles on a fixed clock; the budgets don't. Every tool downstream wants its own copy in its own format. So an enterprise doesn't have a data shortage — it has a data control problem, and it gets worse every quarter whether or not anyone acts. That curve outran the old way of doing things, and that's the bedrock 'why now.'",
+      ],
+      sayThis:
+        "Telemetry roughly doubles every eighteen months — and the budgets don't. That gap is the whole reason this category exists, and it widens every quarter you do nothing.",
+      source: "cribl.io",
+    },
+    {
+      id: "m12c2",
+      title: "The cost crisis: the tools bill on ingest",
+      paragraphs: [
+        "Here's the mechanism that turns the data curve into a budget crisis: the big analysis tools — the SIEM most of all — bill by ingest volume, the amount of data entering them. Indexing that data so it's searchable fast is compute-heavy, which is why SIEM storage costs far more than plain storage. So as telemetry doubles, the license bill tracks it dollar-for-dollar.",
+        "That's why 'ingest' is the most important word in any pricing conversation: control what enters the expensive tools and you control the bill. Cribl's published rule of thumb is a 25%+ reduction before data hits the costly platforms — a 30% reduction is typical, higher for chatty sources. The figure that makes it concrete: a $900K/yr Splunk license cut to $200K. The point isn't the exact number — it's the shape.",
+      ],
+      sayThis:
+        "The SIEM bills on ingest, so the license bill grows exactly as fast as your data. The only lever you control is what you choose to send it — Cribl's own example is a $900K Splunk bill cut to $200K.",
+      source: "cribl.io",
+    },
+    {
+      id: "m12c3",
+      title: "Platformization: the consolidation war everyone's fighting",
+      paragraphs: [
+        "Now the market context. Every mega-vendor is running the identical play: consolidate onto our platform. Palo Alto comes from the firewall, CrowdStrike from the endpoint, Datadog from monitoring, Splunk and Cisco from the SIEM. Each tells the CISO the same thing — stop buying best-of-breed point tools, our platform is good enough at everything.",
+        "And executives are listening: fewer vendors, fewer contracts, one throat to choke. In Patrick's words this is the single most important market dynamic to understand before any call. You don't argue against platformization — that's a losing posture; it's a real, rational trend. The whole fight right now is over who controls the data underneath all those platforms.",
+      ],
+      sayThis:
+        "Palo's coming from the firewall, CrowdStrike from the endpoint, Datadog from metrics — everyone's selling platformization right now. The whole fight is over who controls the data underneath.",
+      source: "patrick",
+    },
+    {
+      id: "m12c4",
+      title: "Platformization vs. composability — two answers to one question",
+      paragraphs: [
+        "The industry has split into two answers to 'how do I tame this sprawl.' One is platformization: one vendor, simplicity through consolidation. The other is composability: keep choice and control by owning the neutral data layer, so any platform decision stays reversible. Cribl's published line — a composable SIEM empowers you to embrace both choice and control.",
+        "The elegant move is that these aren't actually opposites if you control the data. Lean into platformization all you want — as long as you own the pipes. Then you can pick any platform today and swap it tomorrow, or run two during a migration, and the 'all your data is in us, good luck leaving' leverage evaporates. Note the nuance: Cribl isn't anti-consolidation — it champions agent consolidation and 'collect once, search anywhere.' Pro-consolidation at the data layer, pro-choice at the platform layer.",
+      ],
+      sayThis:
+        "There are two answers to the sprawl problem: platformization, or composability — control the neutral data layer so every platform choice stays reversible. And they're not opposites: lean into platformization all you want, as long as you control the pipes.",
+      source: "cribl.io",
+    },
+    {
+      id: "m12c5",
+      title: "SIEM migration is the wedge — and it's red-hot right now",
+      paragraphs: [
+        "Of all the use cases, SIEM migration has the most 'why now' energy in the market today — driven by Splunk and Cisco churn and a wave of new SIEM options. The classic trap: migrating SIEMs used to mean hand-rewiring hundreds of data feeds, so customers stayed stuck on a tool they'd outgrown.",
+        "Cribl's mechanism removes the trap. Because you control the pipes, you can feed the legacy and the new SIEM simultaneously — run both, prove the new one, then switch, with no re-plumbing. Cost Control opens the door (the universal, board-visible pain); migration is the wedge that follows. It converts a one-time, terrifying cutover into a reversible, staged project — and that reframes the whole buying decision.",
+      ],
+      sayThis:
+        "Everyone's mid-rethink on their SIEM right now with all the Splunk and Cisco churn. Because you control the pipes, you can feed the old and new SIEM at the same time and de-risk the whole cutover — no re-plumbing hundreds of feeds.",
+      source: "cribl.io",
+    },
+    {
+      id: "m12c6",
+      title: "AI readiness = data readiness — the accelerant",
+      paragraphs: [
+        "This is the force that took a steady-burn category and lit it. Every board is pushing AI, and the new agentic tools — an AI SOC analyst, an AI incident responder — are hungry for exactly this telemetry. Feed them raw, ungoverned data and two things happen: compute bills blow up, and sensitive company data leaks into models.",
+        "The thesis to land, in Cribl's own words: AI readiness is fundamentally data readiness. You don't get AI-ready by replacing every tool — you get there by fixing the telemetry layer first and enforcing governance at the data layer. The pipes you control become the safety layer for the AI era. Patrick's three-word umbrella for any senior conversation: AI readiness, AI governance, AI compliance.",
+      ],
+      sayThis:
+        "AI readiness is really data readiness — you don't get there by ripping out tools, you get there by fixing the data layer first. With any executive it's three words: AI readiness, AI governance, AI compliance.",
+      source: "patrick",
+    },
+    {
+      id: "m12c7",
+      title: "The observability side: same story, IT's bill instead of security's",
+      paragraphs: [
+        "Don't let the macro story sound security-only — it's the identical squeeze on the IT side. Observability answers a simple question — what's going on inside the system? — by reading health and performance from the logs, metrics, and traces a system emits. Datadog is that world's home turf, and it runs on the same exploding telemetry, billed the same brutal way.",
+        "The kicker most people miss: security and observability often buy the same data twice. A shared, governed telemetry layer underneath both fixes that — Cribl serves security and IT equally (the IT plays are SRE / platform engineering and telemetry as a shared service). That's why this is a platform-level problem, not a point fix: the cost curve, the ingest economics, and the AI pressure hit both budgets at once.",
+      ],
+      sayThis:
+        "It's the same story on the IT side — observability runs on the same exploding data, billed the same way. Security and observability buy the same data twice; a shared telemetry layer underneath both is how you stop paying twice.",
+      source: "cribl.io",
+    },
+    {
+      id: "m12c8",
+      title: "The credibility stats: the market already voted",
+      paragraphs: [
+        "End the macro story with proof the market already moved — but carry these cold and hedged, because misquoting a stat sounds like a guy who skimmed a press release. From cribl.io: roughly half the Fortune 100 are customers, about 35% of the Fortune 500, and around 1,500 customers total.",
+        "On revenue, get the hedge exactly right. The safely-citable public number is $300M+ ARR, growing over 40% year over year; the course canon also carries $339M (per Ami) as a possibly-fresher internal figure — lead with $300M+ publicly. Trajectory: 4th-fastest to $100M ARR. Present all of it as last-known and approximate. The point isn't the brag — half the Fortune 100 didn't adopt a neutral data layer for fun. They're on the same data curve you just described, and they voted.",
+      ],
+      sayThis:
+        "Half the Fortune 100 runs Cribl, public ARR is north of $300 million growing over 40% a year — fourth-fastest software company ever to $100 million. I present those as last-known, but the product-market-fit conversation is over.",
+      source: "cribl.io",
+    },
+  ],
+  quiz: [
+    {
+      id: "m12q1",
+      prompt: "What's the single force underneath the entire telemetry-control category?",
+      options: [
+        { text: "Machine data (telemetry) roughly doubles about every 18 months while budgets stay flat", correct: true },
+        { text: "Cloud providers keep raising storage prices every year" },
+        { text: "Regulators now require all logs to be kept for seven years" },
+      ],
+      explain:
+        "Telemetry doubles on a fixed clock; budgets don't. That gap — not any one regulation or price hike — is why the category exists, and it widens every quarter.",
+    },
+    {
+      id: "m12q2",
+      prompt: "Why does the word 'ingest' decide pricing conversations?",
+      options: [
+        { text: "Ingest speed determines how accurate the alerts are" },
+        { text: "The big analysis tools bill by data volume entering them — control ingest and you control the bill", correct: true },
+        { text: "Regulators cap ingest volume for compliance" },
+      ],
+      explain:
+        "Ingest-based billing is the economic engine of the category. Cut 25–50% of what enters the expensive tools and the project funds itself — Cribl cites a typical ~30% reduction.",
+    },
+    {
+      id: "m12q3",
+      prompt: "Cribl's published SIEM-migration example of the cost lever is:",
+      options: [
+        { text: "A $900K/yr Splunk license cut to $200K", correct: true },
+        { text: "A $10M/yr Splunk license cut to zero" },
+        { text: "A flat 5% discount on the SIEM contract" },
+      ],
+      explain:
+        "Cribl's own number on its SIEM-migration page. The exact figure matters less than the shape: the bill grows on its own, and what you choose to send is the only lever.",
+    },
+    {
+      id: "m12q4",
+      prompt: "What is 'platformization,' and who's pushing it?",
+      options: [
+        { text: "Moving from on-prem to the cloud, led by AWS and Azure" },
+        { text: "Mega-vendors pushing customers to consolidate point tools onto one platform — Palo (firewall), CrowdStrike (endpoint), Datadog (metrics), Splunk/Cisco (SIEM)", correct: true },
+        { text: "Standardizing all data on one open format, led by OpenTelemetry" },
+      ],
+      explain:
+        "Each vendor attacks from its beachhead with the same pitch: consolidate onto us. Knowing the word and who's pushing it signals market fluency instantly.",
+    },
+    {
+      id: "m12q5",
+      prompt: "Cribl's published reframe of the consolidation debate is called:",
+      options: [
+        { text: "Platformization done right" },
+        { text: "Composability — own the neutral data layer so platform choices stay reversible", correct: true },
+        { text: "Decentralization" },
+      ],
+      explain:
+        "Cribl's line: a composable SIEM empowers you to embrace both choice and control. It's not anti-consolidation — Cribl endorses agent consolidation and 'collect once, search anywhere'; it's pro-choice at the platform layer.",
+    },
+    {
+      id: "m12q6",
+      prompt: "Why is SIEM migration especially hot right now, and how does Cribl de-risk it?",
+      options: [
+        { text: "SIEMs are being banned, so everyone must migrate" },
+        { text: "Splunk/Cisco churn has customers rethinking, and controlling the pipes lets you feed the old and new SIEM simultaneously during the cutover", correct: true },
+        { text: "Cribl replaces the SIEM entirely, so migration is automatic" },
+      ],
+      explain:
+        "Migration used to mean hand-rewiring hundreds of feeds. Run both SIEMs in parallel, prove the new one, then switch — no re-plumbing. Cost Control opens the door; migration is the wedge that follows.",
+    },
+    {
+      id: "m12q7",
+      prompt: "The cleanest macro framing of why AI is the 'why now' accelerant:",
+      options: [
+        { text: "AI will replace SIEMs within a year" },
+        { text: "AI readiness is fundamentally data readiness — fix the telemetry layer and govern at the data layer, rather than replacing every tool", correct: true },
+        { text: "AI makes telemetry cheaper to store" },
+      ],
+      explain:
+        "Cribl's own thesis. Agentic tools need accurate, governed, relevant data, or you get blown-out compute bills and data leaking into models. Patrick's umbrella: AI readiness, governance, compliance.",
+    },
+    {
+      id: "m12q8",
+      prompt: "The safest way to state Cribl's ARR in the room is:",
+      options: [
+        { text: "'Exactly $339 million ARR,' stated as current fact" },
+        { text: "'$300M+ ARR publicly, growing over 40% a year — last-known, I'd check the live number' (with $339M as a possibly-fresher internal figure per Ami)", correct: true },
+        { text: "'$1 billion ARR, growing 20% a year'" },
+      ],
+      explain:
+        "Cribl's public milestone is the round, conservative $300M+. $339M is the internal figure from Ami — not a contradiction, but lead with $300M+ publicly and flag every dollar number as approximate.",
+    },
+  ],
+  writeIn: [
+    {
+      id: "m12w1",
+      prompt: "Tell the whole 'why now' in 60 seconds — the macro arc, no product pitch.",
+      keyPoints: [
+        "Telemetry roughly doubles ~every 18 months while budgets stay flat — the structural gap",
+        "The tools bill on ingest, so the license bill tracks the data curve dollar-for-dollar",
+        "The platformization war is live (Palo/CrowdStrike/Datadog/Splunk) — the fight is over who owns the data underneath",
+        "AI is the accelerant: AI readiness = data readiness, with board-level urgency",
+        "Net: a steady cost problem just got a deadline — that's the 'why now'",
+      ],
+      model:
+        "The macro story is one curve and one accelerant. The curve: machine data doubles roughly every eighteen months and budgets don't, and because the big tools bill on ingest, the license bill tracks that curve dollar for dollar. On top of it, every mega-vendor is fighting a platformization war — Palo, CrowdStrike, Datadog, Splunk all saying consolidate onto us — so the real fight is over who controls the data underneath. Then AI lit the fuse: AI readiness is really data readiness, and now there's a board mandate and a deadline attached. So a steady cost problem suddenly has urgency — that's the why now.",
+    },
+    {
+      id: "m12w2",
+      prompt: "Explain the cost crisis to a CFO — why does the data bill grow on its own?",
+      keyPoints: [
+        "Telemetry doubles ~every 18 months (a rule of thumb — present as approximate)",
+        "The expensive tools, especially the SIEM, bill by ingest volume",
+        "Indexing is compute-heavy — why SIEM storage costs far more than plain storage",
+        "The only lever is what you choose to send; Cribl cites typical ~25–30% reductions (an estimate, not a guarantee)",
+        "Concrete shape: a $900K Splunk license cut to $200K",
+      ],
+      model:
+        "Your data roughly doubles every eighteen months, and the security and monitoring tools bill by how much you feed them — by ingest. They also index everything, which is compute-heavy, so that storage costs far more than plain storage. Put those together and your bill grows on its own every quarter, whether or not anything changes. The only lever you actually control is what you choose to send those tools — and Cribl's customers typically cut a quarter to a third of it before it ever lands. Their own example is a $900K Splunk license cut to $200K. I'd present those as approximate, but the trajectory is the point.",
+    },
+    {
+      id: "m12w3",
+      prompt: "An exec says 'we're consolidating onto one platform.' Walk the platformization-vs-composability picture.",
+      keyPoints: [
+        "Acknowledge platformization is real and rational — fewer vendors, one throat to choke",
+        "Every mega-vendor runs it from a different beachhead (firewall/endpoint/metrics/SIEM)",
+        "The two answers: platformization (one vendor) vs composability (own the neutral data layer)",
+        "They're not opposites if you control the pipes — any platform stays swappable; run two during a migration",
+        "Cribl endorses the right consolidation: agent consolidation, 'collect once, search anywhere'",
+      ],
+      model:
+        "Totally fair — platformization is real and rational; fewer vendors, one throat to choke. Every big vendor's running it from a different angle: Palo from the firewall, CrowdStrike from the endpoint, Datadog from metrics, Splunk from the SIEM. The industry's split into two answers, though: platformization, or composability — owning the neutral data layer so your platform choices stay reversible. And they're not opposites: lean into platformization all you want, as long as you control the pipes — then you can swap any platform tomorrow or run two during a migration. Cribl's actually pro-consolidation in the right place: collapse your agents, collect once, search anywhere. It's just pro-choice at the platform layer.",
+    },
+    {
+      id: "m12w4",
+      prompt: "Why is AI the accelerant that took this from a slow burn to urgent — and how do you frame it for a CISO?",
+      keyPoints: [
+        "Boards are pushing AI; agentic security/ops tools are hungry for exactly this telemetry",
+        "Feed them raw/ungoverned data → compute bills blow up AND sensitive data leaks into models",
+        "The thesis: AI readiness is fundamentally data readiness — fix the telemetry layer, govern at the data layer",
+        "Patrick's three-word umbrella: AI readiness, AI governance, AI compliance",
+        "It's the same data problem as the cost story, now with a board-level deadline",
+      ],
+      model:
+        "AI is what turned a slow-burn cost problem into an urgent one. Every board is pushing AI, and the new agentic tools — an AI SOC analyst, an AI responder — are hungry for exactly this telemetry. Feed them raw, ungoverned data and two bad things happen at once: the compute bills blow up, and sensitive data leaks into the models. So with a CISO I frame it in three words: AI readiness, AI governance, AI compliance. And the core line is that AI readiness is really data readiness — you don't get there by replacing every tool, you get there by fixing the data layer first and governing right there. Same data problem as the cost story — now with a board mandate and a deadline.",
+    },
+  ],
+};
+
+export const PERIOD2 = [M7, M8, M12];

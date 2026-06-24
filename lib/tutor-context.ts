@@ -2,15 +2,10 @@
 // The drawer reads the current route + progress and ships these strings to
 // /api/tutor so "explain this" and "what should I study next" actually land.
 
-import {
-  CRAM_SHEETS,
-  EXAMS_BY_ID,
-  MODULES,
-  MODULES_BY_ID,
-} from "@/lib/content";
+import { MODULES, MODULES_BY_ID } from "@/lib/content";
 import { isPassed, type ProgressState } from "@/lib/progress";
 
-/** A tiny label for the drawer header chip ("Module 3", "Kat cram", …). */
+/** A tiny label for the drawer header chip ("Module 3", "Flashcards", …). */
 export function locationLabel(pathname: string): string {
   const quiz = pathname.match(/^\/module\/([^/]+)\/quiz/);
   if (quiz) {
@@ -22,16 +17,11 @@ export function locationLabel(pathname: string): string {
     const m = MODULES_BY_ID.get(mod[1]);
     if (m) return `Module ${m.number}`;
   }
-  const exam = pathname.match(/^\/exam\/([^/]+)/);
-  if (exam) {
-    const e = EXAMS_BY_ID.get(exam[1]);
-    if (e) return `${cap(exam[1])} exam`;
-  }
-  const cram = pathname.match(/^\/cram\/([^/]+)/);
-  if (cram) return `${cap(cram[1])} cram`;
+  if (pathname.startsWith("/dojo")) return "Buyer Persona Dojo";
+  if (pathname.startsWith("/deal")) return "Deal Command";
   if (pathname.startsWith("/flashcards")) return "Flashcards";
-  if (pathname.startsWith("/gauntlet")) return "The Gauntlet";
   if (pathname.startsWith("/practice")) return "Practice Room";
+  if (pathname.startsWith("/cheat-sheet")) return "Cheat sheet";
   if (pathname === "/") return "Course home";
   return "GOAT Mode";
 }
@@ -51,34 +41,22 @@ export function describeLocation(pathname: string): string {
       return [
         `Chris is reading Module ${m.number}: "${m.title}" — ${m.tagline}.`,
         m.audience ? `(${m.audience}.)` : "",
-        `The sections on this page: ${m.cards
-          .map((c) => c.title)
-          .join("; ")}.`,
+        `The sections on this page: ${m.cards.map((c) => c.title).join("; ")}.`,
         `When he says "this", he means this module.`,
       ]
         .filter(Boolean)
         .join(" ");
   }
-  const exam = pathname.match(/^\/exam\/([^/]+)/);
-  if (exam) {
-    const e = EXAMS_BY_ID.get(exam[1]);
-    if (e)
-      return `Chris is in the "${e.title}" boss exam — ${e.subtitle}. These are scenarios asked the way the interviewer would actually ask them.`;
-  }
-  const cram = pathname.match(/^\/cram\/([^/]+)/);
-  if (cram) {
-    const c = CRAM_SHEETS.find((x) => x.id === cram[1]);
-    if (c)
-      return `Chris is on ${c.name}'s cram sheet (${c.role}) — the last-minute prep right before that interview. Keep it sharp and fast.`;
-  }
+  if (pathname.startsWith("/dojo"))
+    return `Chris is in the Buyer Persona Dojo — studying a seat on the buying committee and rehearsing against an AI playing that buyer. Help him prep for that persona.`;
+  if (pathname.startsWith("/deal"))
+    return `Chris is in Deal Command — his live-deal workspace (MEDDPICC, the value story, the committee, meeting prep). Help him advance the real deal.`;
   if (pathname.startsWith("/flashcards"))
     return `Chris is reviewing flashcards — terms with their plain meaning and how they show up in a real sentence.`;
-  if (pathname.startsWith("/gauntlet"))
-    return `Chris is in the Gauntlet — live voice interview practice against Patrick, Kat, Cam, and Tim across five levels.`;
   if (pathname.startsWith("/practice"))
-    return `Chris is in the Practice Room — text role-play with the coach, Kat, or Cam.`;
+    return `Chris is in the Practice Room — text role-play against an AI buyer or coach.`;
   if (pathname === "/")
-    return `Chris is on the course dashboard — modules, the weekend game plan, and his countdowns to the Kat and Cam calls.`;
+    return `Chris is on the course dashboard — the modules and his ramp game plan.`;
   return `Chris is somewhere in the GOAT Mode app.`;
 }
 
@@ -107,24 +85,18 @@ export function tutorStarters(pathname: string): string[] {
     return [
       "Explain this module like I'm new",
       "Quiz me on this module",
-      "Why does this matter to Kat or Cam?",
+      "Why does this matter in a real deal?",
     ];
-  if (/^\/exam\//.test(pathname))
+  if (pathname.startsWith("/dojo"))
     return [
-      "What are they really testing here?",
-      "Walk me through one scenario",
-      "What's my best opener?",
-    ];
-  if (/^\/cram\//.test(pathname))
-    return [
-      "Drill me on these five things",
-      "What's the trap with this interviewer?",
-      "Three smart questions to ask them",
+      "What does this persona care about most?",
+      "What objections will they throw at me?",
+      "Three sharp discovery questions for them",
     ];
   if (pathname.startsWith("/flashcards"))
     return [
       "Use this term in a sentence",
-      "Which of these do Cam's questions hit?",
+      "Which of these come up most in real deals?",
       "Quiz me on definitions",
     ];
   return [
@@ -132,8 +104,4 @@ export function tutorStarters(pathname: string): string[] {
     "Give me the 30-second pitch",
     "Quiz me — your pick",
   ];
-}
-
-function cap(s: string) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
 }

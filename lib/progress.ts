@@ -131,7 +131,7 @@ export function setInterviewTime(id: string, value: string) {
 }
 
 /** All quiz units that count toward GOAT status. */
-export const UNIT_IDS = [...MODULES.map((m) => m.id), "exam-kat", "exam-cam"];
+export const UNIT_IDS = [...MODULES.map((m) => m.id)];
 
 export function isPassed(s: ProgressState, id: string) {
   return s.quizzes[id]?.passed ?? false;

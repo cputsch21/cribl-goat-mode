@@ -137,7 +137,7 @@ export function GamePlan() {
     <section>
       <h2 className="font-display text-lg font-bold">The game plan</h2>
       <p className="mt-0.5 text-sm text-muted">
-        Check things off — the weekend is enough if you follow the order.
+        Check things off — follow the order and you&apos;ll ramp fast.
       </p>
       <p className="mt-0.5 text-xs text-faint">
         Drag a card by its handle to move it to another day.
