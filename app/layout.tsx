@@ -19,7 +19,7 @@ const body = Geist({
 export const metadata: Metadata = {
   title: "GOAT Mode",
   description:
-    "Cribl interview prep — pass every quiz and walk into the Kat and Cam calls 3x more prepared than you need to be.",
+    "Your Cribl AE ramp — master the product, the sales motion, and every seat on the buying committee.",
   appleWebApp: {
     capable: true,
     title: "GOAT Mode",
