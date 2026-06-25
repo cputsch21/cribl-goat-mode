@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ConversationProvider, useConversation } from "@elevenlabs/react";
-import { Mic, MicOff, PhoneOff, Captions, Radio } from "lucide-react";
+import { Mic, PhoneOff, Captions, Radio } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PushToTalkButton } from "@/components/voice/push-to-talk-button";
 
 type Phase = "idle" | "connecting" | "live" | "error";
 
@@ -23,7 +24,8 @@ function VoiceInner({ moduleId }: { moduleId: string | null }) {
   const [transcript, setTranscript] = useState<Line[]>([]);
   const [remaining, setRemaining] = useState<number | null>(null);
   const [captionsOn, setCaptionsOn] = useState(true);
-  const [micMuted, setMicMuted] = useState(false);
+  // Push-to-talk: the mic stays muted unless the user is holding the button.
+  const [talking, setTalking] = useState(false);
   const [ready, setReady] = useState<boolean | null>(null);
 
   const transcriptRef = useRef<Line[]>([]);
@@ -50,7 +52,7 @@ function VoiceInner({ moduleId }: { moduleId: string | null }) {
   }, []);
 
   const conversation = useConversation({
-    micMuted,
+    micMuted: !talking,
     onMessage: (m: { message?: string; source?: string }) => {
       const text = m?.message ?? "";
       if (!text) return;
@@ -103,6 +105,7 @@ function VoiceInner({ moduleId }: { moduleId: string | null }) {
   async function start() {
     setPhase("connecting");
     setErrorMsg("");
+    setTalking(false);
     transcriptRef.current = [];
     setTranscript([]);
     endedRef.current = false;
@@ -179,7 +182,7 @@ function VoiceInner({ moduleId }: { moduleId: string | null }) {
           </p>
           <ul className="mt-3 space-y-1 text-[13px] leading-relaxed text-muted">
             <li>• Headphones on, quiet room — talk like it&apos;s a real call.</li>
-            <li>• Interrupt any time; it&apos;ll roll with you.</li>
+            <li>• Hold the button to talk, release when you&apos;re done — then it answers.</li>
             <li>• Hang up whenever — there&apos;s nothing to finish.</li>
           </ul>
 
@@ -233,13 +236,15 @@ function VoiceInner({ moduleId }: { moduleId: string | null }) {
               "mt-4 flex h-32 w-32 items-center justify-center rounded-full transition-all duration-150 ease-out",
               conversation.isSpeaking
                 ? "bg-violet/15 ring-8 ring-violet/20"
-                : "bg-teal-tint ring-8 ring-teal/25"
+                : talking
+                  ? "bg-danger-tint ring-8 ring-danger/30"
+                  : "bg-teal-tint ring-8 ring-teal/25"
             )}
           >
             <div className="text-center">
               <p className="font-display text-xl font-bold text-ink">Professor</p>
               <p className="mt-0.5 text-[11px] font-bold uppercase tracking-wide text-ink/55">
-                {conversation.isSpeaking ? "talking" : "your turn"}
+                {conversation.isSpeaking ? "talking" : talking ? "recording…" : "hold to talk"}
               </p>
             </div>
           </div>
@@ -260,17 +265,14 @@ function VoiceInner({ moduleId }: { moduleId: string | null }) {
             </div>
           ) : null}
 
-          <div className="mt-6 flex items-center justify-center gap-2.5">
-            <button
-              onClick={() => setMicMuted((m) => !m)}
-              className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-150",
-                micMuted ? "bg-danger text-white" : "bg-mist text-ink"
-              )}
-              aria-label={micMuted ? "Unmute" : "Mute"}
-            >
-              {micMuted ? <MicOff size={18} /> : <Mic size={18} />}
-            </button>
+          <PushToTalkButton
+            talking={talking}
+            onStart={() => setTalking(true)}
+            onStop={() => setTalking(false)}
+            className="mt-6"
+          />
+
+          <div className="mt-2.5 flex items-center justify-center gap-2.5">
             <button
               onClick={() => setCaptionsOn((c) => !c)}
               className={cn(

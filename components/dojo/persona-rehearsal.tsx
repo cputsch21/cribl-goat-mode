@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ConversationProvider, useConversation } from "@elevenlabs/react";
 import {
   Mic,
-  MicOff,
   PhoneOff,
   RotateCcw,
   Captions,
@@ -20,6 +19,7 @@ import {
 } from "@/lib/dojo";
 import type { Persona } from "@/lib/content/personas";
 import { cn } from "@/lib/utils";
+import { PushToTalkButton } from "@/components/voice/push-to-talk-button";
 
 type Phase =
   | "idle"
@@ -47,7 +47,8 @@ function RehearsalInner({ persona }: { persona: Persona }) {
   const [debrief, setDebrief] = useState<DojoDebrief | null>(null);
   const [remaining, setRemaining] = useState<number | null>(null);
   const [captionsOn, setCaptionsOn] = useState(true);
-  const [micMuted, setMicMuted] = useState(false);
+  // Push-to-talk: the mic stays muted unless the user is holding the button.
+  const [talking, setTalking] = useState(false);
   const [doneSeconds, setDoneSeconds] = useState(0);
 
   const transcriptRef = useRef<DojoSimLine[]>([]);
@@ -62,7 +63,7 @@ function RehearsalInner({ persona }: { persona: Persona }) {
   const who = persona.name.replace(/^The /, "");
 
   const conversation = useConversation({
-    micMuted,
+    micMuted: !talking,
     onMessage: (m: { message?: string; source?: string }) => {
       const text = m?.message ?? "";
       if (!text) return;
@@ -117,6 +118,7 @@ function RehearsalInner({ persona }: { persona: Persona }) {
   async function start() {
     setPhase("connecting");
     setErrorMsg("");
+    setTalking(false);
     transcriptRef.current = [];
     setTranscript([]);
     setDebrief(null);
@@ -230,7 +232,7 @@ function RehearsalInner({ persona }: { persona: Persona }) {
           </p>
           <ul className="mt-3 space-y-1 text-[13px] leading-relaxed text-muted">
             <li>• Headphones on, quiet room — talk to them like a real call.</li>
-            <li>• You can interrupt them mid-sentence; they&apos;ll push back.</li>
+            <li>• Hold the button to talk, release when you&apos;re done — then they push back.</li>
             <li>• Hit End (or just wrap up) and the coach reviews the tape.</li>
           </ul>
 
@@ -297,13 +299,15 @@ function RehearsalInner({ persona }: { persona: Persona }) {
               "mt-4 flex h-32 w-32 items-center justify-center rounded-full transition-all duration-150 ease-out",
               conversation.isSpeaking
                 ? "bg-violet/15 ring-8 ring-violet/20"
-                : "bg-teal-tint ring-8 ring-teal/25"
+                : talking
+                  ? "bg-danger-tint ring-8 ring-danger/30"
+                  : "bg-teal-tint ring-8 ring-teal/25"
             )}
           >
             <div className="text-center">
               <p className="font-display text-xl font-bold text-ink">{who}</p>
               <p className="mt-0.5 text-[11px] font-bold uppercase tracking-wide text-ink/55">
-                {conversation.isSpeaking ? "talking" : "your turn"}
+                {conversation.isSpeaking ? "talking" : talking ? "recording…" : "hold to talk"}
               </p>
             </div>
           </div>
@@ -324,17 +328,14 @@ function RehearsalInner({ persona }: { persona: Persona }) {
             </div>
           ) : null}
 
-          <div className="mt-6 flex items-center justify-center gap-2.5">
-            <button
-              onClick={() => setMicMuted((m) => !m)}
-              className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-150",
-                micMuted ? "bg-danger text-white" : "bg-mist text-ink"
-              )}
-              aria-label={micMuted ? "Unmute" : "Mute"}
-            >
-              {micMuted ? <MicOff size={18} /> : <Mic size={18} />}
-            </button>
+          <PushToTalkButton
+            talking={talking}
+            onStart={() => setTalking(true)}
+            onStop={() => setTalking(false)}
+            className="mt-6"
+          />
+
+          <div className="mt-2.5 flex items-center justify-center gap-2.5">
             <button
               onClick={() => setCaptionsOn((c) => !c)}
               className={cn(
