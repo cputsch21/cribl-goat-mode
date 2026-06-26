@@ -7,6 +7,7 @@ import { ArrowLeft, Eye, PhoneOff, SkipForward, Zap } from "lucide-react";
 import { INTERVIEWERS, PERSON_IDS, type PersonId } from "@/lib/content/interviews";
 import { RAPID_FIRE, type RapidFireQ } from "@/lib/content/rapidfire";
 import { cn, shuffle } from "@/lib/utils";
+import { PushToTalkButton } from "@/components/voice/push-to-talk-button";
 
 type Phase = "idle" | "connecting" | "live" | "error";
 type Filter = PersonId | "all";
@@ -19,6 +20,8 @@ function ShootoutInner() {
   const [served, setServed] = useState<RapidFireQ | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [count, setCount] = useState(0);
+  // Push-to-talk: the mic stays muted unless the user is holding the button.
+  const [talking, setTalking] = useState(false);
   const idxRef = useRef(0);
   const endedRef = useRef(false);
 
@@ -29,6 +32,7 @@ function ShootoutInner() {
   );
 
   const conversation = useConversation({
+    micMuted: !talking,
     onDisconnect: () => {
       if (!endedRef.current) setPhase("idle");
     },
@@ -43,6 +47,7 @@ function ShootoutInner() {
   async function start() {
     setPhase("connecting");
     setErrorMsg("");
+    setTalking(false);
     endedRef.current = false;
     idxRef.current = 0;
     setServed(null);
@@ -84,6 +89,7 @@ function ShootoutInner() {
 
   async function end() {
     endedRef.current = true;
+    setTalking(false);
     try {
       await conversation.endSession();
     } catch {
@@ -184,7 +190,8 @@ function ShootoutInner() {
                   {served.question}
                 </p>
                 <p className="mt-2 text-xs text-faint">
-                  Answer out loud — the machine scores you when you finish.
+                  Hold the button and answer out loud — release when you&apos;re
+                  done and the machine scores you.
                 </p>
               </div>
 
@@ -216,6 +223,12 @@ function ShootoutInner() {
               </p>
             </div>
           )}
+
+          <PushToTalkButton
+            talking={talking}
+            onStart={() => setTalking(true)}
+            onStop={() => setTalking(false)}
+          />
 
           <div className="grid grid-cols-2 gap-2">
             {served && !revealed ? (

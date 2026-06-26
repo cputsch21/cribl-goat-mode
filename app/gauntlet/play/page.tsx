@@ -8,8 +8,6 @@ import {
   ArrowLeft,
   BookOpen,
   Captions,
-  Mic,
-  MicOff,
   PhoneOff,
   RotateCcw,
 } from "lucide-react";
@@ -26,6 +24,7 @@ import {
 } from "@/lib/progress";
 import { Sheet } from "@/components/sheet";
 import { cn } from "@/lib/utils";
+import { PushToTalkButton } from "@/components/voice/push-to-talk-button";
 
 type Phase = "idle" | "connecting" | "live" | "judging" | "verdict" | "tooShort" | "error";
 
@@ -66,7 +65,8 @@ function PlayInner() {
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [remaining, setRemaining] = useState<number | null>(null);
   const [captionsOn, setCaptionsOn] = useState(true);
-  const [micMuted, setMicMuted] = useState(false);
+  // Push-to-talk: the mic stays muted unless the user is holding the button.
+  const [talking, setTalking] = useState(false);
   const [helperOpen, setHelperOpen] = useState(false);
   const [helper, setHelper] = useState<{ perfect: string; beats: string[] } | null>(null);
   const [helperLoading, setHelperLoading] = useState(false);
@@ -80,7 +80,7 @@ function PlayInner() {
   phaseRef.current = phase;
 
   const conversation = useConversation({
-    micMuted,
+    micMuted: !talking,
     onMessage: (m: { message?: string; source?: string }) => {
       const text = m?.message ?? "";
       if (!text) return;
@@ -169,6 +169,7 @@ function PlayInner() {
   async function start() {
     setPhase("connecting");
     setErrorMsg("");
+    setTalking(false);
     transcriptRef.current = [];
     setTranscript([]);
     setVerdict(null);
@@ -350,7 +351,7 @@ function PlayInner() {
 
           <ul className="space-y-1.5 px-1 text-[13px] leading-relaxed text-muted">
             <li>• Headphones on, quiet room, answer out loud and naturally.</li>
-            <li>• You can interrupt {p.name.split(" ")[0]} mid-sentence — it&apos;s a real call.</li>
+            <li>• Hold the button to talk, release when you&apos;re done — then {p.name.split(" ")[0]} answers.</li>
             <li>
               • When they say goodbye (or time runs out), the judge reviews the
               tape{mode === "game" ? " and scores it" : ""}.
@@ -387,13 +388,19 @@ function PlayInner() {
               "flex h-40 w-40 items-center justify-center rounded-full transition-all duration-150 ease-out",
               conversation.isSpeaking
                 ? "bg-teal-tint ring-8 ring-teal/30"
-                : "bg-gold-soft ring-8 ring-gold/30"
+                : talking
+                  ? "bg-danger-tint ring-8 ring-danger/30"
+                  : "bg-gold-soft ring-8 ring-gold/30"
             )}
           >
             <div className="text-center">
               <div className="text-4xl">{p.emoji}</div>
               <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-ink/60">
-                {conversation.isSpeaking ? `${p.name.split(" ")[0]} talking` : "your turn"}
+                {conversation.isSpeaking
+                  ? `${p.name.split(" ")[0]} talking`
+                  : talking
+                    ? "recording…"
+                    : "hold to talk"}
               </p>
             </div>
           </div>
@@ -418,17 +425,14 @@ function PlayInner() {
             </div>
           ) : null}
 
-          <div className="mt-6 flex w-full items-center justify-center gap-2.5">
-            <button
-              onClick={() => setMicMuted((m) => !m)}
-              className={cn(
-                "flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-150",
-                micMuted ? "bg-danger text-white" : "bg-mist text-ink"
-              )}
-              aria-label={micMuted ? "Unmute" : "Mute"}
-            >
-              {micMuted ? <MicOff size={18} /> : <Mic size={18} />}
-            </button>
+          <PushToTalkButton
+            talking={talking}
+            onStart={() => setTalking(true)}
+            onStop={() => setTalking(false)}
+            className="mt-6"
+          />
+
+          <div className="mt-2.5 flex w-full items-center justify-center gap-2.5">
             <button
               onClick={() => setCaptionsOn((c) => !c)}
               className={cn(
