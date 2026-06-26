@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, Footprints, Target, Zap, Swords } from "lucide-react";
+import { Home, Layers, HelpCircle, Target, Zap, Swords } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "/", label: "Course", icon: Home, exact: true },
   { href: "/cheat-sheet", label: "Cheat Sheet", icon: Zap, exact: false },
   { href: "/flashcards", label: "Flashcards", icon: Layers, exact: false },
-  { href: "/goat-trail", label: "Goat Trail", icon: Footprints, exact: false },
+  { href: "/faq", label: "FAQ", icon: HelpCircle, exact: false },
   { href: "/deal", label: "Deal", icon: Target, exact: false },
   { href: "/dojo", label: "Dojo", icon: Swords, exact: false },
 ];
