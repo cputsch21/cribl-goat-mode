@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, HelpCircle, Target, Zap, Swords, Brain } from "lucide-react";
+import { Home, Layers, HelpCircle, Target, Zap, Swords, Brain, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { href: "/", label: "Course", icon: Home, exact: true },
+  { href: "/qsl", label: "QSL", icon: BookOpen, exact: false },
   { href: "/cheat-sheet", label: "Cheat", icon: Zap, exact: false },
   { href: "/flashcards", label: "Cards", icon: Layers, exact: false },
   { href: "/faq", label: "FAQ", icon: HelpCircle, exact: false },
@@ -19,7 +20,7 @@ export function BottomNav() {
   const pathname = usePathname();
   return (
     <nav className="fixed bottom-4 left-1/2 z-30 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-2xl bg-ink px-1.5 py-1.5 shadow-lift lg:hidden">
-      <div className="grid grid-cols-7">
+      <div className="grid grid-cols-8">
         {ITEMS.map(({ href, label, icon: Icon, exact }) => {
           const active = exact ? pathname === href : pathname.startsWith(href);
           return (
