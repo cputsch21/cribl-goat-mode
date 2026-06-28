@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Layers, HelpCircle, Target, Zap, Swords, Brain } from "lucide-react";
+import { Home, Layers, HelpCircle, Target, Zap, Swords, Brain, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "/", label: "Course", icon: Home, exact: true },
+  { href: "/qsl", label: "QSL", icon: BookOpen, exact: false },
   { href: "/cheat-sheet", label: "Cheat Sheet", icon: Zap, exact: false },
   { href: "/flashcards", label: "Flashcards", icon: Layers, exact: false },
   { href: "/faq", label: "FAQ", icon: HelpCircle, exact: false },
