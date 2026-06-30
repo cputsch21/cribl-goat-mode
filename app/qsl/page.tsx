@@ -8,6 +8,7 @@ import {
   type QSLNode,
   type QSLModule,
 } from "@/lib/content/qsl";
+import { QslAudioPlayer } from "@/components/qsl/audio-player";
 import { cn } from "@/lib/utils";
 
 /* ── Node renderer (recursive) ─────────────────────────────────────────── */
@@ -204,6 +205,8 @@ export default function QslPage() {
           ))}
         </ul>
       </header>
+
+      <QslAudioPlayer />
 
       <div className="space-y-3">
         {QSL_COURSE.map((m, i) => (
