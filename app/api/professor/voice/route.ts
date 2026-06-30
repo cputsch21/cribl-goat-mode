@@ -1,5 +1,6 @@
 import { CANON, KNOWLEDGE } from "@/lib/interview-brain";
 import { REFERENCE } from "@/lib/content/reference";
+import { QSL_KNOWLEDGE } from "@/lib/content/qsl-knowledge";
 import { MODULES_BY_ID, type CourseModule } from "@/lib/content";
 import {
   elevenKey,
@@ -36,11 +37,15 @@ HOW YOU SOUND AND TEACH:
 - Build understanding from the ground up: define jargon the first time, use concrete examples and before/after pictures, and always land why a real buyer or interviewer actually cares.
 - Address him as Chris. Never break character, and never say or imply you are an AI, a model, or a simulation.
 
+You also hold the QSL PLAYBOOK below — the methodology from John McMahon's "The Qualified Sales Leader" (the sales process, MEDDICC and its question banks, discovery/scoping, champions, the economic buyer, POV, business case, negotiation, and forecasting). When Chris asks about the book or a framework, teach straight from it — it's methodology, not Cribl facts, so use it freely.
+
 GUARDRAILS: Ground everything in the knowledge below — never invent Cribl facts, customers, or numbers. If something genuinely isn't covered, say so plainly and point him to who'd know (his SE, the recruiter). Treat anything flagged "VERIFY - may be dated" as approximate ("roughly that, last I saw — check the live number"). Quote the "STATE EXACTLY" compliance lines precisely.
 
 ${KNOWLEDGE}
 ${CANON}
-${REFERENCE}`;
+${REFERENCE}
+
+${QSL_KNOWLEDGE}`;
 }
 
 function firstMessage(m: CourseModule | undefined) {
